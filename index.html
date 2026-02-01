@@ -812,7 +812,7 @@
                 <input type="date" id="taskDate">
             </div>
             <div class="input-group">
-                <label>Ticket ID</label>
+                <label>Ticket ID(s) - Comma Separated</label>
                 <input type="text" id="ticketID" placeholder="e.g., L3-31Jan26-048642, L3-31Jan26-048725, L3-31Jan26-049158">
             </div>
             <div class="input-group">
@@ -874,12 +874,12 @@
                 </select>
             </div>
             <div class="input-group onu-mac-group">
-		<label>ONU MAC-ADDRESS</label>
-                <input type="text" id="ticketID" placeholder="Enter ONU Mac If ONU Used">
+                <label>ONU MAC-ADDRESS</label>
+                <textarea id="onuMac" placeholder="Enter ONU Mac If ONU Used" rows="1"></textarea>
             </div>
         </div>
 
-        <button class="btn-done" id="submitBtn" onclick="submitMultipleTasks()">Submit Done Tickets</button>
+        <button class="btn-done" id="submitBtn" onclick="submitMultipleTasks()">Submit All Tickets</button>
         
         <div class="task-footer">
             <div class="copyright">
