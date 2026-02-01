@@ -879,7 +879,7 @@
             </div>
         </div>
 
-        <button class="btn-done" id="submitBtn" onclick="submitMultipleTasks()">Submit All Tickets</button>
+        <button class="btn-done" id="submitBtn" onclick="submitMultipleTasks()">Submit Done Tickets</button>
         
         <div class="task-footer">
             <div class="copyright">
@@ -1073,7 +1073,7 @@
             btn.innerHTML = `✓ ${successCount} Ticket(s) Submitted!`;
             
             setTimeout(() => {
-                btn.innerHTML = "Submit All Tickets";
+                btn.innerHTML = "Submit Done Tickets";
                 btn.style.background = "linear-gradient(135deg, #0ea5e9 0%, #10b981 100%)";
             }, 2000);
             
@@ -1173,3 +1173,4 @@
 
 </body>
 </html>
+
