@@ -224,7 +224,7 @@
             width: 100%;
             height: 4px;
             background: linear-gradient(90deg, #059669, #10b981, #34d399);
-        }]
+        }
 
         .card:hover {
             transform: translateY(-4px);
@@ -601,42 +601,66 @@
             border: 1px solid rgba(30, 64, 175, 0.1);
         }
 
+        /* RIGHT-CENTER TOAST NOTIFICATION WITH BLUEISH COLOR */
         .toast {
             position: fixed;
-            bottom: 20px;
+            top: 50%;
             right: 20px;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.9) 0%, rgba(30, 64, 175, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.92) 0%, rgba(59, 130, 246, 0.92) 100%);
             color: white;
-            padding: 12px 20px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.3);
+            padding: 14px 22px;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.4), 
+                        0 0 0 1px rgba(255, 255, 255, 0.15) inset,
+                        0 4px 6px rgba(0, 0, 0, 0.15);
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             z-index: 1000;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             transform: translateX(150%);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border-left: 5px solid #60a5fa;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            min-width: 260px;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-left: 5px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(15px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            min-width: 280px;
+            max-width: 350px;
+            text-align: left;
+            transform-origin: right center;
+            opacity: 0;
+            pointer-events: none;
         }
 
         .toast.show {
-            transform: translateX(0);
+            transform: translateX(0) translateY(-50%);
+            opacity: 1;
+            pointer-events: all;
         }
 
         .toast-icon {
-            font-size: 1.3rem;
-            color: #dbeafe;
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         #toastMessage {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
             letter-spacing: 0.3px;
+            line-height: 1.4;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            flex: 1;
         }
 
         .toast::before {
@@ -646,9 +670,29 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            background: linear-gradient(135deg, 
+                        rgba(255, 255, 255, 0.2) 0%, 
+                        rgba(255, 255, 255, 0.1) 50%,
+                        rgba(255, 255, 255, 0.15) 100%);
             border-radius: inherit;
             z-index: -1;
+        }
+
+        .toast::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            background: linear-gradient(135deg, 
+                        rgba(14, 165, 233, 0.4), 
+                        rgba(59, 130, 246, 0.4), 
+                        rgba(96, 165, 250, 0.4));
+            border-radius: inherit;
+            z-index: -2;
+            filter: blur(8px);
+            opacity: 0.8;
         }
 
         .task-footer {
@@ -740,18 +784,34 @@
                 height: 40px;
                 padding: 9px 12px;
             }
+            
+            /* Mobile toast */
             .toast {
-                bottom: 10px;
+                top: 50%;
                 right: 10px;
                 left: 10px;
-                transform: translateY(150%);
-                min-width: auto;
+                transform: translateY(100%) translateX(0);
                 max-width: calc(100% - 20px);
-                padding: 10px 16px;
+                padding: 12px 18px;
+                transform-origin: center;
+                min-width: auto;
+                background: linear-gradient(135deg, rgba(14, 165, 233, 0.95) 0%, rgba(59, 130, 246, 0.95) 100%);
             }
+            
             .toast.show {
-                transform: translateY(0);
+                transform: translateY(-50%) translateX(0);
             }
+            
+            .toast-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1.2rem;
+            }
+            
+            #toastMessage {
+                font-size: 0.85rem;
+            }
+            
             .today-count {
                 font-size: 0.7rem;
                 padding: 3px 8px;
@@ -811,7 +871,10 @@
                 <label>Work Date</label>
                 <input type="date" id="taskDate">
             </div>
-            <div class="input-group"><label>Ticket ID</label><input type="text" id="ticketID" placeholder="Enter Ticket ID"></div>
+            <div class="input-group">
+                <label>Ticket ID</label>
+                <input type="text" id="ticketID" placeholder="e.g., L3-31Jan26-048642, L3-31Jan26-048725, L3-31Jan26-049158">
+            </div>
             <div class="input-group">
                 <label>Task Category</label>
                 <select id="taskCategory">
@@ -868,20 +931,15 @@
                 <select id="backendSupport">
                     <option value="">Select Support</option>
                     <option>Ahsanul Kabir</option>
-                     <option>Tamim</option>
-                    <option>Nazrul Islam</option>
-                    <option>Rupchan</option>
-                    <option>Amit Hasan</option>
-                    <option>Basudeb Roy</option>
                 </select>
             </div>
             <div class="input-group onu-mac-group">
-                <label>ONU MAC-ADDRESS</label>
-                <textarea id="onuMac" placeholder="Enter ONU Mac If ONU Used" rows="1"></textarea>
+                 <label>ONU MAC-ADDRESS</label>
+                <input type="text" id="onuMac" placeholder="Enter ONU Mac If ONU Used">
             </div>
         </div>
 
-        <button class="btn-done" id="submitBtn" onclick="submitTask()">Task Done</button>
+        <button class="btn-done" id="submitBtn" onclick="submitMultipleTasks()">Submit Done Tickets</button>
         
         <div class="task-footer">
             <div class="copyright">
@@ -972,23 +1030,66 @@
         return todayCount;
     }
 
-    function showToast(message) {
+    function showToast(message, type = 'success') {
         const toast = document.getElementById('toast');
         const toastMessage = document.getElementById('toastMessage');
+        const toastIcon = toast.querySelector('.toast-icon');
         
+        // Set message
         toastMessage.textContent = message;
+        
+        // Set icon and color based on type
+        if (type === 'error') {
+            toast.style.background = 'linear-gradient(135deg, rgba(220, 38, 38, 0.92) 0%, rgba(239, 68, 68, 0.92) 100%)';
+            toastIcon.textContent = '✗';
+            toastIcon.style.background = 'rgba(255, 255, 255, 0.25)';
+        } else if (type === 'warning') {
+            toast.style.background = 'linear-gradient(135deg, rgba(245, 158, 11, 0.92) 0%, rgba(251, 191, 36, 0.92) 100%)';
+            toastIcon.textContent = '⚠';
+            toastIcon.style.background = 'rgba(255, 255, 255, 0.25)';
+        } else if (type === 'info') {
+            toast.style.background = 'linear-gradient(135deg, rgba(59, 130, 246, 0.92) 0%, rgba(37, 99, 235, 0.92) 100%)';
+            toastIcon.textContent = 'ℹ';
+            toastIcon.style.background = 'rgba(255, 255, 255, 0.25)';
+        } else {
+            // Success (default) - Blueish gradient
+            toast.style.background = 'linear-gradient(135deg, rgba(14, 165, 233, 0.92) 0%, rgba(59, 130, 246, 0.92) 100%)';
+            toastIcon.textContent = '✓';
+            toastIcon.style.background = 'rgba(255, 255, 255, 0.2)';
+        }
+        
+        // Remove any existing show class first
+        toast.classList.remove('show');
+        
+        // Trigger reflow
+        void toast.offsetWidth;
+        
+        // Add show class with animation
         toast.classList.add('show');
         
+        // Auto-hide after 3 seconds
         setTimeout(() => {
             toast.classList.remove('show');
         }, 3000);
     }
 
-    async function submitTask() {
+    // Function to split multiple ticket IDs
+    function splitTicketIDs(ticketInput) {
+        if (!ticketInput) return [];
+        
+        // Split by comma and clean up each ticket
+        return ticketInput.split(',')
+            .map(ticket => ticket.trim())
+            .filter(ticket => ticket.length > 0);
+    }
+
+    async function submitMultipleTasks() {
         const btn = document.getElementById('submitBtn');
-        const formData = {
+        const ticketInput = document.getElementById('ticketID').value;
+        
+        // Get other form data
+        const commonData = {
             date: document.getElementById('taskDate').value,
-            ticket: document.getElementById('ticketID').value,
             category: document.getElementById('taskCategory').value,
             taskType: document.getElementById('taskType').value,
             teamType: document.getElementById('teamType').value,
@@ -997,44 +1098,88 @@
             onuMac: document.getElementById('onuMac').value
         };
 
-        if(!formData.ticket || !formData.category || !formData.engineer) {
-            showToast("Please fill required fields!");
+        // Split multiple ticket IDs
+        const ticketIDs = splitTicketIDs(ticketInput);
+
+        // Validation
+        if (ticketIDs.length === 0 || !commonData.category || !commonData.engineer) {
+            showToast("Please fill required fields (Ticket IDs, Category, Engineer)!", "warning");
             return;
         }
 
         btn.disabled = true;
-        btn.innerHTML = "Processing...";
+        btn.innerHTML = `Processing ${ticketIDs.length} Tickets...`;
 
-        try {
-            await fetch(scriptURL, { 
-                method: 'POST', 
-                mode: 'no-cors', 
-                body: JSON.stringify(formData) 
-            });
+        let successCount = 0;
+        let errorCount = 0;
+
+        // Process each ticket ID
+        for (let i = 0; i < ticketIDs.length; i++) {
+            const ticketID = ticketIDs[i];
             
-            saveDataLocally(formData);
-            addTableRow(formData);
+            // Create individual data object for each ticket
+            const formData = {
+                ...commonData,
+                ticket: ticketID
+            };
+
+            try {
+                // Send to Google Sheets (if needed)
+                await fetch(scriptURL, { 
+                    method: 'POST', 
+                    mode: 'no-cors', 
+                    body: JSON.stringify(formData) 
+                });
+                
+                // Save locally
+                saveDataLocally(formData);
+                
+                // Add to table
+                addTableRow(formData);
+                
+                successCount++;
+                
+                // Update button text with progress
+                if (ticketIDs.length > 1) {
+                    btn.innerHTML = `Processing ${i+1}/${ticketIDs.length}...`;
+                }
+                
+            } catch (error) {
+                errorCount++;
+                console.error(`Error processing ticket ${ticketID}:`, error);
+            }
             
-            updateTodayTaskCount();
+            // Small delay between requests to avoid rate limiting
+            await new Promise(resolve => setTimeout(resolve, 100));
+        }
+
+        // Final update
+        updateTodayTaskCount();
+        
+        if (successCount > 0) {
+            showToast(`Successfully submitted ${successCount} ticket(s)!`, "success");
             
-            showToast("Task Submitted Successfully!");
-            
-            // Update button appearance on success
+            // Success animation
             btn.style.background = "linear-gradient(135deg, #10b981 0%, #0ea5e9 100%)";
-            btn.innerHTML = "✓ Success!";
-            setTimeout(() => {
-                btn.innerHTML = "Task Done";
-                btn.style.background = "linear-gradient(135deg, #0ea5e9 0%, #10b981 100%)";
-            }, 1500);
+            btn.innerHTML = `✓ ${successCount} Ticket(s) Submitted!`;
             
+            setTimeout(() => {
+                btn.innerHTML = "Submit Done Tickets";
+                btn.style.background = "linear-gradient(135deg, #0ea5e9 0%, #10b981 100%)";
+            }, 2000);
+            
+            // Clear input fields
             document.getElementById('ticketID').value = '';
             document.getElementById('onuMac').value = '';
-            
-        } catch (error) {
-            showToast("Error sending data! Please try again.");
-        } finally {
-            btn.disabled = false;
+        } else {
+            showToast("Error submitting tickets! Please try again.", "error");
         }
+        
+        if (errorCount > 0) {
+            console.warn(`${errorCount} ticket(s) failed to submit`);
+        }
+        
+        btn.disabled = false;
     }
 
     function addTableRow(data) {
@@ -1077,17 +1222,17 @@
         
         if (!filterDate) {
             tasks.forEach(task => addTableRow(task));
-            showToast("Showing all tasks");
+            showToast("Showing all tasks", "info");
             return;
         }
         
         const filteredTasks = tasks.filter(task => task.date === filterDate);
         
         if (filteredTasks.length === 0) {
-            showToast("No tasks found for selected date");
+            showToast("No tasks found for selected date", "warning");
         } else {
             filteredTasks.forEach(task => addTableRow(task));
-            showToast(`Showing ${filteredTasks.length} task(s) for ${filterDate}`);
+            showToast(`Showing ${filteredTasks.length} task(s) for ${filterDate}`, "success");
         }
     }
 
@@ -1104,7 +1249,7 @@
             
             updateTodayTaskCount();
             
-            showToast("All completed tasks have been cleared!");
+            showToast("All completed tasks have been cleared!", "success");
             
             setTimeout(() => {
                 clearBtn.disabled = false;
@@ -1118,6 +1263,4 @@
 </script>
 
 </body>
-
 </html>
-
