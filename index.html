@@ -269,6 +269,54 @@
             box-shadow: 0 2px 5px rgba(5, 150, 105, 0.05);
         }
 
+        /* Greenish hover effect for select dropdown options */
+        select option {
+            padding: 10px;
+            transition: all 0.2s;
+        }
+
+        select option:hover {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%) !important;
+            color: #065f46;
+        }
+
+        /* Enhanced styling for select dropdowns */
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23059669' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 35px;
+        }
+
+        select:hover {
+            border-color: var(--primary);
+            background-color: #f0fdf4;
+        }
+
+        select:focus {
+            border-color: var(--primary);
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+
+        /* Specific styling for engineer dropdowns */
+        #engineerName option,
+        #backendSupport option {
+            background: white;
+            color: var(--text-main);
+            padding: 12px;
+            font-weight: 500;
+        }
+
+        #engineerName option:not([value=""]):hover,
+        #backendSupport option:not([value=""]):hover {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%) !important;
+            color: #065f46 !important;
+            font-weight: 600;
+        }
+
         .checkbox-dropdown {
             position: relative;
             cursor: pointer;
@@ -524,86 +572,86 @@
         }
 
         .table-header { 
-            padding: 14px 18px; 
-            background: linear-gradient(90deg, #e6f2ff 0%, #d1e8ff 100%);
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900; 
-            color: #2563eb;
-            border-bottom: 2px solid #3b82f6;
-            text-transform: uppercase; 
-            letter-spacing: 0.7px;
-            font-size: 0.8rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    padding: 14px 18px; 
+    background: linear-gradient(90deg, #e6f7f0 0%, #d1f2e5 100%); /* Light green gradient */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; 
+    color: #059669; /* Changed to green color */
+    border-bottom: 2px solid #10b981; /* Green border */
+    text-transform: uppercase; 
+    letter-spacing: 0.7px;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .table-title {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+.table-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
-        .table-filters {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-left: auto;
-            margin-right: 10px;
-        }
+.table-filters {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    margin-right: 10px;
+}
 
-        .date-filter {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+.date-filter {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
 
-        .date-filter-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 800;
-            color: #1e40af;
-            white-space: nowrap;
-        }
+.date-filter-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #047857; /* Darker green */
+    white-space: nowrap;
+}
 
-        .date-filter-input {
-            padding: 5px 8px;
-            border: 1.5px solid #93c5fd;
-            border-radius: 6px;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.7rem;
-            background: white;
-            color: var(--text-main);
-            width: 110px;
-            height: 30px;
-        }
+.date-filter-input {
+    padding: 5px 8px;
+    border: 1.5px solid #34d399; /* Light green border */
+    border-radius: 6px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    background: white;
+    color: var(--text-main);
+    width: 110px;
+    height: 30px;
+}
 
-        .date-filter-input:focus {
-            border-color: #3b82f6;
-            outline: none;
-        }
+.date-filter-input:focus {
+    border-color: #10b981; /* Green focus */
+    outline: none;
+}
 
-        .filter-btn {
-            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 6px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
+.filter-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%); /* Green gradient */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
 
-        .filter-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
-        }
+.filter-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2); /* Green shadow */
+}
 
         .clear-btn {
             background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
@@ -850,7 +898,7 @@
         }
 
         .author-name {
-            font-weight: 700;
+            font-weight: 600;
             color: #2563eb;
             font-size: 0.65rem;
             letter-spacing: 0.3px;
@@ -1555,4 +1603,3 @@
 
 </body>
 </html>
-
