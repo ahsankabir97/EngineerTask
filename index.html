@@ -61,7 +61,7 @@
 
         header {
             background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
-            padding: 10px 18px;
+            padding: 14px 24px; /* Increased padding slightly for the bigger logo */
             border-radius: 16px;
             color: white;
             display: flex;
@@ -101,45 +101,29 @@
         .header-left {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px; /* Increased gap for the bigger logo */
             position: relative;
             z-index: 1;
         }
 
         .company-logo {
+            /* Removed background styling to let the logo's own blue background show */
+            background: transparent; 
+            border-radius: 12px;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
-            padding: 8px 12px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            min-width: 90px;
+            /* Removed border and shadow for cleaner integration */
+            position: relative;
         }
 
-        .logo-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: #003399;
-            letter-spacing: 0.5px;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 
-                         0 1px 0 rgba(255, 255, 255, 0.5);
-            line-height: 1;
-        }
-
-        .logo-tagline {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.5rem;
-            font-weight: 800;
-            color: rgba(255, 255, 255, 0.9);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-top: 2px;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        .company-logo img {
+            /* Adjusted size to be "a bit bigger" */
+            width: 100px; 
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .header-title-container {
@@ -149,7 +133,7 @@
 
         .header-left h1 { 
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.15rem; 
+            font-size: 1.3rem; /* Adjusted font size for balance with bigger logo */
             font-weight: 800;
             text-transform: uppercase; 
             letter-spacing: 0.7px;
@@ -160,7 +144,7 @@
 
         .company-name {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.20rem;
+            font-size: 1.25rem;
             font-weight: 700;
             letter-spacing: 0.3px;
             color: #003399;
@@ -1004,32 +988,28 @@
             header { 
                 flex-direction: column; 
                 text-align: center; 
-                padding: 10px; 
-                gap: 10px;
+                padding: 14px 10px; 
+                gap: 15px;
             } 
             .header-left {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
-                gap: 10px;
+                gap: 12px;
             }
             .header-left h1 {
-                font-size: 0.9rem;
+                font-size: 1.1rem;
                 margin-bottom: 4px;
             }
             .company-name {
-                font-size: 0.85rem;
+                font-size: 1rem;
             }
-            .company-logo {
-                min-width: 80px;
-                padding: 6px 10px;
+            
+            /* Adjust logo size for mobile */
+            .company-logo img {
+                width: 150px;
             }
-            .logo-text {
-                font-size: 1.2rem;
-            }
-            .logo-tagline {
-                font-size: 0.45rem;
-            }
+
             .header-left, .header-right {
                 text-align: center;
                 width: 100%;
@@ -1159,10 +1139,11 @@
 <div class="container">
     <header>
         <div class="header-left">
+            <!-- Updated Logo Section with Image -->
             <div class="company-logo">
-                <div class="logo-text">Link3</div>
-                <div class="logo-tagline">THE Service Company</div>
+                <img src="https://z-cdn-media.chatglm.cn/files/ec97a2bb-1f62-4aa3-b8dd-d7c5349ef71e.png?auth_key=1870751333-bce0d43ce17a472f82b7ca62e6852b21-0-33f4b6311a64ec23a2a122fb5366adb1" alt="Link3 Logo">
             </div>
+            
             <div class="header-title-container">
                 <h1>Daily Work Dashboard</h1>
                 <div class="company-name">Motijheel Zone</div>
@@ -1174,7 +1155,7 @@
                 <span id="headerTime"></span>
             </div>
             <div class="today-count">
-                <span>Today's My Task:</span>
+                <span>Today's Task:</span>
                 <span class="today-count-number" id="todayTaskCount">0</span>
             </div>
         </div>
@@ -1748,5 +1729,4 @@
 
 </body>
 </html>
-
-
+```
