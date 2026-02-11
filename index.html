@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work Log | Task Tracker</title>
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -61,7 +62,7 @@
 
         header {
             background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
-            padding: 14px 24px; /* Increased padding slightly for the bigger logo */
+            padding: 14px 24px; 
             border-radius: 16px;
             color: white;
             display: flex;
@@ -101,24 +102,21 @@
         .header-left {
             display: flex;
             align-items: center;
-            gap: 20px; /* Increased gap for the bigger logo */
+            gap: 20px; 
             position: relative;
             z-index: 1;
         }
 
         .company-logo {
-            /* Removed background styling to let the logo's own blue background show */
             background: transparent; 
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            /* Removed border and shadow for cleaner integration */
             position: relative;
         }
 
         .company-logo img {
-            /* Adjusted size to be "a bit bigger" */
             width: 80px; 
             height: auto;
             display: block;
@@ -133,7 +131,7 @@
 
         .header-left h1 { 
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.3rem; /* Adjusted font size for balance with bigger logo */
+            font-size: 1.3rem; 
             font-weight: 800;
             text-transform: uppercase; 
             letter-spacing: 0.7px;
@@ -281,7 +279,6 @@
             gap: 4px;
         }
 
-        /* Colorful icons for labels */
         label i {
             font-size: 0.8rem;
             min-width: 16px;
@@ -314,9 +311,7 @@
             box-shadow: 0 2px 5px rgba(5, 150, 105, 0.05);
         }
 
-        /* Engineer and Backend dropdowns with #CEFAFE background */
-        #engineerName option,
-        #backendSupport option {
+        #engineerName option {
             background-color: #ECFEFF !important;
             color: var(--text-main) !important;
             padding: 12px !important;
@@ -324,23 +319,18 @@
             border-bottom: 1px solid rgba(209, 250, 229, 0.5) !important;
         }
 
-        /* Hover effect for engineer and backend options */
-        #engineerName option:hover,
-        #backendSupport option:hover {
+        #engineerName option:hover {
             background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%) !important;
             color: #065f46 !important;
             font-weight: 600 !important;
         }
 
-        /* Selected option */
-        #engineerName option:checked,
-        #backendSupport option:checked {
+        #engineerName option:checked {
             background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
             color: white !important;
             font-weight: 600 !important;
         }
 
-        /* Greenish hover effect for other select dropdown options */
         select option {
             padding: 10px;
             transition: all 0.2s;
@@ -351,7 +341,6 @@
             color: #065f46;
         }
 
-        /* Enhanced styling for select dropdowns */
         select {
             cursor: pointer;
             appearance: none;
@@ -459,11 +448,12 @@
             background-color: #e6f2ff;
         }
 
+        /* SQUARE CHECKBOX STYLING */
         .checkbox-custom {
             width: var(--checkbox-size);
             height: var(--checkbox-size);
             border: 2px solid #059669;
-            border-radius: 50%;
+            border-radius: 4px; 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -474,10 +464,10 @@
 
         .checkbox-custom::after {
             content: '';
-            width: calc(var(--checkbox-size) - 6px);
-            height: calc(var(--checkbox-size) - 6px);
+            width: 10px;
+            height: 10px;
             background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
-            border-radius: 50%;
+            border-radius: 2px; 
             opacity: 0;
             transform: scale(0);
             transition: all 0.2s;
@@ -512,6 +502,57 @@
         .checkbox-placeholder {
             color: #9ca3af;
             font-style: italic;
+        }
+
+        /* BNOC TOGGLE BUTTON STYLES */
+        .bnoc-toggle-btn {
+            width: 100%;
+            height: 38px;
+            padding: 0 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            background: #ffffff;
+            color: #6b7280;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 5px rgba(5, 150, 105, 0.05);
+        }
+
+        .bnoc-toggle-btn .status-text {
+            flex: 1;
+            text-align: center;
+        }
+
+        .bnoc-toggle-btn .toggle-icon {
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .bnoc-toggle-btn:hover {
+            border-color: #34d399;
+            transform: translateY(-1px);
+        }
+
+        /* Active (YES) State */
+        .bnoc-toggle-btn.active {
+            border-color: transparent;
+            background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+            color: white;
+            box-shadow: 0 6px 15px rgba(14, 165, 233, 0.3);
+            transform: translateY(-1px);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .bnoc-toggle-btn.active .toggle-icon {
+            transform: rotate(180deg);
+            color: white;
         }
 
         input, textarea {
@@ -863,7 +904,6 @@
             border: 1px solid rgba(30, 64, 175, 0.1);
         }
 
-        /* RIGHT-CENTER TOAST NOTIFICATION WITH BLUEISH COLOR */
         .toast {
             position: fixed;
             top: 50%;
@@ -975,9 +1015,9 @@
         }
 
         .author-name {
-            font-weight: 600;
+            font-weight: 500;
             color: #2563eb;
-            font-size: 0.65rem;
+            font-size: 0.60rem;
             letter-spacing: 0.3px;
             text-shadow: 0 1px 2px rgba(37, 99, 235, 0.2);
         }
@@ -1005,7 +1045,6 @@
                 font-size: 1rem;
             }
             
-            /* Adjust logo size for mobile */
             .company-logo img {
                 width: 150px;
             }
@@ -1059,7 +1098,6 @@
                 padding: 9px 12px;
             }
             
-            /* Mobile toast */
             .toast {
                 top: 50%;
                 right: 10px;
@@ -1108,7 +1146,6 @@
                 padding: 11px;
             }
             
-            /* Mobile adjustments for checkbox dropdowns */
             .checkbox-dropdown-options {
                 position: fixed;
                 top: 50%;
@@ -1170,7 +1207,7 @@
 
             <div class="input-group">
                 <label><i class="fas fa-ticket-alt"></i> Ticket ID</label>
-                <input type="text" id="ticketID" placeholder="e.g. L3-31Jan26-XXX,L3-31Jan26-YYY">
+                <input type="text" id="ticketID" placeholder="e.g. L3-31Jan26-1234, L3-31Jan26-5678">
             </div>
             <div class="input-group">
                 <label><i class="fas fa-tasks"></i> Task Category</label>
@@ -1268,16 +1305,19 @@
                     <option>Abu Sayed</option>
                 </select>
             </div>
+            
+            <!-- BNOC Support: Toggle Button -->
             <div class="input-group">
                 <label><i class="fas fa-headset"></i> BNOC Support</label>
-                <select id="backendSupport">
-                    <option value="">Select Support</option>
-                    <option>Ahsanul Kabir</option>
-                </select>
+                <button type="button" id="bnocToggle" class="bnoc-toggle-btn">
+                    <span class="status-text">No</span>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </button>
             </div>
+
             <div class="input-group onu-mac-group">
                  <label><i class="fas fa-network-wired"></i> ONU MAC-ADDRESS</label>
-                <input type="text" id="onuMac" placeholder="Enter ONU Mac If used">
+                <input type="text" id="onuMac" placeholder="Enter ONU mac if used">
             </div>
         </div>
 
@@ -1424,6 +1464,9 @@
         }
     }
 
+    // BNOC Toggle State Variable
+    let bnocSupportValue = false; // false = No, true = Yes
+
     window.onload = function() {
         updateClock();
         loadStoredData();
@@ -1437,6 +1480,27 @@
         window.taskCategoryDropdown = new CheckboxDropdown('taskCategoryDropdown');
         window.taskTypeDropdown = new CheckboxDropdown('taskTypeDropdown');
         window.teamTypeDropdown = new CheckboxDropdown('teamTypeDropdown');
+        
+        // Initialize BNOC Toggle Button Logic
+        const bnocBtn = document.getElementById('bnocToggle');
+        const bnocText = bnocBtn.querySelector('.status-text');
+        const bnocIcon = bnocBtn.querySelector('.toggle-icon');
+        
+        bnocBtn.addEventListener('click', function() {
+            bnocSupportValue = !bnocSupportValue; // Toggle state
+            
+            if (bnocSupportValue) {
+                // Switch to YES
+                bnocBtn.classList.add('active');
+                bnocText.textContent = "Yes";
+                bnocIcon.className = "fas fa-check toggle-icon";
+            } else {
+                // Switch to NO
+                bnocBtn.classList.remove('active');
+                bnocText.textContent = "No";
+                bnocIcon.className = "fas fa-chevron-down toggle-icon";
+            }
+        });
     };
 
     function updateClock() {
@@ -1543,6 +1607,9 @@
         const btn = document.getElementById('submitBtn');
         const ticketInput = document.getElementById('ticketID').value;
         
+        // Logic for BNOC Support: If Yes -> "Ahsanul Kabir", If No -> "No"
+        const backendValue = bnocSupportValue ? "Ahsanul Kabir" : "No";
+        
         // Get other form data
         const commonData = {
             date: document.getElementById('taskDate').value,
@@ -1550,7 +1617,7 @@
             taskType: window.taskTypeDropdown.getValue(),
             teamType: window.teamTypeDropdown.getValue(),
             engineer: document.getElementById('engineerName').value,
-            backend: document.getElementById('backendSupport').value,
+            backend: backendValue,
             onuMac: document.getElementById('onuMac').value
         };
 
@@ -1638,9 +1705,17 @@
                 btn.style.background = "linear-gradient(135deg, #0ea5e9 0%, #10b981 100%)";
             }, 2000);
             
-            // Clear input fields
+            // Clear input fields (except date)
             document.getElementById('ticketID').value = '';
             document.getElementById('onuMac').value = '';
+            
+            // Reset BNOC to default 'No'
+            bnocSupportValue = false;
+            const bnocBtn = document.getElementById('bnocToggle');
+            bnocBtn.classList.remove('active');
+            bnocBtn.querySelector('.status-text').textContent = "No";
+            bnocBtn.querySelector('.toggle-icon').className = "fas fa-chevron-down toggle-icon";
+            
         } else {
             showToast("Error submitting tickets! Please try again.", "error");
         }
@@ -1730,4 +1805,3 @@
 </body>
 </html>
 ```
-
