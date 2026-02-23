@@ -1380,7 +1380,7 @@
                         <th><i class="fas fa-tag"></i> Category</th>
                         <th><i class="fas fa-user-cog"></i> Engineer</th>
                         <th><i class="fas fa-headset"></i> Backend</th>
-                        <th><i class="fas fa-wifi"></i> WiFi Scoring</th> <!-- NEW COLUMN -->
+                        <th><i class="fas fa-wifi"></i> WiFi Scoring</th>
                         <th><i class="fas fa-network-wired"></i> ONU MAC</th>
                         <th><i class="fas fa-check-circle"></i> Status</th>
                     </tr>
@@ -1649,6 +1649,21 @@
             return;
         }
 
+        // ===== NEW LOGIC: Check for Duplicate Tickets in LocalStorage =====
+        const storedTasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
+        // Create a Set of uppercase ticket IDs for fast, case-insensitive lookup
+        const existingIDs = new Set(storedTasks.map(t => t.ticket.toUpperCase()));
+        
+        for (let i = 0; i < ticketIDs.length; i++) {
+            // Check if current input ticket ID exists in the history
+            if (existingIDs.has(ticketIDs[i].trim().toUpperCase())) {
+                // Duplicate found!
+                showToast("This Ticket ID has entered earlier", "warning");
+                return; // Stop the function immediately
+            }
+        }
+        // ===========================================
+
         btn.disabled = true;
         btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Processing ${ticketIDs.length} Tickets...`;
 
@@ -1742,7 +1757,7 @@
             <td style="font-weight:500;">${data.category}</td>
             <td style="font-weight:600; font-family: 'Outfit', sans-serif;">${data.engineer}</td>
             <td>${backendDisplay}</td>
-            <td style="font-weight:600; color:${data.wifiScoring === 'Yes' ? '#059669' : '#6b7280'};">${data.wifiScoring || 'No'}</td> <!-- WiFi Scoring column -->
+            <td style="font-weight:600; color:${data.wifiScoring === 'Yes' ? '#059669' : '#6b7280'};">${data.wifiScoring || 'No'}</td>
             <td class="onu-mac" title="${data.onuMac || 'No ONU MAC provided'}">${data.onuMac ? (data.onuMac.length > 15 ? data.onuMac.substring(0, 15) + '...' : data.onuMac) : '-'}</td>
             <td><span class="badge">SYNCED</span></td>
         `;
@@ -1808,4 +1823,3 @@
 
 </body>
 </html>
-
