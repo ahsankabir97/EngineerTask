@@ -267,25 +267,27 @@
         .row-1 { grid-template-columns: 1fr; }
 
         .input-group { display: flex; flex-direction: column; gap: 5px; position: relative; }
+
+        /* =========== UPDATED LABEL STYLES =========== */
         label { 
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.7rem; 
+            font-family: 'Montserrat', sans-serif; /* Changed to Montserrat for beauty */
+            font-size: 0.70rem; /* Increased from 0.7rem for better readability */
             font-weight: 700; 
-            color: var(--text-label); 
+            color: #00A36C; /*var(--text-label);*/ 
             text-transform: uppercase;
             letter-spacing: 0.5px;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px; /* Slightly increased gap */
         }
-
 
         label i {
-            font-size: 0.8rem;
-            min-width: 16px;
+            font-size: 0.95rem; /* Increased icon size to match new label size */
+            min-width: 20px;
             text-align: center;
         }
-        
+        /* =========================================== */
+
         .fa-calendar-alt { color: #059669; }
         .fa-ticket-alt { color: #3b82f6; }
         .fa-tasks { color: #8b5cf6; }
@@ -294,6 +296,7 @@
         .fa-user-cog { color: #0ea5e9; }
         .fa-headset { color: #8b5cf6; }
         .fa-network-wired { color: #ef4444; }
+        .fa-wifi { color: #6366f1; }
 
         .input-group.onu-mac-group label i {
             color: #8b5cf6;
@@ -327,7 +330,7 @@
         }
 
         #engineerName option:checked {
-            background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
+            background: #8b5cf6; /*linear-gradient(135deg, #059669 0%, #10b981 100%) !important;*/
             color: white !important;
             font-weight: 600 !important;
         }
@@ -653,8 +656,8 @@
         }
 
         .input-group.onu-mac-group label {
-            font-family: 'Trebuchet MS', sans-serif;
-            color: var(--text-label);
+            /* Inherits the updated Montserrat font and size from main label rule now */
+            color: #00A36C; /*var(--text-label);*/
         }
 
         .input-group.onu-mac-group textarea::placeholder {
@@ -1823,5 +1826,3 @@
 
 </body>
 </html>
-
-
