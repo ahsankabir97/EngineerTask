@@ -12,8 +12,6 @@
 body{font-family:'Outfit',sans-serif;background:linear-gradient(135deg,var(--bg-s),var(--bg-e));color:var(--text);padding:16px;min-height:100vh;background-attachment:fixed;overflow-x:hidden}
 body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle at 10% 20%,rgba(16,185,129,.05) 0%,transparent 20%),radial-gradient(circle at 90% 80%,rgba(16,185,129,.05) 0%,transparent 20%);z-index:-1}
 .container{max-width:900px;margin:0 auto}
-
-/* HEADER */
 header{background:linear-gradient(135deg,#0ea5e9,#10b981);padding:14px 24px;border-radius:16px;color:#fff;display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;box-shadow:0 8px 20px rgba(14,165,233,.25);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
 header::before{content:'';position:absolute;top:-40%;right:-15%;width:120px;height:120px;background:rgba(14,165,233,.2);border-radius:50%;filter:blur(8px)}
 header::after{content:'';position:absolute;bottom:-30%;left:-8%;width:100px;height:100px;background:rgba(16,185,129,.2);border-radius:50%;filter:blur(6px)}
@@ -28,8 +26,6 @@ header::after{content:'';position:absolute;bottom:-30%;left:-8%;width:100px;heig
 #headerTime{font-family:'Outfit',monospace;font-size:.7rem;font-weight:700;background:rgba(255,255,255,.15);padding:2px 8px;border-radius:6px;color:#00008b;border:1px solid rgba(255,255,255,.25);min-width:90px;text-align:center}
 .today-count{background:linear-gradient(135deg,#3b82f6,#1e40af);padding:4px 10px;border-radius:8px;font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:5px;border:1px solid #1e90ff}
 .today-count-number{padding:1px 6px;border-radius:10px;font-size:.8rem;font-weight:800;min-width:24px;text-align:center}
-
-/* CARD */
 .card{background:var(--card);border-radius:16px;padding:20px;border:1px solid rgba(209,250,229,.8);box-shadow:var(--shadow);margin-bottom:20px;transition:all .3s;position:relative;overflow:hidden}
 .card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#059669,#10b981,#34d399)}
 .card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(5,150,105,.15)}
@@ -37,44 +33,20 @@ header::after{content:'';position:absolute;bottom:-30%;left:-8%;width:100px;heig
 .row-3{grid-template-columns:repeat(3,1fr)}
 .row-1{grid-template-columns:1fr}
 .input-group{display:flex;flex-direction:column;gap:5px}
-
 label{font-family:'Montserrat',sans-serif;font-size:.70rem;font-weight:700;color:#00A36C;text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;gap:6px}
 label i{font-size:.95rem;min-width:20px;text-align:center}
 .fa-calendar-alt{color:#059669}.fa-ticket-alt{color:#3b82f6}.fa-tasks{color:#8b5cf6}.fa-toolbox{color:#10b981}.fa-users{color:#f59e0b}.fa-user-cog{color:#0ea5e9}.fa-headset{color:#8b5cf6}.fa-network-wired{color:#ef4444}.fa-wifi{color:#6366f1}.fa-comment-dots{color:#f97316}
-
 input,select{padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:.85rem;font-family:'Outfit',sans-serif;font-weight:500;outline:none;transition:all .3s;background:rgba(255,255,255,.9);height:42px}
 #engineerName option{background-color:#ECFEFF!important;font-weight:500!important}
 #engineerName option:checked{background:#8b5cf6;color:#fff!important;font-weight:600!important}
 select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23059669' d='M6 9L1 4h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:35px}
 select:hover{border-color:var(--primary);background-color:#f0fdf4}
 input:focus,select:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(5,150,105,.1);background:#fff;transform:translateY(-1px)}
-
-/* REMARKS TEXTAREA */
-.remarks-box{
-  width:100%;
-  height:42px;
-  min-height:42px;
-  max-height:42px;
-  padding:10px 14px;
-  border:1.5px solid var(--border);
-  border-radius:10px;
-  font-size:.85rem;
-  font-family:'Outfit',sans-serif;
-  font-weight:500;
-  outline:none;
-  transition:all .3s;
-  background:rgba(255,255,255,.9);
-  resize:none;
-  line-height:1.4;
-  color:var(--text);
-  overflow:hidden;
-}
+.remarks-box{width:100%;height:42px;min-height:42px;max-height:42px;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:.85rem;font-family:'Outfit',sans-serif;font-weight:500;outline:none;transition:all .3s;background:rgba(255,255,255,.9);resize:none;line-height:1.4;color:var(--text);overflow:hidden}
 .remarks-box::placeholder{color:#9ca3af;font-style:italic}
 .remarks-box:focus{border-color:#f97316;box-shadow:0 0 0 3px rgba(249,115,22,.1);background:#fff;transform:translateY(-1px)}
 .remarks-wrapper{position:relative}
 .remarks-count{position:absolute;bottom:8px;right:12px;font-size:.65rem;font-family:'Montserrat',sans-serif;color:#9ca3af;pointer-events:none}
-
-/* CHECKBOX DROPDOWN */
 .checkbox-dropdown{position:relative;cursor:pointer}
 .checkbox-dropdown-select{height:42px;width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:.85rem;font-family:'Outfit',sans-serif;font-weight:500;background:rgba(255,255,255,.9);cursor:pointer;display:flex;align-items:center;justify-content:space-between;color:var(--text);transition:all .3s}
 .checkbox-dropdown-select::after{content:'▼';font-size:.7rem;color:var(--primary);transition:transform .3s}
@@ -93,16 +65,12 @@ input:focus,select:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(5
 .checkbox-option.selected .checkbox-label{font-weight:600;color:#059669}
 .checkbox-dropdown-value{font-size:.85rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-grow:1}
 .checkbox-placeholder{color:#9ca3af;font-style:italic}
-
-/* TOGGLE */
 .toggle-btn{width:100%;height:42px;padding:0 14px;border:1.5px solid var(--border);border-radius:10px;background:#fff;color:#6b7280;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:700;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:all .3s}
 .toggle-btn .status-text{flex:1;text-align:center}
 .toggle-btn .toggle-icon{font-size:.8rem;transition:transform .3s}
 .toggle-btn:hover{border-color:#34d399;transform:translateY(-1px)}
 .toggle-btn.active{border-color:transparent;background:linear-gradient(135deg,#0ea5e9,#10b981);color:#fff;box-shadow:0 6px 15px rgba(14,165,233,.3)}
 .toggle-btn.active .toggle-icon{color:#fff}
-
-/* SUBMIT BTN */
 .btn-done{width:100%;background:linear-gradient(135deg,#0ea5e9,#10b981);color:#fff;border:none;border-radius:12px;font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;text-transform:uppercase;transition:all .3s;box-shadow:0 6px 15px rgba(14,165,233,.25);letter-spacing:.7px;position:relative;overflow:hidden;margin-top:14px;height:46px;display:flex;align-items:center;justify-content:center;gap:8px;text-shadow:0 2px 4px rgba(0,0,0,.3)}
 .btn-done i{font-size:1.1rem;color:#fff}
 .btn-done::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:left .7s}
@@ -111,8 +79,6 @@ input:focus,select:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(5
 .btn-done:disabled{background:#cbd5e0;cursor:not-allowed;transform:none;box-shadow:none}
 .task-footer{margin-top:8px;padding:0 4px}
 .author-name{font-weight:500;color:#2563eb;font-size:.60rem;font-family:'Montserrat',sans-serif}
-
-/* TABLE */
 .table-section{background:var(--card);border-radius:16px;border:1px solid rgba(209,250,229,.8);overflow:hidden;box-shadow:var(--shadow);transition:transform .3s;margin-top:8px}
 .table-section:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(5,150,105,.12)}
 .table-header{padding:14px 18px;background:linear-gradient(90deg,#e6f7f0,#d1f2e5);font-family:'Montserrat',sans-serif;font-weight:900;color:#059669;border-bottom:2px solid #10b981;text-transform:uppercase;letter-spacing:.7px;font-size:.8rem;display:flex;justify-content:space-between;align-items:center}
@@ -130,7 +96,6 @@ input:focus,select:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(5
 .clear-btn:hover::before{left:100%}
 .clear-btn:hover{transform:translateY(-2px);box-shadow:0 6px 15px rgba(220,38,38,.3)}
 .clear-btn:disabled{background:#cbd5e0;cursor:not-allowed;transform:none;box-shadow:none}
-
 .table-wrapper{overflow-x:auto;max-height:420px;overflow-y:auto}
 table{width:100%;border-collapse:collapse;min-width:900px}
 th{padding:10px 14px;text-align:left;font-family:'Montserrat',sans-serif;font-size:.65rem;background:#eff6ff;color:#1e40af;border-bottom:2px solid #93c5fd;letter-spacing:.5px;font-weight:800;position:sticky;top:0;z-index:10;white-space:nowrap}
@@ -142,17 +107,12 @@ tbody tr:hover{background-color:#e0f2fe}
 tbody tr{border-bottom:1px solid #e5e7eb;transition:background .2s}
 tbody tr:last-child{border-bottom:none}
 .badge{background:linear-gradient(90deg,#dbeafe,#bfdbfe);color:#1e40af;padding:3px 8px;border-radius:6px;font-family:'Trebuchet MS',sans-serif;font-size:.6rem;font-weight:800;display:inline-block;text-transform:uppercase;border:1px solid rgba(30,64,175,.1)}
-
-/* TICKET ID WITH DELETE ICON */
-.ticket-cell{display:flex;align-items:center;gap:6px;font-weight:700;font-family:'Montserrat',sans-serif;}
-.btn-delete-inline{background:none;border:none;cursor:pointer;color:#ef4444;font-size:.75rem;padding:3px 4px;border-radius:5px;transition:all .2s;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;opacity:.7;}
-.btn-delete-inline:hover{background:rgba(239,68,68,.12);color:#b91c1c;opacity:1;transform:scale(1.2);}
-.btn-delete-inline:disabled{color:#d1d5db;cursor:not-allowed;transform:none;}
-
+.ticket-cell{display:flex;align-items:center;gap:6px;font-weight:700;font-family:'Montserrat',sans-serif}
+.btn-delete-inline{background:none;border:none;cursor:pointer;color:#ef4444;font-size:.75rem;padding:3px 4px;border-radius:5px;transition:all .2s;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;opacity:.7}
+.btn-delete-inline:hover{background:rgba(239,68,68,.12);color:#b91c1c;opacity:1;transform:scale(1.2)}
+.btn-delete-inline:disabled{color:#d1d5db;cursor:not-allowed;transform:none}
 @keyframes rowSlideOut{0%{opacity:1;transform:translateX(0)}100%{opacity:0;transform:translateX(60px)}}
 .row-deleting{animation:rowSlideOut .38s ease-out forwards}
-
-/* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .25s}
 .modal-overlay.show{opacity:1;visibility:visible}
 .modal-box{background:#fff;border-radius:18px;padding:30px 28px 24px;max-width:380px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.25);transform:scale(.85) translateY(20px);transition:all .3s cubic-bezier(.175,.885,.32,1.275);border-top:5px solid #ef4444}
@@ -169,28 +129,20 @@ tbody tr:last-child{border-bottom:none}
 .modal-btn-confirm i{color:#fff}
 .modal-btn-confirm:hover{transform:translateY(-1px);filter:brightness(1.1)}
 .modal-btn-confirm:disabled{background:#d1d5db;cursor:not-allowed;transform:none;box-shadow:none}
-
-/* TOAST */
 .toast{position:fixed;top:50%;right:20px;background:linear-gradient(135deg,rgba(14,165,233,.92),rgba(59,130,246,.92));color:#fff;padding:14px 22px;border-radius:14px;box-shadow:0 10px 30px rgba(14,165,233,.4);font-family:'Montserrat',sans-serif;font-weight:600;z-index:10000;display:flex;align-items:center;gap:12px;transform:translateX(150%);transition:transform .5s cubic-bezier(.175,.885,.32,1.275);border:1px solid rgba(255,255,255,.3);min-width:280px;max-width:350px;opacity:0;pointer-events:none}
 .toast.show{transform:translateX(0) translateY(-50%);opacity:1;pointer-events:all}
 .toast-icon{font-size:1.3rem;background:rgba(255,255,255,.2);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 #toastMessage{font-size:.8rem;font-weight:600;line-height:1.4;flex:1}
-
 @media(max-width:768px){
-  body{padding:10px}
-  .row-3{grid-template-columns:1fr}
+  body{padding:10px}.row-3{grid-template-columns:1fr}
   header{flex-direction:column;text-align:center;padding:14px 10px;gap:15px}
   .header-left{flex-direction:column;align-items:center;gap:12px}
-  .header-left h1{font-size:1.1rem}
-  .company-logo img{width:150px}
+  .header-left h1{font-size:1.1rem}.company-logo img{width:150px}
   .header-left,.header-right{text-align:center;width:100%;align-items:center}
   .datetime-container{align-items:center}
   .table-header{flex-direction:column;gap:8px;align-items:flex-start}
-  .table-filters{width:100%;margin:6px 0}
-  .date-filter{width:100%;justify-content:space-between}
-  .card{padding:16px}
-  th,td{padding:8px 10px;font-size:.68rem}
-  input,select{height:40px}
+  .table-filters{width:100%;margin:6px 0}.date-filter{width:100%;justify-content:space-between}
+  .card{padding:16px}th,td{padding:8px 10px;font-size:.68rem}input,select{height:40px}
   .toast{right:10px;left:10px;max-width:calc(100% - 20px);min-width:auto}
   .toast.show{transform:translateY(-50%) translateX(0)}
   .checkbox-dropdown-options{position:fixed;top:50%;left:10px;right:10px;transform:translateY(-50%);max-height:70vh;z-index:1000}
@@ -203,7 +155,6 @@ tbody tr:last-child{border-bottom:none}
 </head>
 <body>
 
-<!-- DELETE CONFIRM MODAL -->
 <div class="modal-overlay" id="deleteModal">
   <div class="modal-box">
     <div class="modal-icon">🗑️</div>
@@ -242,8 +193,6 @@ tbody tr:last-child{border-bottom:none}
   </header>
 
   <div class="card">
-
-    <!-- Row 1: Work Date | Ticket ID | Task Category -->
     <div class="row row-3">
       <div class="input-group">
         <label><i class="fas fa-calendar-alt"></i> Work Date</label>
@@ -268,7 +217,6 @@ tbody tr:last-child{border-bottom:none}
       </div>
     </div>
 
-    <!-- Row 2: Task Type | Team Type | Engineer Name -->
     <div class="row row-3">
       <div class="input-group">
         <label><i class="fas fa-toolbox"></i> Task Type</label>
@@ -303,7 +251,6 @@ tbody tr:last-child{border-bottom:none}
       </div>
     </div>
 
-    <!-- Row 3: BNOC Support | ONU MAC | WiFi Scoring -->
     <div class="row row-3">
       <div class="input-group">
         <label><i class="fas fa-headset"></i> BNOC Support</label>
@@ -323,18 +270,11 @@ tbody tr:last-child{border-bottom:none}
       </div>
     </div>
 
-    <!-- Row 4: Remarks (full width) -->
     <div class="row row-1">
       <div class="input-group">
         <label><i class="fas fa-comment-dots"></i> Remarks</label>
         <div class="remarks-wrapper">
-          <textarea
-            class="remarks-box"
-            id="remarks"
-            placeholder="Please Enter Remarks...(If Needed)"
-            maxlength="500"
-            oninput="updateRemarksCount()"
-          ></textarea>
+          <textarea class="remarks-box" id="remarks" placeholder="Please Enter Remarks...(If Needed)" maxlength="500" oninput="updateRemarksCount()"></textarea>
           <span class="remarks-count" id="remarksCount">0/500</span>
         </div>
       </div>
@@ -346,7 +286,6 @@ tbody tr:last-child{border-bottom:none}
     <div class="task-footer"><span class="author-name">© Ahsanul Kabir</span></div>
   </div>
 
-  <!-- TABLE -->
   <div class="table-section">
     <div class="table-header">
       <div class="table-title"><i class="fas fa-chart-bar"></i><span>Completed Task</span></div>
@@ -388,7 +327,7 @@ tbody tr:last-child{border-bottom:none}
 </div>
 
 <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbyIp7aIZKrQsgIGJ5OXcEVlYUsBNR1TFey147gXXqwEsKGhivejb3wzOUzQhLTVCUvrXA/exec';
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxnbC0kfRKKKrdDhKWRiTp8OItiZ6-KswRguPFPOrvxVAfh0_nQoLqKBfL_EjV8Gu1Wog/exec';
 
   let pendingDeleteTicket = null;
   let pendingDeleteRow    = null;
@@ -396,6 +335,20 @@ tbody tr:last-child{border-bottom:none}
   function updateRemarksCount() {
     const el = document.getElementById('remarks');
     document.getElementById('remarksCount').textContent = el.value.length + '/500';
+  }
+
+  // ================================================================
+  // ★ FIX: postToSheet — Content-Type: text/plain দিয়ে JSON body
+  // no-cors mode এ 'application/json' forbidden header,
+  // 'text/plain' allowed — Apps Script এটা e.postData.contents এ পায়
+  // ================================================================
+  async function postToSheet(payload) {
+    return fetch(scriptURL, {
+      method:  'POST',
+      mode:    'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body:    JSON.stringify(payload)
+    });
   }
 
   class CheckboxDropdown {
@@ -483,7 +436,12 @@ tbody tr:last-child{border-bottom:none}
 
   function showToast(msg, type='success') {
     const t=document.getElementById('toast'), m=document.getElementById('toastMessage'), ic=t.querySelector('.toast-icon');
-    const s={error:{bg:'linear-gradient(135deg,rgba(220,38,38,.92),rgba(239,68,68,.92))',i:'✗'},warning:{bg:'linear-gradient(135deg,rgba(245,158,11,.92),rgba(251,191,36,.92))',i:'⚠'},info:{bg:'linear-gradient(135deg,rgba(59,130,246,.92),rgba(37,99,235,.92))',i:'ℹ'},success:{bg:'linear-gradient(135deg,rgba(14,165,233,.92),rgba(59,130,246,.92))',i:'✓'}};
+    const s={
+      error:   {bg:'linear-gradient(135deg,rgba(220,38,38,.92),rgba(239,68,68,.92))',  i:'✗'},
+      warning: {bg:'linear-gradient(135deg,rgba(245,158,11,.92),rgba(251,191,36,.92))',i:'⚠'},
+      info:    {bg:'linear-gradient(135deg,rgba(59,130,246,.92),rgba(37,99,235,.92))', i:'ℹ'},
+      success: {bg:'linear-gradient(135deg,rgba(14,165,233,.92),rgba(59,130,246,.92))',i:'✓'}
+    };
     const st=s[type]||s.success;
     t.style.background=st.bg; ic.textContent=st.i; m.textContent=msg;
     t.classList.remove('show'); void t.offsetWidth; t.classList.add('show');
@@ -528,9 +486,9 @@ tbody tr:last-child{border-bottom:none}
 
     let ok=0;
     for(let i=0;i<ids.length;i++){
-      const fd={...cd,ticket:ids[i]};
+      const fd={...cd, ticket:ids[i]};
       try{
-        await fetch(scriptURL,{method:'POST',mode:'no-cors',body:JSON.stringify(fd)});
+        await postToSheet(fd);
         saveDataLocally(fd); addTableRow(fd); ok++;
         if(ids.length>1) btn.innerHTML=`<i class="fas fa-spinner fa-spin"></i> Processing ${i+1}/${ids.length}...`;
       } catch(e){ console.error(e); }
@@ -563,7 +521,6 @@ tbody tr:last-child{border-bottom:none}
     const bd  = data.backend && data.backend.trim() ? data.backend : '-';
     const ou  = data.onuMac ? (data.onuMac.length>17 ? data.onuMac.substring(0,17)+'…' : data.onuMac) : '-';
     const st  = data.ticket.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-
     row.setAttribute('data-ticket', data.ticket);
     row.innerHTML = `
       <td style="text-align:center;font-weight:600;">—</td>
@@ -585,66 +542,90 @@ tbody tr:last-child{border-bottom:none}
     row.style.animation = 'fadeIn .4s ease-out';
   }
 
-  function openDeleteModal(tid,btn){
-    pendingDeleteTicket=tid; pendingDeleteRow=btn.closest('tr');
-    document.getElementById('modalTicketID').textContent=tid;
+  function openDeleteModal(tid, btn){
+    pendingDeleteTicket = tid;
+    pendingDeleteRow    = btn.closest('tr');
+    document.getElementById('modalTicketID').textContent = tid;
     document.getElementById('deleteModal').classList.add('show');
-    const cb=document.getElementById('modalConfirmBtn');
-    cb.disabled=false; cb.innerHTML='<i class="fas fa-trash-alt"></i> Delete';
+    const cb = document.getElementById('modalConfirmBtn');
+    cb.disabled = false;
+    cb.innerHTML = '<i class="fas fa-trash-alt"></i> Delete';
   }
 
   function closeDeleteModal(){
     document.getElementById('deleteModal').classList.remove('show');
-    pendingDeleteTicket=null; pendingDeleteRow=null;
+    pendingDeleteTicket = null;
+    pendingDeleteRow    = null;
   }
 
+  // ================================================================
+  // ★ FIX: confirmDelete — postToSheet() দিয়ে action:'delete' পাঠানো
+  // ================================================================
   async function confirmDelete(){
-    if(!pendingDeleteTicket||!pendingDeleteRow) return;
-    const cb=document.getElementById('modalConfirmBtn');
-    cb.disabled=true; cb.innerHTML='<i class="fas fa-spinner fa-spin"></i> Deleting…';
-    const tid=pendingDeleteTicket, row=pendingDeleteRow;
-    try{ await fetch(scriptURL,{method:'POST',mode:'no-cors',body:JSON.stringify({action:'delete',ticket:tid})}); }
-    catch(e){ console.error(e); }
-    let tasks=JSON.parse(localStorage.getItem('completedTasks'))||[];
-    tasks=tasks.filter(t=>t.ticket.toUpperCase()!==tid.toUpperCase());
-    localStorage.setItem('completedTasks',JSON.stringify(tasks));
+    if(!pendingDeleteTicket || !pendingDeleteRow) return;
+
+    const cb  = document.getElementById('modalConfirmBtn');
+    const tid = pendingDeleteTicket;
+    const row = pendingDeleteRow;
+
+    cb.disabled = true;
+    cb.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deleting…';
+
+    try {
+      await postToSheet({ action: 'delete', ticket: tid });
+    } catch(e) {
+      console.error('Delete error:', e);
+    }
+
+    // LocalStorage update
+    let tasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
+    tasks = tasks.filter(t => t.ticket.toUpperCase() !== tid.toUpperCase());
+    localStorage.setItem('completedTasks', JSON.stringify(tasks));
+
     closeDeleteModal();
     row.classList.add('row-deleting');
-    setTimeout(()=>{ row.remove(); updateTodayTaskCount(); refreshSerialNumbers(); showToast(`Ticket "${tid}" deleted!`,'success'); },400);
+    setTimeout(()=>{
+      row.remove();
+      updateTodayTaskCount();
+      refreshSerialNumbers();
+      showToast(`Ticket "${tid}" deleted!`, 'success');
+    }, 400);
   }
 
   function saveDataLocally(data){
-    const tasks=JSON.parse(localStorage.getItem('completedTasks'))||[];
-    tasks.push(data); localStorage.setItem('completedTasks',JSON.stringify(tasks));
+    const tasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
+    tasks.push(data);
+    localStorage.setItem('completedTasks', JSON.stringify(tasks));
   }
 
   function loadStoredData(){
-    const tasks=JSON.parse(localStorage.getItem('completedTasks'))||[];
-    tasks.forEach(t=>addTableRow(t)); refreshSerialNumbers(); updateTodayTaskCount();
+    const tasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
+    tasks.forEach(t => addTableRow(t));
+    refreshSerialNumbers();
+    updateTodayTaskCount();
   }
 
   function filterByDate(){
-    const fd=document.getElementById('filterDate').value;
-    const tasks=JSON.parse(localStorage.getItem('completedTasks'))||[];
-    document.getElementById('tableBody').innerHTML='';
+    const fd    = document.getElementById('filterDate').value;
+    const tasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
+    document.getElementById('tableBody').innerHTML = '';
     if(!fd){ tasks.forEach(t=>addTableRow(t)); refreshSerialNumbers(); showToast('Showing all tasks','info'); return; }
-    const fil=tasks.filter(t=>t.date===fd);
+    const fil = tasks.filter(t => t.date === fd);
     if(!fil.length){ showToast('No tasks found for selected date','warning'); }
     else{ fil.forEach(t=>addTableRow(t)); refreshSerialNumbers(); showToast(`Showing ${fil.length} task(s) for ${fd}`,'success'); }
   }
 
   function clearTable(){
     if(!confirm('Are you sure you want to clear all completed tasks?\nThis action cannot be undone!')) return;
-    document.getElementById('tableBody').innerHTML='';
+    document.getElementById('tableBody').innerHTML = '';
     localStorage.removeItem('completedTasks');
-    const btn=document.getElementById('clearTableBtn');
-    btn.disabled=true; btn.innerHTML='<i class="fas fa-check"></i> Cleared';
-    updateTodayTaskCount(); showToast('All completed tasks cleared!','success');
+    const btn = document.getElementById('clearTableBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-check"></i> Cleared';
+    updateTodayTaskCount();
+    showToast('All completed tasks cleared!','success');
     setTimeout(()=>{ btn.disabled=false; btn.innerHTML='<i class="fas fa-trash-alt"></i> Clear Table'; },1500);
   }
 </script>
 </body>
 </html>
-
-
-
