@@ -293,12 +293,12 @@ tbody tr:hover{background:#dbeafe}tbody tr{border-bottom:1px solid #e2eaf5;trans
   </div>
   <div class="nav-section-title">Navigation</div>
   <div class="nav-item active" onclick="showPanel('main')" title="Dashboard"><div class="nav-icon-wrap"><i class="fas fa-tachometer-alt"></i></div><span class="nav-label">Dashboard</span></div>
-  <div class="nav-item" onclick="showPanel('today')" title="My Task"><div class="nav-icon-wrap"><i class="fas fa-calendar-check"></i></div><span class="nav-label">My Task</span></div>
+  <div class="nav-item" onclick="showPanel('today')" title="My Task"><div class="nav-icon-wrap"><i class="fas fa-calendar-check"></i></div><span class="nav-label">My Task</span><span class="nav-badge" id="navTodayBadge">0</span></div>
   <div class="nav-item" onclick="showPanel('report')" title="Task Report"><div class="nav-icon-wrap"><i class="fas fa-chart-bar"></i></div><span class="nav-label">Task Report</span></div>
-  <div class="nav-item" onclick="showPanel('devices')" title="Used Devices"><div class="nav-icon-wrap"><i class="fas fa-network-wired"></i></div><span class="nav-label">Used Devices</span></div>
-  <div class="nav-item" onclick="showPanel('wifi')" title="WiFi Scoring"><div class="nav-icon-wrap"><i class="fas fa-wifi"></i></div><span class="nav-label">WiFi Scoring</span></div>
+  <div class="nav-item" onclick="showPanel('devices')" title="Used Devices"><div class="nav-icon-wrap"><i class="fas fa-network-wired"></i></div><span class="nav-label">Used Devices</span><span class="nav-badge" id="navDeviceBadge">0</span></div>
+  <div class="nav-item" onclick="showPanel('wifi')" title="WiFi Scoring"><div class="nav-icon-wrap"><i class="fas fa-wifi"></i></div><span class="nav-label">WiFi Scoring</span><span class="nav-badge" id="navWifiBadge">0</span></div>
   <div class="nav-sep"></div>
-  <div class="nav-item" onclick="showPanel('completed')" title="All Completed Tasks" style="margin-top:auto"><div class="nav-icon-wrap"><i class="fas fa-clipboard-list"></i></div><span class="nav-label">All Completed Tasks</span></div>
+  <div class="nav-item" onclick="showPanel('completed')" title="All Completed Tasks" style="margin-top:auto"><div class="nav-icon-wrap"><i class="fas fa-clipboard-list"></i></div><span class="nav-label">All Completed Tasks</span><span class="nav-badge" id="navCompletedBadge">0</span></div>
   <div class="sidebar-footer">© Ahsanul Kabir</div>
 </nav>
 
