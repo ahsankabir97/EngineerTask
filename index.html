@@ -9,47 +9,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root{
-  --nav-top:#0d1f5c;
-  --nav-mid:#1a3a8f;
-  --nav-bot:#2354c7;
-  --nav-w:270px;
-  --hdr-left:#1a3a8f;
-  --hdr-right:#2196f3;
-  --page-bg1:#e8f4fd;
-  --page-bg2:#d6eaf8;
-  --page-bg3:#cce0f5;
-  --card:#fff;
-  --border:#bee3f8;
-  --text:#1a2340;
-  --shadow:0 6px 20px rgba(26,58,143,.10);
-  --cb:17px;
+  --nav-top:#0d1f5c;--nav-mid:#1a3a8f;--nav-bot:#2354c7;--nav-w:270px;
+  --hdr-left:#1a3a8f;--hdr-right:#2196f3;
+  --page-bg1:#e8f4fd;--page-bg2:#d6eaf8;--page-bg3:#cce0f5;
+  --card:#fff;--border:#bee3f8;--text:#1a2340;
+  --shadow:0 6px 20px rgba(26,58,143,.10);--cb:17px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:'Outfit',sans-serif;
-  background:linear-gradient(145deg,var(--page-bg1) 0%,var(--page-bg2) 50%,var(--page-bg3) 100%);
-  color:var(--text);min-height:100vh;background-attachment:fixed;
-  display:flex;overflow-x:hidden;
-}
-body::before{
-  content:'';position:fixed;inset:0;
-  background:radial-gradient(ellipse at 15% 20%,rgba(33,150,243,.06) 0%,transparent 35%),
-             radial-gradient(ellipse at 85% 80%,rgba(26,58,143,.05) 0%,transparent 35%);
-  z-index:-1;pointer-events:none;
-}
-
-/* ════ SIDEBAR ════ */
-.sidebar{
-  width:var(--nav-w);min-height:100vh;
-  background:linear-gradient(180deg,var(--nav-top) 0%,var(--nav-mid) 45%,var(--nav-bot) 100%);
-  position:fixed;left:0;top:0;bottom:0;
-  display:flex;flex-direction:column;z-index:300;
-  box-shadow:5px 0 28px rgba(13,31,92,.38);overflow:hidden;
-}
-.sidebar-logo{
-  padding:20px 16px 16px;border-bottom:2px solid rgba(255,255,255,.18);
-  display:flex;align-items:center;gap:13px;background:rgba(0,0,0,.18);position:relative;
-}
+body{font-family:'Outfit',sans-serif;background:linear-gradient(145deg,var(--page-bg1) 0%,var(--page-bg2) 50%,var(--page-bg3) 100%);color:var(--text);min-height:100vh;background-attachment:fixed;display:flex;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 15% 20%,rgba(33,150,243,.06) 0%,transparent 35%),radial-gradient(ellipse at 85% 80%,rgba(26,58,143,.05) 0%,transparent 35%);z-index:-1;pointer-events:none;}
+.sidebar{width:var(--nav-w);min-height:100vh;background:linear-gradient(180deg,var(--nav-top) 0%,var(--nav-mid) 45%,var(--nav-bot) 100%);position:fixed;left:0;top:0;bottom:0;display:flex;flex-direction:column;z-index:300;box-shadow:5px 0 28px rgba(13,31,92,.38);overflow:hidden;}
+.sidebar-logo{padding:20px 16px 16px;border-bottom:2px solid rgba(255,255,255,.18);display:flex;align-items:center;gap:13px;background:rgba(0,0,0,.18);position:relative;}
 .sidebar-logo::after{content:'';position:absolute;bottom:-1px;left:16px;right:16px;height:1px;background:linear-gradient(90deg,transparent,rgba(33,150,243,.8),transparent);}
 .logo-img-wrap{position:relative;flex-shrink:0;}
 .logo-img-wrap img{width:58px;height:58px;object-fit:contain;border-radius:10px;border:2.5px solid rgba(255,255,255,.55);box-shadow:0 0 0 3px rgba(33,150,243,.35),0 4px 14px rgba(0,0,0,.35);background:#fff;padding:3px;transition:transform .3s,box-shadow .3s;}
@@ -58,8 +28,9 @@ body::before{
 .sidebar-logo:hover .logo-glow{opacity:1}
 .logo-text{display:flex;flex-direction:column;gap:1px}
 .logo-name{font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:800;color:#fff;letter-spacing:.3px;text-shadow:0 1px 6px rgba(0,0,0,.3);line-height:1.2;}
-.logo-sub{font-family:'Outfit',sans-serif;font-size:.62rem;font-weight:500;color:rgba(255,255,255,.55);margin-top:1px;}
-.logo-zone{display:inline-block;margin-top:5px;font-family:'Montserrat',sans-serif;font-size:.80rem;font-weight:700;letter-spacing:.3px;text-transform:uppercase;color:#fff;background:linear-gradient(90deg,rgba(33,150,243,.6),rgba(33,150,243,.3));border:1px solid rgba(255,255,255,.35);padding:2px 10px;border-radius:20px;}
+/* ── CHANGED: display:inline-flex + align-items:center + gap:5px ── */
+.logo-zone{display:inline-flex;align-items:center;gap:5px;margin-top:5px;font-family:'Montserrat',sans-serif;font-size:.80rem;font-weight:700;letter-spacing:.3px;text-transform:uppercase;color:#fff;background:linear-gradient(90deg,rgba(33,150,243,.6),rgba(33,150,243,.3));border:1px solid rgba(255,255,255,.35);padding:2px 10px;border-radius:20px;}
+.logo-zone i{font-size:.78rem;opacity:.92;}
 .nav-section-title{display:block;padding:18px 18px 6px;visibility:hidden;font-size:.52rem;height:38px;}
 .nav-item{margin:2px 10px;padding:0 12px;height:44px;display:flex;align-items:center;gap:11px;cursor:pointer;border-radius:11px;border-left:3px solid transparent;position:relative;overflow:hidden;transition:background .22s,border-color .22s,transform .18s,box-shadow .22s;text-decoration:none;}
 .nav-item::before{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);transition:left .55s ease;pointer-events:none;}
@@ -76,39 +47,24 @@ body::before{
 .nav-item:hover .nav-icon-wrap i,.nav-item.active .nav-icon-wrap i{color:#fff}
 .nav-label{font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:.3px;white-space:nowrap;transition:color .2s;}
 .nav-item:hover .nav-label,.nav-item.active .nav-label{color:#fff}
-.nav-badge{margin-left:auto;background:linear-gradient(135deg,#22c55e,#15803d);color:#fff;font-family:'Montserrat',sans-serif;font-size:.60rem;font-weight:900;padding:2px 9px;border-radius:20px;min-width:22px;text-align:center;box-shadow:0 2px 8px rgba(21,128,61,.40);transition:transform .2s;letter-spacing:.2px;line-height:1.5;}
+.nav-badge{margin-left:auto;background:linear-gradient(135deg,#22c55e,#15803d);color:#fff;font-family:'Montserrat',sans-serif;font-size:.60rem;font-weight:900;padding:2px 9px;border-radius:20px;min-width:22px;text-align:center;box-shadow:0 2px 8px rgba(21,128,61,.40);letter-spacing:.2px;line-height:1.5;}
 .nav-sep{margin:8px 18px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent)}
 .sidebar-footer{margin-top:auto;padding:13px 18px;border-top:1px solid rgba(255,255,255,.1);font-family:'Outfit',sans-serif;font-size:.6rem;color:rgba(255,255,255,.32);text-align:center;letter-spacing:.3px;}
-
-/* ════ MAIN ════ */
 .main-wrap{margin-left:var(--nav-w);flex:1;display:flex;flex-direction:column;min-height:100vh;padding:12px;}
-
-/* ════ HEADER ════ */
-header{
-  background:linear-gradient(110deg,var(--hdr-left) 0%,#1d4ed8 45%,var(--hdr-right) 100%);
-  padding:0 26px;height:88px;border-radius:16px;color:#fff;
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:14px;box-shadow:0 8px 32px rgba(26,58,143,.30);
-  position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.12);
-}
+header{background:linear-gradient(110deg,var(--hdr-left) 0%,#1d4ed8 45%,var(--hdr-right) 100%);padding:0 26px;height:88px;border-radius:16px;color:#fff;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;box-shadow:0 8px 32px rgba(26,58,143,.30);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.12);}
 header::before{content:'';position:absolute;top:-50%;right:-10%;width:200px;height:200px;background:radial-gradient(circle,rgba(33,150,243,.25),transparent 65%);pointer-events:none;}
 header::after{content:'';position:absolute;bottom:-40%;left:30%;width:180px;height:180px;background:radial-gradient(circle,rgba(255,255,255,.07),transparent 65%);pointer-events:none;}
 .header-center{position:absolute;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;z-index:1;}
 .header-title{font-family:'Montserrat',sans-serif;font-size:1.70rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.35),0 4px 18px rgba(0,0,0,.32),0 0 40px rgba(33,150,243,.55),0 0 80px rgba(33,150,243,.2);line-height:1.05;}
-.header-subtitle{font-family:'Montserrat',sans-serif;font-size:.9rem;font-weight:600;letter-spacing:3px;color:rgba(255,255,255,.9);text-transform:uppercase;text-shadow:0 2px 8px rgba(0,0,0,.5),0 0 20px rgba(33,150,243,.6),0 0 40px rgba(33,150,243,.3),0 4px 16px rgba(0,0,0,.4),2px 2px 0px rgba(0,0,0,.25);filter:drop-shadow(0 3px 6px rgba(0,0,0,.4));}
+.header-subtitle{font-family:'Montserrat',sans-serif;font-size:.9rem;font-weight:600;letter-spacing:3px;color:rgba(255,255,255,.9);text-transform:uppercase;text-shadow:0 2px 8px rgba(0,0,0,.5),0 0 20px rgba(33,150,243,.6);filter:drop-shadow(0 3px 6px rgba(0,0,0,.4));}
 .header-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px;position:relative;z-index:1;margin-left:auto;}
 #headerDate{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:800;letter-spacing:.6px;color:rgba(255,255,255,.9);text-transform:uppercase;}
-#headerTime{font-family:'Montserrat',monospace;font-size:.8rem;font-weight:700;background:rgba(255,255,255,.14);padding:3px 10px;border-radius:7px;color:#4ade80;border:1px solid rgba(255,255,255,.22);min-width:102px;text-align:center;text-shadow:0 0 8px rgba(74,222,128,.5);}
-
-/* ════ PANEL ════ */
+#headerTime{font-family:'Montserrat',monospace;font-size:.8rem;font-weight:700;background:rgba(255,255,255,.14);padding:3px 10px;border-radius:7px;color:#0723F3;border:1px solid rgba(255,255,255,.22);min-width:102px;text-align:center;text-shadow:0 0 8px rgba(7,35,243,.35);}
 .content-area{display:flex;flex-direction:column;flex:1}
 .panel{display:none}.panel.active{display:block}
-
-/* ════ CARD ════ */
 .card{background:var(--card);border-radius:14px;padding:16px;border:1px solid rgba(190,227,248,.75);box-shadow:var(--shadow);margin-bottom:14px;position:relative;overflow:hidden;}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0d1f5c,#1d4ed8,#2196f3,#64b5f6);}
-.row{display:grid;gap:12px;margin-bottom:10px}
-.row-3{grid-template-columns:repeat(3,1fr)}
+.row{display:grid;gap:12px;margin-bottom:10px}.row-3{grid-template-columns:repeat(3,1fr)}
 .input-group{display:flex;flex-direction:column;gap:4px}
 label{font-family:'Montserrat',sans-serif;font-size:.67rem;font-weight:800;color:#1a3a8f;text-transform:uppercase;letter-spacing:.6px;display:flex;align-items:center;gap:5px;}
 label i{font-size:.84rem;min-width:18px;text-align:center;color:#2196f3}
@@ -132,8 +88,6 @@ input:focus,select:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(33,150,2
 .btn-done:disabled{background:#cbd5e0;cursor:not-allowed;transform:none;box-shadow:none}
 .task-footer{margin-top:6px}
 .author-name{font-family:'Montserrat',sans-serif;font-size:.57rem;font-weight:700;color:#2196f3;letter-spacing:.3px}
-
-/* ════ CHECKBOX DROPDOWN ════ */
 .checkbox-dropdown{position:relative;cursor:pointer}
 .checkbox-dropdown-select{height:38px;width:100%;padding:8px 12px;border:1.5px solid #bee3f8;border-radius:9px;font-size:.82rem;font-family:'Outfit',sans-serif;font-weight:600;background:rgba(235,245,255,.75);cursor:pointer;display:flex;align-items:center;justify-content:space-between;color:#1a3a8f;transition:all .25s;}
 .checkbox-dropdown-select::after{content:'▼';font-size:.58rem;color:#1d4ed8;transition:transform .3s;margin-left:6px;flex-shrink:0}
@@ -153,19 +107,13 @@ input:focus,select:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(33,150,2
 .checkbox-option.selected .checkbox-label{color:#0d1f5c;font-weight:700}
 .checkbox-dropdown-value{font-size:.82rem;color:#1a3a8f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-grow:1;font-weight:600}
 .checkbox-placeholder{color:#9ca3af!important;font-style:italic;font-weight:400!important}
-
-/* ════ TOGGLE ════ */
 .toggle-btn{width:100%;height:38px;padding:0 12px;border:1.5px solid #bee3f8;border-radius:9px;background:#fff;color:#6b7280;font-family:'Montserrat',sans-serif;font-size:.77rem;font-weight:700;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:all .25s;}
 .toggle-btn .status-text{flex:1;text-align:center}
 .toggle-btn:hover{border-color:#2196f3;transform:translateY(-1px)}
 .toggle-btn.active{border-color:transparent;background:linear-gradient(135deg,#1d4ed8,#2196f3);color:#fff;box-shadow:0 5px 14px rgba(33,150,243,.3);}
-
-/* ════ PANEL HEADER ════ */
 .panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
 .panel-title{font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:900;color:#0d1f5c;display:flex;align-items:center;gap:8px;}
 .panel-title i{color:#2196f3;font-size:1rem}
-
-/* ════ FILTER BAR ════ */
 .filter-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:#fff;border:1.5px solid #bee3f8;border-radius:10px;padding:7px 14px;box-shadow:var(--shadow);margin-bottom:14px;}
 .filter-bar-label{font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:800;color:#1a3a8f;white-space:nowrap;display:flex;align-items:center;gap:4px}
 .filter-date-input{padding:4px 8px;border:1.5px solid #bee3f8;border-radius:6px;font-family:'Outfit',sans-serif;font-size:.72rem;background:#e8f4fd;color:#1a3a8f;height:28px;outline:none;}
@@ -178,39 +126,17 @@ input:focus,select:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(33,150,2
 .fb-btn.alt{background:linear-gradient(135deg,#5b21b6,#7c3aed)}
 .fb-count{font-family:'Montserrat',sans-serif;font-size:.65rem;color:#64748b;margin-left:2px;font-weight:600}
 .fb-count b{color:#1a3a8f}
-
-/* ════ STATS GRID (clickable tabs) ════ */
 .stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px}
-.stat-card{
-  background:linear-gradient(135deg,#fff,#f0f8ff);
-  border-radius:12px;padding:8px 10px;
-  border:1.5px solid #bee3f8;
-  box-shadow:0 4px 14px rgba(26,58,143,.08);
-  display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;
-  transition:all .22s;cursor:pointer;user-select:none;
-}
+.stat-card{background:linear-gradient(135deg,#fff,#f0f8ff);border-radius:12px;padding:8px 10px;border:1.5px solid #bee3f8;box-shadow:0 4px 14px rgba(26,58,143,.08);display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;transition:all .22s;cursor:pointer;user-select:none;}
 .stat-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(26,58,143,.16);border-color:#90caf9}
-.stat-card.active-tab{
-  background:linear-gradient(135deg,#1a3a8f,#2196f3);
-  border-color:#1a3a8f;
-  box-shadow:0 6px 20px rgba(26,58,143,.35);
-  transform:translateY(-3px);
-}
+.stat-card.active-tab{background:linear-gradient(135deg,#1a3a8f,#2196f3);border-color:#1a3a8f;box-shadow:0 6px 20px rgba(26,58,143,.35);transform:translateY(-3px);}
 .stat-card.active-tab .stat-num{color:#fff}
 .stat-card.active-tab .stat-lbl{color:rgba(255,255,255,.85)}
-.stat-card.active-tab .stat-ico{filter:grayscale(0) brightness(1.4)}
 .stat-num{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:900;color:#1a3a8f;line-height:1;transition:color .2s}
 .stat-lbl{font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:800;color:#5b7fa6;text-transform:uppercase;letter-spacing:.5px;transition:color .2s}
 .stat-ico{font-size:.82rem;margin-bottom:1px}
-
-/* ════ TODAY TASK ITEMS ════ */
 .tasks-list{display:flex;flex-direction:column;gap:7px}
-.task-item{
-  background:#fff;border:1.5px solid #bee3f8;border-radius:11px;
-  padding:4px 14px;display:flex;align-items:center;gap:12px;
-  box-shadow:0 2px 8px rgba(26,58,143,.06);
-  transition:all .22s;border-left:4px solid #2196f3;
-}
+.task-item{background:#fff;border:1.5px solid #bee3f8;border-radius:11px;padding:4px 14px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 8px rgba(26,58,143,.06);transition:all .22s;border-left:4px solid #2196f3;}
 .task-item:hover{background:#e8f4fd;box-shadow:0 5px 16px rgba(26,58,143,.12);border-left-color:#1a3a8f;}
 .task-num{width:24px;height:24px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#1a3a8f,#2196f3);color:#fff;font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(33,150,243,.3);}
 .task-ticket{font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:900;color:#0d1f5c;letter-spacing:.3px;}
@@ -223,8 +149,6 @@ input:focus,select:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(33,150,2
 .tc-cr{background:linear-gradient(90deg,#d1fae5,#a7f3d0);color:#065f46;border:1px solid #6ee7b7}
 .tc-survey{background:linear-gradient(90deg,#ede9fe,#ddd6fe);color:#5b21b6;border:1px solid #c4b5fd}
 .tc-nonticket{background:linear-gradient(90deg,#fce7f3,#fbcfe8);color:#9d174d;border:1px solid #f9a8d4}
-
-/* ════ DEVICE CARDS ════ */
 .cards-grid{display:flex;flex-direction:column;gap:9px}
 .d-card{background:#fff;border:1.5px solid #bee3f8;border-radius:13px;padding:13px 16px;box-shadow:0 3px 12px rgba(26,58,143,.07);transition:all .22s;border-left:4px solid #2196f3;}
 .d-card:hover{transform:translateX(4px);box-shadow:0 6px 20px rgba(26,58,143,.14);border-left-color:#1a3a8f}
@@ -250,38 +174,47 @@ input:focus,select:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(33,150,2
 .mt-purpose-cr{color:#065f46;background:#d1fae5;border:1px solid #6ee7b7}
 .mt-purpose-survey{color:#5b21b6;background:#ede9fe;border:1px solid #c4b5fd}
 .mt-purpose-other{color:#9d174d;background:#fce7f3;border:1px solid #f9a8d4}
-
-/* ════ WIFI STATS (clickable tabs) ════ */
+.subtab-bar{display:flex;gap:0;margin-bottom:14px;background:#f0f8ff;border:1.5px solid #bee3f8;border-radius:11px;overflow:hidden;box-shadow:0 2px 8px rgba(26,58,143,.07);}
+.subtab-item{flex:1;padding:10px 0;text-align:center;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:.73rem;font-weight:800;color:#5b7fa6;letter-spacing:.4px;text-transform:uppercase;transition:all .22s;display:flex;align-items:center;justify-content:center;gap:7px;border-right:1px solid #bee3f8;position:relative;}
+.subtab-item:last-child{border-right:none}
+.subtab-item i{font-size:.78rem}
+.subtab-item:hover{background:#dbeafe;color:#1a3a8f}
+.subtab-item.active{background:linear-gradient(135deg,#1a3a8f,#2196f3);color:#fff;box-shadow:inset 0 2px 6px rgba(0,0,0,.1);}
+.subtab-badge{background:rgba(255,255,255,.25);color:#fff;font-size:.58rem;font-weight:900;padding:1px 8px;border-radius:20px;min-width:22px;line-height:1.6;}
+.subtab-item:not(.active) .subtab-badge{background:#dbeafe;color:#1a3a8f}
+.subtab-badge-live{background:linear-gradient(135deg,#16a34a,#22c55e)!important;color:#fff!important;box-shadow:0 0 0 0 rgba(34,197,94,.7);animation:live-pulse 1.8s ease-in-out infinite;letter-spacing:.3px;}
+.subtab-item.active .subtab-badge-live{background:linear-gradient(135deg,#15803d,#16a34a)!important;color:#fff!important;box-shadow:0 0 0 0 rgba(255,255,255,.6);animation:live-pulse-white 1.8s ease-in-out infinite;}
+@keyframes live-pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.7)}60%{box-shadow:0 0 0 5px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+@keyframes live-pulse-white{0%{box-shadow:0 0 0 0 rgba(255,255,255,.55)}60%{box-shadow:0 0 0 5px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}50%{box-shadow:0 0 0 5px rgba(34,197,94,0)}}
+.live-iframe-wrap{background:#fff;border-radius:12px;border:1.5px solid #bee3f8;overflow:hidden;box-shadow:var(--shadow);}
+.live-topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:linear-gradient(90deg,#dbeafe,#e0f2fe);border-bottom:1.5px solid #bee3f8;flex-wrap:wrap;gap:8px;}
+.live-title{font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:900;color:#0d1f5c;display:flex;align-items:center;gap:7px;}
+.live-info-box{display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid #bee3f8;border-radius:8px;padding:5px 12px;}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse-dot 1.5s ease-in-out infinite;flex-shrink:0}
+.live-info-text{font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:700;color:#1a3a8f;display:flex;align-items:center;gap:5px}
+.live-countdown{color:#2196f3;font-weight:900;font-size:.72rem;min-width:14px;display:inline-block;text-align:center}
+.live-lastupd{color:#64748b;font-weight:600}
+.live-lasttime{color:#0d1f5c;font-weight:800}
+.live-sep{color:#bee3f8}
+.iframe-clip{line-height:0;overflow:hidden;position:relative;}
+.iframe-clip iframe{width:100%;border:none;display:block;margin-top:-29px;}
+.iframe-clip.h520 iframe{height:568px;}
+.iframe-clip.h480 iframe{height:478px;}
 .wifi-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
-
-/* ════ COMPLETED TABLE ════ */
 .table-section{background:var(--card);border-radius:14px;border:1px solid rgba(190,227,248,.75);overflow:hidden;box-shadow:var(--shadow)}
 .table-header-bar{padding:11px 18px;background:linear-gradient(90deg,#dbeafe,#bfdbfe,#e0f2fe);font-family:'Montserrat',sans-serif;font-weight:900;color:#0d1f5c;border-bottom:2px solid #90caf9;text-transform:uppercase;letter-spacing:.7px;font-size:.72rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
 .tbl-title{display:flex;align-items:center;gap:8px}
 .tbl-title i{color:#1d4ed8;font-size:.95rem}
-
-/* ════ COMPLETED CATEGORY COUNTS (clickable boxes) ════ */
-.completed-cat-counts{
-  display:flex;align-items:center;gap:7px;flex-wrap:wrap;
-}
-.cat-count-box{
-  display:flex;align-items:center;gap:5px;
-  padding:4px 11px;border-radius:8px;cursor:pointer;
-  font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:800;
-  border:1.5px solid;transition:all .22s;user-select:none;
-}
+.completed-cat-counts{display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
+.cat-count-box{display:flex;align-items:center;gap:5px;padding:4px 11px;border-radius:8px;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:800;border:1.5px solid;transition:all .22s;user-select:none;}
 .cat-count-box:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.12)}
 .cat-count-box.active-filter{box-shadow:0 4px 14px rgba(0,0,0,.18);transform:translateY(-1px);}
 .cat-count-box .cnt-num{font-size:.8rem;font-weight:900}
-.ccb-install{color:#1d4ed8;background:#dbeafe;border-color:#93c5fd}
-.ccb-install.active-filter{background:#1d4ed8;color:#fff;border-color:#1d4ed8}
-.ccb-trouble{color:#92400e;background:#fef3c7;border-color:#fcd34d}
-.ccb-trouble.active-filter{background:#92400e;color:#fff;border-color:#92400e}
-.ccb-cr{color:#065f46;background:#d1fae5;border-color:#6ee7b7}
-.ccb-cr.active-filter{background:#065f46;color:#fff;border-color:#065f46}
-.ccb-survey{color:#5b21b6;background:#ede9fe;border-color:#c4b5fd}
-.ccb-survey.active-filter{background:#5b21b6;color:#fff;border-color:#5b21b6}
-
+.ccb-install{color:#1d4ed8;background:#dbeafe;border-color:#93c5fd}.ccb-install.active-filter{background:#1d4ed8;color:#fff;border-color:#1d4ed8}
+.ccb-trouble{color:#92400e;background:#fef3c7;border-color:#fcd34d}.ccb-trouble.active-filter{background:#92400e;color:#fff;border-color:#92400e}
+.ccb-cr{color:#065f46;background:#d1fae5;border-color:#6ee7b7}.ccb-cr.active-filter{background:#065f46;color:#fff;border-color:#065f46}
+.ccb-survey{color:#5b21b6;background:#ede9fe;border-color:#c4b5fd}.ccb-survey.active-filter{background:#5b21b6;color:#fff;border-color:#5b21b6}
 .tbl-filters{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
 .tbl-date-in{padding:4px 7px;border:1.5px solid #90caf9;border-radius:5px;font-family:'Outfit',sans-serif;font-size:.68rem;background:#fff;color:var(--text);width:110px;height:28px;outline:none}
 .tbl-date-in:focus{border-color:#2196f3}
@@ -293,56 +226,32 @@ table{width:100%;border-collapse:collapse;min-width:820px}
 th{padding:9px 12px;text-align:left;font-family:'Montserrat',sans-serif;font-size:.6rem;background:#e8f4fd;color:#0d1f5c;border-bottom:2px solid #90caf9;letter-spacing:.5px;font-weight:900;position:sticky;top:0;z-index:10;white-space:nowrap;}
 td{padding:8px 12px;font-size:.74rem;font-family:'Outfit',sans-serif;font-weight:500;color:#1a2340;white-space:nowrap;vertical-align:middle}
 td.mono{font-family:'JetBrains Mono',monospace;font-size:.68rem}
-tbody tr:nth-child(even){background:#f0f8ff}
-tbody tr:nth-child(odd){background:#fff}
-tbody tr:hover{background:#dbeafe}
-tbody tr{border-bottom:1px solid #e2eaf5;transition:background .15s}
+tbody tr:nth-child(even){background:#f0f8ff}tbody tr:nth-child(odd){background:#fff}
+tbody tr:hover{background:#dbeafe}tbody tr{border-bottom:1px solid #e2eaf5;transition:background .15s}
 .badge{background:linear-gradient(90deg,#dbeafe,#bfdbfe);color:#1a3a8f;padding:2px 8px;border-radius:20px;font-family:'Montserrat',sans-serif;font-size:.56rem;font-weight:800;display:inline-block;text-transform:uppercase;border:1px solid #93c5fd;letter-spacing:.3px;}
-
-/* ════ TASK REPORT ════ */
-.report-iframe-wrap{
-  position:relative;width:100%;overflow:hidden;
-  border-radius:10px;border:1.5px solid #bee3f8;
-  box-shadow:0 4px 14px rgba(26,58,143,.08);line-height:0;
-}
+.report-iframe-wrap{position:relative;width:100%;overflow:hidden;border-radius:10px;border:1.5px solid #bee3f8;box-shadow:0 4px 14px rgba(26,58,143,.08);line-height:0;}
 .report-iframe-wrap iframe{width:100%;height:480px;border:none;display:block;}
-
-/* ════ REPORT TOP BAR ════ */
-.report-top-bar{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:10px;flex-wrap:wrap;gap:8px;
-}
-.rpt-live-info{
-  display:flex;align-items:center;gap:10px;
-  background:#fff;border:1.5px solid #bee3f8;border-radius:9px;
-  padding:6px 14px;box-shadow:var(--shadow);
-}
-.rpt-live-dot{
-  width:8px;height:8px;border-radius:50%;background:#22c55e;
-  animation:pulse-dot 1.5s ease-in-out infinite;flex-shrink:0;
-}
-@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}50%{box-shadow:0 0 0 5px rgba(34,197,94,0)}}
+.report-top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;}
+.rpt-live-info{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #bee3f8;border-radius:9px;padding:6px 14px;box-shadow:var(--shadow);}
+.rpt-live-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse-dot 1.5s ease-in-out infinite;flex-shrink:0;}
 .rpt-info-text{font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:700;color:#1a3a8f;display:flex;align-items:center;gap:6px;}
 .rpt-countdown-val{color:#2196f3;font-weight:900;font-size:.75rem;min-width:14px;display:inline-block;text-align:center;}
-.rpt-last-upd{color:#64748b;font-weight:600}
-.rpt-last-time{color:#0d1f5c;font-weight:800}
-.rpt-sep{color:#bee3f8;font-size:.7rem}
-
-/* ════ EMPTY STATE ════ */
+.rpt-last-upd{color:#64748b;font-weight:600}.rpt-last-time{color:#0d1f5c;font-weight:800}.rpt-sep{color:#bee3f8;font-size:.7rem}
+.rpt-live-badge{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#16a34a,#22c55e);color:#fff;font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:900;padding:2px 10px 2px 7px;border-radius:20px;letter-spacing:.4px;text-transform:uppercase;box-shadow:0 0 0 0 rgba(34,197,94,.7);animation:rpt-live-pulse 1.8s ease-in-out infinite;vertical-align:middle;margin-left:6px;}
+.rpt-live-badge-dot{width:6px;height:6px;border-radius:50%;background:#fff;opacity:.9;display:inline-block;flex-shrink:0;animation:rpt-dot-blink 1.2s ease-in-out infinite;}
+@keyframes rpt-live-pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.7)}60%{box-shadow:0 0 0 6px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+@keyframes rpt-dot-blink{0%,100%{opacity:.9;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
 .empty-state{text-align:center;padding:48px 20px;font-family:'Outfit',sans-serif;color:#9ca3af;font-size:.82rem;}
 .empty-state i{font-size:2.6rem;color:#bee3f8;display:block;margin-bottom:12px}
 .empty-state p{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;color:#b0c8e0;margin-top:4px}
-
-/* ════ TOAST ════ */
 .toast{position:fixed;top:50%;right:22px;background:linear-gradient(135deg,rgba(26,58,143,.94),rgba(33,150,243,.94));color:#fff;padding:13px 18px;border-radius:13px;box-shadow:0 12px 36px rgba(26,58,143,.35);font-family:'Montserrat',sans-serif;font-weight:700;z-index:10000;display:flex;align-items:center;gap:11px;transform:translateX(160%);transition:transform .45s cubic-bezier(.175,.885,.32,1.275);border:1px solid rgba(255,255,255,.22);min-width:270px;max-width:350px;opacity:0;pointer-events:none;}
 .toast.show{transform:translateX(0) translateY(-50%);opacity:1;pointer-events:all}
 .toast-icon{font-size:1.2rem;background:rgba(255,255,255,.2);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 #toastMessage{font-size:.77rem;font-weight:700;line-height:1.4;flex:1}
-
 @media(max-width:900px){.stats-grid{grid-template-columns:repeat(3,1fr)}.wifi-stats{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){
   :root{--nav-w:58px}
-  .sidebar-logo-text,.nav-label,.nav-badge,.nav-section-title,.sidebar-footer,.nav-sep{display:none}
+  .nav-label,.nav-badge,.nav-section-title,.sidebar-footer,.nav-sep,.logo-text{display:none}
   .sidebar-logo{justify-content:center;padding:12px 7px}
   .logo-img-wrap img{width:36px;height:36px}
   .nav-item{justify-content:center;padding:0;height:46px;border-radius:0;border-left:none;margin:1px 0}
@@ -362,6 +271,9 @@ tbody tr{border-bottom:1px solid #e2eaf5;transition:background .15s}
   .d-card-inner{flex-direction:column;align-items:flex-start}
   .d-mid{border:none;padding:0}
   .d-right{justify-content:flex-start}
+  .subtab-bar{flex-direction:column;border-radius:11px}
+  .subtab-item{border-right:none;border-bottom:1px solid #bee3f8}
+  .subtab-item:last-child{border-bottom:none}
 }
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .card,.table-section,.d-card,.task-item,.stat-card{animation:fadeIn .38s ease-out both}
@@ -369,80 +281,44 @@ tbody tr{border-bottom:1px solid #e2eaf5;transition:background .15s}
 </head>
 <body>
 
-<!-- ═══════ SIDEBAR ═══════ -->
 <nav class="sidebar">
   <div class="sidebar-logo">
-    <div class="logo-img-wrap">
-      <div class="logo-glow"></div>
+    <div class="logo-img-wrap"><div class="logo-glow"></div>
       <img src="https://z-cdn-media.chatglm.cn/files/ec97a2bb-1f62-4aa3-b8dd-d7c5349ef71e.png?auth_key=1870751333-bce0d43ce17a472f82b7ca62e6852b21-0-33f4b6311a64ec23a2a122fb5366adb1" alt="Link3">
     </div>
     <div class="logo-text">
       <span class="logo-name">Link3 Technologies Ltd</span>
-      <span class="logo-zone">Motijheel Zone</span>
+      <span class="logo-zone"><i class="fas fa-building"></i> Motijheel Zone</span>
     </div>
   </div>
   <div class="nav-section-title">Navigation</div>
-  <div class="nav-item active" onclick="showPanel('main')" title="Dashboard">
-    <div class="nav-icon-wrap"><i class="fas fa-tachometer-alt"></i></div>
-    <span class="nav-label">Dashboard</span>
-  </div>
-  <div class="nav-item" onclick="showPanel('today')" title="My Task">
-    <div class="nav-icon-wrap"><i class="fas fa-calendar-check"></i></div>
-    <span class="nav-label">My Task</span>
-    <span class="nav-badge" id="navTodayBadge">0</span>
-  </div>
-  <div class="nav-item" onclick="showPanel('report')" title="Task Report">
-    <div class="nav-icon-wrap"><i class="fas fa-chart-bar"></i></div>
-    <span class="nav-label">Task Report</span>
-  </div>
-  <div class="nav-item" onclick="showPanel('devices')" title="Used Devices">
-    <div class="nav-icon-wrap"><i class="fas fa-network-wired"></i></div>
-    <span class="nav-label">Used Devices</span>
-    <span class="nav-badge" id="navDeviceBadge">0</span>
-  </div>
-  <div class="nav-item" onclick="showPanel('wifi')" title="WiFi Scoring">
-    <div class="nav-icon-wrap"><i class="fas fa-wifi"></i></div>
-    <span class="nav-label">WiFi Scoring</span>
-    <span class="nav-badge" id="navWifiBadge">0</span>
-  </div>
+  <div class="nav-item active" onclick="showPanel('main')" title="Dashboard"><div class="nav-icon-wrap"><i class="fas fa-tachometer-alt"></i></div><span class="nav-label">Dashboard</span></div>
+  <div class="nav-item" onclick="showPanel('today')" title="My Task"><div class="nav-icon-wrap"><i class="fas fa-calendar-check"></i></div><span class="nav-label">My Task</span></div>
+  <div class="nav-item" onclick="showPanel('report')" title="Task Report"><div class="nav-icon-wrap"><i class="fas fa-chart-bar"></i></div><span class="nav-label">Task Report</span></div>
+  <div class="nav-item" onclick="showPanel('devices')" title="Used Devices"><div class="nav-icon-wrap"><i class="fas fa-network-wired"></i></div><span class="nav-label">Used Devices</span></div>
+  <div class="nav-item" onclick="showPanel('wifi')" title="WiFi Scoring"><div class="nav-icon-wrap"><i class="fas fa-wifi"></i></div><span class="nav-label">WiFi Scoring</span></div>
   <div class="nav-sep"></div>
-  <div class="nav-item" onclick="showPanel('completed')" title="All Completed Tasks" style="margin-top:auto">
-    <div class="nav-icon-wrap"><i class="fas fa-clipboard-list"></i></div>
-    <span class="nav-label">All Completed Tasks</span>
-    <span class="nav-badge" id="navCompletedBadge">0</span>
-  </div>
+  <div class="nav-item" onclick="showPanel('completed')" title="All Completed Tasks" style="margin-top:auto"><div class="nav-icon-wrap"><i class="fas fa-clipboard-list"></i></div><span class="nav-label">All Completed Tasks</span></div>
   <div class="sidebar-footer">© Ahsanul Kabir</div>
 </nav>
 
-<!-- ═══════ MAIN WRAP ═══════ -->
 <div class="main-wrap">
   <header>
     <div class="header-center">
       <div class="header-title">Daily Work Dashboard</div>
       <div class="header-subtitle">Motijheel Zone</div>
     </div>
-    <div class="header-right">
-      <span id="headerDate"></span>
-      <span id="headerTime"></span>
-    </div>
+    <div class="header-right"><span id="headerDate"></span><span id="headerTime"></span></div>
   </header>
-
   <div class="content-area">
 
-    <!-- ═══ DASHBOARD ═══ -->
+    <!-- DASHBOARD -->
     <div class="panel active" id="panelMain">
       <div class="card">
         <div class="row row-3">
-          <div class="input-group">
-            <label><i class="fas fa-calendar-alt"></i>Work Date</label>
-            <input type="date" id="taskDate">
-          </div>
-          <div class="input-group">
-            <label><i class="fas fa-ticket-alt"></i>Ticket ID</label>
-            <input type="text" id="ticketID" placeholder="e.g. L3-31Jan26-1234, L3-31Jan26-5678">
-          </div>
-          <div class="input-group">
-            <label><i class="fas fa-tags"></i>Task Category</label>
+          <div class="input-group"><label><i class="fas fa-calendar-alt"></i>Work Date</label><input type="date" id="taskDate"></div>
+          <div class="input-group"><label><i class="fas fa-ticket-alt"></i>Ticket ID</label><input type="text" id="ticketID" placeholder="e.g. L3-31Jan26-1234, L3-31Jan26-5678"></div>
+          <div class="input-group"><label><i class="fas fa-tags"></i>Task Category</label>
             <div class="checkbox-dropdown" id="taskCategoryDropdown">
               <div class="checkbox-dropdown-select"><span class="checkbox-dropdown-value checkbox-placeholder">Select Category</span></div>
               <div class="checkbox-dropdown-options">
@@ -456,8 +332,7 @@ tbody tr{border-bottom:1px solid #e2eaf5;transition:background .15s}
           </div>
         </div>
         <div class="row row-3">
-          <div class="input-group">
-            <label><i class="fas fa-toolbox"></i>Task Type</label>
+          <div class="input-group"><label><i class="fas fa-toolbox"></i>Task Type</label>
             <div class="checkbox-dropdown" id="taskTypeDropdown">
               <div class="checkbox-dropdown-select"><span class="checkbox-dropdown-value checkbox-placeholder">Select Task Type</span></div>
               <div class="checkbox-dropdown-options">
@@ -467,8 +342,7 @@ tbody tr{border-bottom:1px solid #e2eaf5;transition:background .15s}
               </div>
             </div>
           </div>
-          <div class="input-group">
-            <label><i class="fas fa-users"></i>Team Type</label>
+          <div class="input-group"><label><i class="fas fa-users"></i>Team Type</label>
             <div class="checkbox-dropdown" id="teamTypeDropdown">
               <div class="checkbox-dropdown-select"><span class="checkbox-dropdown-value checkbox-placeholder">Select Team Type</span></div>
               <div class="checkbox-dropdown-options">
@@ -478,8 +352,7 @@ tbody tr{border-bottom:1px solid #e2eaf5;transition:background .15s}
               </div>
             </div>
           </div>
-          <div class="input-group">
-            <label><i class="fas fa-user-cog"></i>Engineer Name</label>
+          <div class="input-group"><label><i class="fas fa-user-cog"></i>Engineer Name</label>
             <select id="engineerName">
               <option value="">Select Engineer</option>
               <option>Ahsanul Kabir</option><option>Tamim</option><option>Nazrul Islam</option>
@@ -489,128 +362,98 @@ tbody tr{border-bottom:1px solid #e2eaf5;transition:background .15s}
           </div>
         </div>
         <div class="row row-3">
-          <div class="input-group">
-            <label><i class="fas fa-headset"></i>BNOC/BACKEND Support</label>
-            <button type="button" id="bnocToggle" class="toggle-btn"><span class="status-text">No</span><i class="fas fa-chevron-down"></i></button>
-          </div>
-          <div class="input-group">
-            <label><i class="fas fa-network-wired"></i>ONU MAC-ADDRESS</label>
-            <input type="text" id="onuMac" placeholder="Enter ONU MAC if used">
-          </div>
-          <div class="input-group">
-            <label><i class="fas fa-wifi"></i>WiFi Scoring</label>
-            <button type="button" id="wifiScoringToggle" class="toggle-btn"><span class="status-text">No</span><i class="fas fa-chevron-down"></i></button>
-          </div>
+          <div class="input-group"><label><i class="fas fa-headset"></i>BNOC/BACKEND Support</label><button type="button" id="bnocToggle" class="toggle-btn"><span class="status-text">No</span><i class="fas fa-chevron-down"></i></button></div>
+          <div class="input-group"><label><i class="fas fa-network-wired"></i>ONU MAC-ADDRESS</label><input type="text" id="onuMac" placeholder="Enter ONU MAC if used"></div>
+          <div class="input-group"><label><i class="fas fa-wifi"></i>WiFi Scoring</label><button type="button" id="wifiScoringToggle" class="toggle-btn"><span class="status-text">No</span><i class="fas fa-chevron-down"></i></button></div>
         </div>
         <div class="input-group" style="margin-bottom:6px">
           <label><i class="fas fa-comment-dots"></i>Remarks</label>
           <div class="remarks-submit-row">
-            <div class="remarks-wrapper">
-              <textarea class="remarks-box" id="remarks" placeholder="Please Enter Remarks...(If Needed)" maxlength="500" oninput="updateRemarksCount()"></textarea>
-              <span class="remarks-count" id="remarksCount">0/500</span>
-            </div>
-            <button class="btn-done" id="submitBtn" onclick="submitMultipleTasks()">
-              <i class="fas fa-paper-plane"></i>Submit Done Tickets
-            </button>
+            <div class="remarks-wrapper"><textarea class="remarks-box" id="remarks" placeholder="Please Enter Remarks...(If Needed)" maxlength="500" oninput="updateRemarksCount()"></textarea><span class="remarks-count" id="remarksCount">0/500</span></div>
+            <button class="btn-done" id="submitBtn" onclick="submitMultipleTasks()"><i class="fas fa-paper-plane"></i>Submit Done Tickets</button>
           </div>
         </div>
         <div class="task-footer"><span class="author-name"> NCSS Team (CEx)</span></div>
       </div>
     </div>
 
-    <!-- ═══ MY TASK ═══ -->
+    <!-- MY TASK -->
     <div class="panel" id="panelToday">
       <div class="card">
         <div class="panel-header">
           <div class="panel-title"><i class="fas fa-calendar-check"></i>My Task</div>
-          <div style="display:flex;align-items:center;gap:8px">
-            <div class="filter-bar" style="margin-bottom:0;padding:5px 12px">
-              <span class="filter-bar-label"><i class="fas fa-filter"></i>Date:</span>
-              <input type="date" id="todayFilterDate" class="filter-date-input">
-              <button class="fb-btn" onclick="renderToday()"><i class="fas fa-search"></i>Go</button>
-              <button class="fb-btn alt" onclick="resetTodayFilter()"><i class="fas fa-calendar-day"></i>Today</button>
-            </div>
+          <div class="filter-bar" style="margin-bottom:0;padding:5px 12px">
+            <span class="filter-bar-label"><i class="fas fa-filter"></i>Date:</span>
+            <input type="date" id="todayFilterDate" class="filter-date-input">
+            <button class="fb-btn" onclick="renderToday()"><i class="fas fa-search"></i>Go</button>
+            <button class="fb-btn alt" onclick="resetTodayFilter()"><i class="fas fa-calendar-day"></i>Today</button>
           </div>
         </div>
-        <!-- Clickable stat tabs -->
         <div class="stats-grid" style="grid-template-columns:repeat(5,1fr)">
-          <div class="stat-card active-tab" id="tabAll" onclick="filterTodayByCategory('all')">
-            <span class="stat-ico">📋</span><span class="stat-num" id="sTotalToday">0</span><span class="stat-lbl">Total</span>
-          </div>
-          <div class="stat-card" id="tabInstall" onclick="filterTodayByCategory('Installation')">
-            <span class="stat-ico">⚙️</span><span class="stat-num" id="sInstall">0</span><span class="stat-lbl">Installation</span>
-          </div>
-          <div class="stat-card" id="tabTrouble" onclick="filterTodayByCategory('Troubleshoot')">
-            <span class="stat-ico">🔧</span><span class="stat-num" id="sTrouble">0</span><span class="stat-lbl">Troubleshoot</span>
-          </div>
-          <div class="stat-card" id="tabCR" onclick="filterTodayByCategory('CR')">
-            <span class="stat-ico">🔄</span><span class="stat-num" id="sCR">0</span><span class="stat-lbl">CR</span>
-          </div>
-          <div class="stat-card" id="tabSurvey" onclick="filterTodayByCategory('Survey')">
-            <span class="stat-ico">📐</span><span class="stat-num" id="sSurvey">0</span><span class="stat-lbl">Survey</span>
-          </div>
+          <div class="stat-card active-tab" id="tabAll" onclick="filterTodayByCategory('all')"><span class="stat-ico">📋</span><span class="stat-num" id="sTotalToday">0</span><span class="stat-lbl">Total</span></div>
+          <div class="stat-card" id="tabInstall" onclick="filterTodayByCategory('Installation')"><span class="stat-ico">⚙️</span><span class="stat-num" id="sInstall">0</span><span class="stat-lbl">Installation</span></div>
+          <div class="stat-card" id="tabTrouble" onclick="filterTodayByCategory('Troubleshoot')"><span class="stat-ico">🔧</span><span class="stat-num" id="sTrouble">0</span><span class="stat-lbl">Troubleshoot</span></div>
+          <div class="stat-card" id="tabCR" onclick="filterTodayByCategory('CR')"><span class="stat-ico">🔄</span><span class="stat-num" id="sCR">0</span><span class="stat-lbl">CR</span></div>
+          <div class="stat-card" id="tabSurvey" onclick="filterTodayByCategory('Survey')"><span class="stat-ico">📐</span><span class="stat-num" id="sSurvey">0</span><span class="stat-lbl">Survey</span></div>
         </div>
-        <div class="tasks-list" id="todayTasksList">
-          <div class="empty-state"><i class="fas fa-inbox"></i><p>No tasks for selected date.</p></div>
-        </div>
+        <div class="tasks-list" id="todayTasksList"><div class="empty-state"><i class="fas fa-inbox"></i><p>No tasks for selected date.</p></div></div>
       </div>
     </div>
 
-    <!-- ═══ TASK REPORT ═══ -->
+    <!-- TASK REPORT -->
     <div class="panel" id="panelReport">
       <div class="card">
-        <!-- Top bar: live info replaces refresh button -->
         <div class="report-top-bar">
-          <div class="panel-title"><i class="fas fa-chart-bar"></i>Live Engineer Task Report..</div>
-          <div class="rpt-live-info">
-            <div class="rpt-live-dot"></div>
-            <div class="rpt-info-text">
-              <span>Auto-refresh in</span>
-              <span class="rpt-countdown-val" id="rptCountdown">20</span>
-              <span>s</span>
-              <span class="rpt-sep">·</span>
-              <span class="rpt-last-upd">Last updated:</span>
-              <span class="rpt-last-time" id="rptLastLoad">—</span>
+          <div class="panel-title"><i class="fas fa-chart-bar"></i>Live Engineer Task Report.. <span class="rpt-live-badge"><span class="rpt-live-badge-dot"></span>Live</span></div>
+          <div class="rpt-live-info"><div class="rpt-live-dot"></div>
+            <div class="rpt-info-text"><span class="rpt-last-upd">Last updated:</span><span class="rpt-last-time" id="rptLastLoad">—</span></div>
+          </div>
+        </div>
+        <div class="report-iframe-wrap"><iframe id="reportIframe" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT513ZUf5kxkdYXdelbShs75SNIc_FZHmOytEWD8eUXDhUu51QlL1DK4Y2F8UZ2gEjbmy2hsOahjLJj/pubhtml?gid=42649250&single=true&chrome=false" frameborder="0" scrolling="no" onload="onRptIframeLoad()"></iframe></div>
+      </div>
+    </div>
+
+    <!-- USED DEVICES -->
+    <div class="panel" id="panelDevices">
+      <div class="card">
+        <div class="panel-header"><div class="panel-title"><i class="fas fa-network-wired"></i>Used Devices (MAC / SERIAL)</div></div>
+        <div class="subtab-bar" style="position:relative;">
+          <div class="subtab-item active" id="devTabAll" onclick="switchDevTab('all')">
+            <i class="fas fa-database"></i>All Used Devices<span class="subtab-badge subtab-badge-live" id="devAllBadgeTab">● Live</span>
+          </div>
+          <div class="subtab-item" id="devTabMe" onclick="switchDevTab('me')">
+            <i class="fas fa-user"></i>Used by Me<span class="subtab-badge" id="devMeBadgeTab">0</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;padding:0 14px;font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:700;color:#1a3a8f;white-space:nowrap;border-left:1px solid #bee3f8;">
+            <div class="live-dot"></div><span class="live-lastupd">Last updated:</span><span class="live-lasttime" id="allDevLastTime">—</span>
+          </div>
+        </div>
+        <div id="devAllSection">
+          <div class="live-iframe-wrap">
+            <div class="iframe-clip h520" id="allDevIframeWrap">
+              <iframe id="allDevIframe" src="about:blank" frameborder="0" scrolling="yes" onload="onAllDevLoad()"></iframe>
             </div>
           </div>
         </div>
-        <div class="report-iframe-wrap">
-          <iframe id="reportIframe"
-            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT513ZUf5kxkdYXdelbShs75SNIc_FZHmOytEWD8eUXDhUu51QlL1DK4Y2F8UZ2gEjbmy2hsOahjLJj/pubhtml?gid=42649250&single=true&chrome=false"
-            frameborder="0" scrolling="no"
-            onload="onIframeLoad(this)">
-          </iframe>
+        <div id="devMeSection" style="display:none">
+          <div class="filter-bar">
+            <span class="filter-bar-label"><i class="fas fa-filter"></i>Date:</span>
+            <input type="date" id="devFilterDate" class="filter-date-input">
+            <button class="fb-btn" onclick="renderDevices()"><i class="fas fa-search"></i>Go</button>
+            <button class="fb-btn alt" onclick="clearDevFilter()"><i class="fas fa-times"></i>All</button>
+            <span class="filter-bar-label" style="margin-left:6px"><i class="fas fa-search"></i>Search:</span>
+            <input type="text" id="devSearchInput" class="filter-text-input" placeholder="Search MAC / Serial…" oninput="renderDevices()">
+            <span class="fb-count">Showing: <b id="devShowCount">0</b> devices</span>
+          </div>
+          <div class="cards-grid" id="devicesGrid"><div class="empty-state"><i class="fas fa-server"></i><p>No ONU MAC devices found.</p></div></div>
         </div>
       </div>
     </div>
 
-    <!-- ═══ USED DEVICES ═══ -->
-    <div class="panel" id="panelDevices">
-      <div class="card">
-        <div class="panel-header">
-          <div class="panel-title"><i class="fas fa-network-wired"></i>Used Devices (MAC / SERIAL)</div>
-        </div>
-        <div class="filter-bar">
-          <span class="filter-bar-label"><i class="fas fa-filter"></i>Date:</span>
-          <input type="date" id="devFilterDate" class="filter-date-input">
-          <button class="fb-btn" onclick="renderDevices()"><i class="fas fa-search"></i>Go</button>
-          <button class="fb-btn alt" onclick="clearDevFilter()"><i class="fas fa-times"></i>All</button>
-          <span class="filter-bar-label" style="margin-left:6px"><i class="fas fa-search"></i>Search:</span>
-          <input type="text" id="devSearchInput" class="filter-text-input" placeholder="Search MAC / Serial…" oninput="renderDevices()">
-          <span class="fb-count">Showing: <b id="devShowCount">0</b> devices</span>
-        </div>
-        <div class="cards-grid" id="devicesGrid">
-          <div class="empty-state"><i class="fas fa-server"></i><p>No ONU MAC devices found.</p></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══ WIFI SCORING ═══ -->
+    <!-- WIFI -->
     <div class="panel" id="panelWifi">
       <div class="card">
-        <div class="panel-header">
-          <div class="panel-title"><i class="fas fa-wifi"></i>My WiFi Scoring Records</div>
-        </div>
+        <div class="panel-header"><div class="panel-title"><i class="fas fa-wifi"></i>My WiFi Scoring Records</div></div>
         <div class="filter-bar">
           <span class="filter-bar-label"><i class="fas fa-filter"></i>Date:</span>
           <input type="date" id="wifiFilterDate" class="filter-date-input">
@@ -618,59 +461,56 @@ tbody tr{border-bottom:1px solid #e2eaf5;transition:background .15s}
           <button class="fb-btn alt" onclick="clearWifiFilter()"><i class="fas fa-times"></i>All</button>
           <span class="fb-count">Showing: <b id="wifiShowCount">0</b></span>
         </div>
-        <!-- Clickable wifi stat tabs -->
         <div class="wifi-stats">
-          <div class="stat-card active-tab" id="wTabAll" onclick="filterWifiByTab('all')">
-            <span class="stat-ico">📶</span><span class="stat-num" id="wifiAllCount">0</span><span class="stat-lbl">Total Ever</span>
-          </div>
-          <div class="stat-card" id="wTabToday" onclick="filterWifiByTab('today')">
-            <span class="stat-ico">📅</span><span class="stat-num" id="wifiTodayCount">0</span><span class="stat-lbl">Today</span>
-          </div>
-          <div class="stat-card" id="wTabMonth" onclick="filterWifiByTab('month')">
-            <span class="stat-ico">🗓️</span><span class="stat-num" id="wifiMonthCount">0</span><span class="stat-lbl">This Month</span>
-          </div>
+          <div class="stat-card active-tab" id="wTabAll" onclick="filterWifiByTab('all')"><span class="stat-ico">📶</span><span class="stat-num" id="wifiAllCount">0</span><span class="stat-lbl">Total Ever</span></div>
+          <div class="stat-card" id="wTabToday" onclick="filterWifiByTab('today')"><span class="stat-ico">📅</span><span class="stat-num" id="wifiTodayCount">0</span><span class="stat-lbl">Today</span></div>
+          <div class="stat-card" id="wTabMonth" onclick="filterWifiByTab('month')"><span class="stat-ico">🗓️</span><span class="stat-num" id="wifiMonthCount">0</span><span class="stat-lbl">This Month</span></div>
         </div>
-        <div class="cards-grid" id="wifiGrid">
-          <div class="empty-state"><i class="fas fa-wifi"></i><p>No WiFi scoring records found.</p></div>
-        </div>
+        <div class="cards-grid" id="wifiGrid"><div class="empty-state"><i class="fas fa-wifi"></i><p>No WiFi scoring records found.</p></div></div>
       </div>
     </div>
 
-    <!-- ═══ ALL COMPLETED TASKS ═══ -->
+    <!-- ALL COMPLETED TASKS -->
     <div class="panel" id="panelCompleted">
-      <div class="table-section">
-        <div class="table-header-bar">
-          <div class="tbl-title" style="flex-wrap:wrap;gap:8px;align-items:center">
-            <i class="fas fa-clipboard-list"></i>
-            <span>All Completed Tasks</span>
-            <!-- Clickable category count boxes -->
-            <div class="completed-cat-counts" id="completedCatCounts"></div>
-          </div>
-          <div class="tbl-filters">
-            <span style="font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:800;color:#0d1f5c;display:flex;align-items:center;gap:3px"><i class="fas fa-filter"></i>Filter:</span>
-            <input type="date" id="cFilterDate" class="tbl-date-in">
-            <button class="tbl-btn" onclick="filterCompleted()"><i class="fas fa-search"></i>Go</button>
-            <button class="tbl-btn alt" onclick="clearCompletedFilter()"><i class="fas fa-list"></i>All</button>
+      <div class="subtab-bar" style="position:relative;">
+        <div class="subtab-item active" id="cmpTabAll" onclick="switchCmpTab('all')">
+          <i class="fas fa-users"></i>Completed Task by All Engineers<span class="subtab-badge subtab-badge-live">● Live</span>
+        </div>
+        <div class="subtab-item" id="cmpTabMe" onclick="switchCmpTab('me')">
+          <i class="fas fa-user-check"></i>All Completed Task by Me<span class="subtab-badge" id="cmpMeBadge">0</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;padding:0 14px;font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:700;color:#1a3a8f;white-space:nowrap;border-left:1px solid #bee3f8;">
+          <div class="live-dot"></div><span class="live-lastupd">Last updated:</span><span class="live-lasttime" id="allEngLastTime">—</span>
+        </div>
+      </div>
+      <div id="cmpAllSection">
+        <div class="live-iframe-wrap">
+          <div class="iframe-clip h480">
+            <iframe id="allEngIframe" src="about:blank" frameborder="0" scrolling="yes" onload="onAllEngLoad()"></iframe>
           </div>
         </div>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th><i class="fas fa-calendar-day"></i> Date</th>
-                <th><i class="fas fa-ticket-alt"></i> Ticket ID</th>
-                <th><i class="fas fa-tag"></i> Category</th>
-                <th><i class="fas fa-toolbox"></i> Task Type</th>
-                <th><i class="fas fa-user-cog"></i> Engineer</th>
-                <th><i class="fas fa-headset"></i> Backend</th>
-                <th><i class="fas fa-wifi"></i> WiFi</th>
-                <th><i class="fas fa-network-wired"></i> ONU MAC</th>
-                <th><i class="fas fa-check-circle"></i> Status</th>
-              </tr>
-            </thead>
-            <tbody id="completedBody"></tbody>
-          </table>
+      </div>
+      <div id="cmpMeSection" style="display:none">
+        <div class="table-section">
+          <div class="table-header-bar">
+            <div class="tbl-title" style="flex-wrap:wrap;gap:8px;align-items:center">
+              <i class="fas fa-clipboard-list"></i><span>All Completed Tasks</span>
+              <div class="completed-cat-counts" id="completedCatCounts"></div>
+            </div>
+            <div class="tbl-filters">
+              <span style="font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:800;color:#0d1f5c;display:flex;align-items:center;gap:3px"><i class="fas fa-filter"></i>Filter:</span>
+              <input type="date" id="cFilterDate" class="tbl-date-in">
+              <button class="tbl-btn" onclick="filterCompleted()"><i class="fas fa-search"></i>Go</button>
+              <button class="tbl-btn alt" onclick="clearCompletedFilter()"><i class="fas fa-list"></i>All</button>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table><thead><tr>
+              <th>#</th><th><i class="fas fa-calendar-day"></i> Date</th><th><i class="fas fa-ticket-alt"></i> Ticket ID</th>
+              <th><i class="fas fa-tag"></i> Category</th><th><i class="fas fa-toolbox"></i> Task Type</th><th><i class="fas fa-user-cog"></i> Engineer</th>
+              <th><i class="fas fa-headset"></i> Backend</th><th><i class="fas fa-wifi"></i> WiFi</th><th><i class="fas fa-network-wired"></i> ONU MAC</th><th><i class="fas fa-check-circle"></i> Status</th>
+            </tr></thead><tbody id="completedBody"></tbody></table>
+          </div>
         </div>
       </div>
     </div>
@@ -678,101 +518,102 @@ tbody tr{border-bottom:1px solid #e2eaf5;transition:background .15s}
   </div>
 </div>
 
-<div id="toast" class="toast">
-  <span class="toast-icon">✓</span>
-  <span id="toastMessage"></span>
-</div>
+<div id="toast" class="toast"><span class="toast-icon">✓</span><span id="toastMessage"></span></div>
 
 <script>
 const SCRIPT_URL='https://script.google.com/macros/s/AKfycbz2_9FujiuKu28uv8MOEcbfSJlZ98HtPxNECbMjZ_Li2sJosjN0Tac8XYGMuJV3CYBNiA/exec';
+const ALL_DEV_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vT513ZUf5kxkdYXdelbShs75SNIc_FZHmOytEWD8eUXDhUu51QlL1DK4Y2F8UZ2gEjbmy2hsOahjLJj/pubhtml?gid=424221590&single=true';
+const ALL_ENG_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vT513ZUf5kxkdYXdelbShs75SNIc_FZHmOytEWD8eUXDhUu51QlL1DK4Y2F8UZ2gEjbmy2hsOahjLJj/pubhtml?gid=0&single=true';
+const RPT_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vT513ZUf5kxkdYXdelbShs75SNIc_FZHmOytEWD8eUXDhUu51QlL1DK4Y2F8UZ2gEjbmy2hsOahjLJj/pubhtml?gid=42649250&single=true&chrome=false';
 const PANELS=['main','today','report','devices','wifi','completed'];
-
-/* ── Active tab state ── */
-let todayActiveTab='all';
-let wifiActiveTab='all';
-let completedCatFilter=null; // null = all
-
-/* ── STORAGE ── */
+let todayActiveTab='all',wifiActiveTab='all',completedCatFilter=null;
+let devTab='all',cmpTab='all';
+let allDevTimer=null,allDevCdVal=30,allDevCdTimer=null,allDevLoaded=false;
+let allEngTimer=null,allEngCdVal=20,allEngCdTimer=null,allEngLoaded=false;
+let rptTimer=null,rptCdVal=20,rptCdTimer=null;
 function getTasks(){return JSON.parse(localStorage.getItem('completedTasks'))||[]}
 function saveTask(d){const a=getTasks();a.push(d);localStorage.setItem('completedTasks',JSON.stringify(a))}
-
-/* ── DATE ── */
-function fmtDate(iso){
-  if(!iso)return'-';
-  const[y,m,d]=iso.split('-');
-  const mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  return`${d}-${mo[parseInt(m)-1]}-${y}`;
-}
-
-/* ── CATEGORY HELPERS ── */
-function catClass(cat){
-  const map={'Installation':'tc-installation','Troubleshoot':'tc-troubleshoot','CR':'tc-cr','Survey':'tc-survey','Non Ticket':'tc-nonticket'};
-  return map[cat]||'tc-nonticket';
-}
-function purposeTagClass(cat){
-  const map={'Installation':'mt-purpose-install','Troubleshoot':'mt-purpose-trouble','CR':'mt-purpose-cr','Survey':'mt-purpose-survey'};
-  return map[cat]||'mt-purpose-other';
-}
-
-/* ── BADGES ── */
+function fmtDate(iso){if(!iso)return'-';const[y,m,d]=iso.split('-');return`${d}-${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]}-${y}`;}
+function catClass(c){return{'Installation':'tc-installation','Troubleshoot':'tc-troubleshoot','CR':'tc-cr','Survey':'tc-survey','Non Ticket':'tc-nonticket'}[c]||'tc-nonticket';}
+function purpClass(c){return{'Installation':'mt-purpose-install','Troubleshoot':'mt-purpose-trouble','CR':'mt-purpose-cr','Survey':'mt-purpose-survey'}[c]||'mt-purpose-other';}
 function refreshBadges(){
-  const all=getTasks(),today=new Date().toISOString().split('T')[0];
-  document.getElementById('navTodayBadge').textContent    =all.filter(t=>t.date===today).length;
+  const all=getTasks(),td=new Date().toISOString().split('T')[0];
+  document.getElementById('navTodayBadge').textContent=all.filter(t=>t.date===td).length;
   document.getElementById('navCompletedBadge').textContent=all.length;
-  document.getElementById('navDeviceBadge').textContent   =all.filter(t=>t.onuMac&&t.onuMac.trim()).length;
-  document.getElementById('navWifiBadge').textContent     =all.filter(t=>t.wifiScoring==='Yes').length;
+  const dc=all.filter(t=>t.onuMac&&t.onuMac.trim()).length;
+  document.getElementById('navDeviceBadge').textContent=dc;
+  document.getElementById('navWifiBadge').textContent=all.filter(t=>t.wifiScoring==='Yes').length;
+  const mb=document.getElementById('devMeBadgeTab');if(mb)mb.textContent=dc;
+  const cb=document.getElementById('cmpMeBadge');if(cb)cb.textContent=all.length;
 }
-
-/* ── CLOCK ── */
 function updateClock(){
   const n=new Date();
-  document.getElementById('headerDate').textContent=
-    n.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'2-digit',year:'numeric'}).toUpperCase();
-  document.getElementById('headerTime').textContent=
-    n.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  document.getElementById('headerDate').textContent=n.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'2-digit',year:'numeric'}).toUpperCase();
+  document.getElementById('headerTime').textContent=n.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit'});
 }
-
-/* ── TOAST ── */
 function showToast(msg,type='success'){
   const t=document.getElementById('toast'),m=document.getElementById('toastMessage'),ic=t.querySelector('.toast-icon');
-  const S={
-    error:{bg:'linear-gradient(135deg,rgba(185,28,28,.94),rgba(239,68,68,.94))',i:'✗'},
-    warning:{bg:'linear-gradient(135deg,rgba(180,83,9,.94),rgba(251,191,36,.94))',i:'⚠'},
-    info:{bg:'linear-gradient(135deg,rgba(37,99,235,.94),rgba(14,165,233,.94))',i:'ℹ'},
-    success:{bg:'linear-gradient(135deg,rgba(26,58,143,.94),rgba(33,150,243,.94))',i:'✓'}
-  };
-  const s=S[type]||S.success;
-  t.style.background=s.bg;ic.textContent=s.i;m.textContent=msg;
-  t.classList.remove('show');void t.offsetWidth;t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),3200);
+  const S={error:{bg:'linear-gradient(135deg,rgba(185,28,28,.94),rgba(239,68,68,.94))',i:'✗'},warning:{bg:'linear-gradient(135deg,rgba(180,83,9,.94),rgba(251,191,36,.94))',i:'⚠'},info:{bg:'linear-gradient(135deg,rgba(37,99,235,.94),rgba(14,165,233,.94))',i:'ℹ'},success:{bg:'linear-gradient(135deg,rgba(26,58,143,.94),rgba(33,150,243,.94))',i:'✓'}};
+  const s=S[type]||S.success;t.style.background=s.bg;ic.textContent=s.i;m.textContent=msg;
+  t.classList.remove('show');void t.offsetWidth;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200);
 }
-
-/* ── PANEL NAV ── */
 function showPanel(name){
-  PANELS.forEach(p=>{
-    const el=document.getElementById('panel'+p[0].toUpperCase()+p.slice(1));
-    if(el)el.classList.remove('active');
-  });
+  PANELS.forEach(p=>{const el=document.getElementById('panel'+p[0].toUpperCase()+p.slice(1));if(el)el.classList.remove('active');});
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  const target=document.getElementById('panel'+name[0].toUpperCase()+name.slice(1));
-  if(target)target.classList.add('active');
-  const idx=PANELS.indexOf(name);
-  if(idx>=0){const ni=document.querySelectorAll('.nav-item');if(ni[idx])ni[idx].classList.add('active');}
-  if(name==='today')     renderToday();
-  if(name==='completed') renderCompleted();
-  if(name==='devices')   renderDevices();
-  if(name==='wifi')      renderWifi();
-  if(name==='report')    renderReport();
-  else                   stopRptAutoRefresh();
+  const tgt=document.getElementById('panel'+name[0].toUpperCase()+name.slice(1));if(tgt)tgt.classList.add('active');
+  const idx=PANELS.indexOf(name);if(idx>=0){const ni=document.querySelectorAll('.nav-item');if(ni[idx])ni[idx].classList.add('active');}
+  if(name==='today')renderToday();
+  if(name==='completed'){if(cmpTab==='all'){renderCompleted();startAllEngRefresh();if(!allEngLoaded)loadAllEng();}else{renderCompleted();stopAllEngRefresh();}}
+  if(name==='devices'){if(devTab==='all'){startAllDevRefresh();if(!allDevLoaded)loadAllDev();}else{renderDevices();stopAllDevRefresh();}}
+  if(name==='wifi')renderWifi();
+  if(name==='report')startRptRefresh();
+  if(name!=='devices')stopAllDevRefresh();
+  if(name!=='report')stopRptRefresh();
+  if(name!=='completed')stopAllEngRefresh();
 }
-
-/* ── CHECKBOX DROPDOWN ── */
+function switchDevTab(tab){
+  devTab=tab;
+  document.getElementById('devTabAll').classList.toggle('active',tab==='all');
+  document.getElementById('devTabMe').classList.toggle('active',tab==='me');
+  document.getElementById('devAllSection').style.display=tab==='all'?'block':'none';
+  document.getElementById('devMeSection').style.display=tab==='me'?'block':'none';
+  if(tab==='all'){startAllDevRefresh();if(!allDevLoaded)loadAllDev();}else{stopAllDevRefresh();renderDevices();}
+}
+function loadAllDev(){const f=document.getElementById('allDevIframe');if(f){f.src=ALL_DEV_URL+'&t='+Date.now();allDevLoaded=true;}}
+function onAllDevLoad(){const el=document.getElementById('allDevLastTime');if(el)el.textContent=new Date().toLocaleTimeString();allDevCdVal=30;}
+function startAllDevRefresh(){
+  stopAllDevRefresh();allDevCdVal=30;
+  allDevCdTimer=setInterval(()=>{allDevCdVal--;const el=document.getElementById('allDevCountdown');if(el)el.textContent=allDevCdVal<=0?'0':allDevCdVal;if(allDevCdVal<=0)allDevCdVal=30;},1000);
+  allDevTimer=setInterval(()=>{const p=document.getElementById('panelDevices');if(p&&p.classList.contains('active')&&devTab==='all')loadAllDev();},30000);
+}
+function stopAllDevRefresh(){if(allDevTimer){clearInterval(allDevTimer);allDevTimer=null;}if(allDevCdTimer){clearInterval(allDevCdTimer);allDevCdTimer=null;}}
+function switchCmpTab(tab){
+  cmpTab=tab;
+  document.getElementById('cmpTabAll').classList.toggle('active',tab==='all');
+  document.getElementById('cmpTabMe').classList.toggle('active',tab==='me');
+  document.getElementById('cmpAllSection').style.display=tab==='all'?'block':'none';
+  document.getElementById('cmpMeSection').style.display=tab==='me'?'block':'none';
+  if(tab==='all'){startAllEngRefresh();if(!allEngLoaded)loadAllEng();}else{stopAllEngRefresh();renderCompleted();}
+}
+function loadAllEng(){const f=document.getElementById('allEngIframe');if(f){f.src=ALL_ENG_URL+'&t='+Date.now();allEngLoaded=true;}}
+function onAllEngLoad(){const el=document.getElementById('allEngLastTime');if(el)el.textContent=new Date().toLocaleTimeString();allEngCdVal=20;}
+function startAllEngRefresh(){
+  stopAllEngRefresh();allEngCdVal=20;
+  allEngCdTimer=setInterval(()=>{allEngCdVal--;const el=document.getElementById('allEngCountdown');if(el)el.textContent=allEngCdVal<=0?'0':allEngCdVal;if(allEngCdVal<=0)allEngCdVal=20;},1000);
+  allEngTimer=setInterval(()=>{const p=document.getElementById('panelCompleted');if(p&&p.classList.contains('active')&&cmpTab==='all')loadAllEng();},20000);
+}
+function stopAllEngRefresh(){if(allEngTimer){clearInterval(allEngTimer);allEngTimer=null;}if(allEngCdTimer){clearInterval(allEngCdTimer);allEngCdTimer=null;}}
+function startRptRefresh(){
+  stopRptRefresh();rptCdVal=20;
+  rptCdTimer=setInterval(()=>{rptCdVal--;const el=document.getElementById('rptCountdown');if(el)el.textContent=rptCdVal<=0?'0':rptCdVal;if(rptCdVal<=0)rptCdVal=20;},1000);
+  rptTimer=setInterval(()=>{const f=document.getElementById('reportIframe');if(f&&document.getElementById('panelReport').classList.contains('active'))f.src=RPT_URL+'&t='+Date.now();},20000);
+}
+function stopRptRefresh(){if(rptTimer){clearInterval(rptTimer);rptTimer=null;}if(rptCdTimer){clearInterval(rptCdTimer);rptCdTimer=null;}}
+function onRptIframeLoad(){const el=document.getElementById('rptLastLoad');if(el)el.textContent=new Date().toLocaleTimeString();rptCdVal=20;}
 class CDD{
   constructor(id){
-    this.dd=document.getElementById(id);
-    this.sel=this.dd.querySelector('.checkbox-dropdown-select');
-    this.val=this.dd.querySelector('.checkbox-dropdown-value');
-    this.opts=this.dd.querySelectorAll('.checkbox-option');
+    this.dd=document.getElementById(id);this.sel=this.dd.querySelector('.checkbox-dropdown-select');
+    this.val=this.dd.querySelector('.checkbox-dropdown-value');this.opts=this.dd.querySelectorAll('.checkbox-option');
     this.cur=null;this.open=false;
     this.sel.addEventListener('click',e=>{e.stopPropagation();this.open?this.close():this._open()});
     this.opts.forEach(o=>o.addEventListener('click',e=>{e.stopPropagation();this.pick(o)}));
@@ -780,410 +621,95 @@ class CDD{
   }
   _open(){this.dd.classList.add('active');this.open=true}
   close(){this.dd.classList.remove('active');this.open=false}
-  pick(o){
-    this.opts.forEach(x=>x.classList.remove('selected'));
-    o.classList.add('selected');this.cur=o;
-    this.val.textContent=o.getAttribute('data-value');
-    this.val.classList.remove('checkbox-placeholder');this.close();
-  }
+  pick(o){this.opts.forEach(x=>x.classList.remove('selected'));o.classList.add('selected');this.cur=o;this.val.textContent=o.getAttribute('data-value');this.val.classList.remove('checkbox-placeholder');this.close();}
   getValue(){return this.cur?this.cur.getAttribute('data-value'):''}
-  reset(){
-    this.opts.forEach(o=>o.classList.remove('selected'));this.cur=null;
-    this.val.textContent='Select...';this.val.classList.add('checkbox-placeholder');
-  }
+  reset(){this.opts.forEach(o=>o.classList.remove('selected'));this.cur=null;this.val.textContent='Select...';this.val.classList.add('checkbox-placeholder');}
 }
-
-/* ── TOGGLE ── */
-function initToggle(id){
-  const b=document.getElementById(id);b._val=false;
-  b.querySelector('.status-text').textContent='No';
-  b.addEventListener('click',()=>{
-    b._val=!b._val;b.classList.toggle('active',b._val);
-    b.querySelector('.status-text').textContent=b._val?'Yes':'No';
-  });
-}
-function resetToggle(id){
-  const b=document.getElementById(id);b._val=false;b.classList.remove('active');
-  b.querySelector('.status-text').textContent='No';
-}
-
-/* ── SUBMIT ── */
+function initToggle(id){const b=document.getElementById(id);b._val=false;b.querySelector('.status-text').textContent='No';b.addEventListener('click',()=>{b._val=!b._val;b.classList.toggle('active',b._val);b.querySelector('.status-text').textContent=b._val?'Yes':'No';});}
+function resetToggle(id){const b=document.getElementById(id);b._val=false;b.classList.remove('active');b.querySelector('.status-text').textContent='No';}
 async function submitMultipleTasks(){
-  const btn=document.getElementById('submitBtn');
-  const ti=document.getElementById('ticketID').value;
-  const bv=document.getElementById('bnocToggle')._val?'Ahsanul Kabir':'';
-  const wv=document.getElementById('wifiScoringToggle')._val?'Yes':'No';
-  const cd={
-    date:document.getElementById('taskDate').value,
-    category:window.catDD.getValue(),taskType:window.typeDD.getValue(),
-    teamType:window.teamDD.getValue(),engineer:document.getElementById('engineerName').value,
-    backend:bv,wifiScoring:wv,
-    onuMac:document.getElementById('onuMac').value.trim(),
-    remarks:document.getElementById('remarks').value.trim()
-  };
-  const err=[];
-  if(!ti.trim())   err.push('Ticket ID');
-  if(!cd.category) err.push('Task Category');
-  if(!cd.taskType) err.push('Task Type');
-  if(!cd.teamType) err.push('Team Type');
-  if(!cd.engineer) err.push('Engineer Name');
+  const btn=document.getElementById('submitBtn'),ti=document.getElementById('ticketID').value;
+  const bv=document.getElementById('bnocToggle')._val?'Ahsanul Kabir':'',wv=document.getElementById('wifiScoringToggle')._val?'Yes':'No';
+  const cd={date:document.getElementById('taskDate').value,category:window.catDD.getValue(),taskType:window.typeDD.getValue(),teamType:window.teamDD.getValue(),engineer:document.getElementById('engineerName').value,backend:bv,wifiScoring:wv,onuMac:document.getElementById('onuMac').value.trim(),remarks:document.getElementById('remarks').value.trim()};
+  const err=[];if(!ti.trim())err.push('Ticket ID');if(!cd.category)err.push('Task Category');if(!cd.taskType)err.push('Task Type');if(!cd.teamType)err.push('Team Type');if(!cd.engineer)err.push('Engineer Name');
   if(err.length){showToast('Please fill: '+err.join(', '),'warning');return}
-  const ids=ti.split(',').map(s=>s.trim()).filter(Boolean);
-  if(!ids.length){showToast('Please enter at least one Ticket ID!','warning');return}
+  const ids=ti.split(',').map(s=>s.trim()).filter(Boolean);if(!ids.length){showToast('Please enter at least one Ticket ID!','warning');return}
   const ex=new Set(getTasks().map(t=>t.ticket.toUpperCase()));
-  for(const id of ids)
-    if(ex.has(id.toUpperCase())){showToast(`Ticket "${id}" already submitted!`,'warning');return}
-  btn.disabled=true;
-  btn.innerHTML=`<i class="fas fa-spinner fa-spin"></i> ${ids.length>1?ids.length+' Tickets...':'Submitting...'}`;
+  for(const id of ids)if(ex.has(id.toUpperCase())){showToast(`Ticket "${id}" already submitted!`,'warning');return}
+  btn.disabled=true;btn.innerHTML=`<i class="fas fa-spinner fa-spin"></i> ${ids.length>1?ids.length+' Tickets...':'Submitting...'}`;
   let ok=0;
-  for(let i=0;i<ids.length;i++){
-    const fd={...cd,ticket:ids[i]};
-    try{await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(fd)});saveTask(fd);ok++;}
-    catch(e){console.error(e)}
-    await new Promise(r=>setTimeout(r,100));
-  }
+  for(let i=0;i<ids.length;i++){const fd={...cd,ticket:ids[i]};try{await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(fd)});saveTask(fd);ok++;}catch(e){console.error(e)}await new Promise(r=>setTimeout(r,100));}
   refreshBadges();
-  if(ok>0){
-    showToast(`Successfully submitted ${ok} ticket(s)!`,'success');
-    btn.innerHTML=`<i class="fas fa-check-circle"></i> ${ok} Submitted!`;
-    setTimeout(()=>{btn.innerHTML=`<i class="fas fa-paper-plane"></i> Submit Done Tickets`},2400);
-    ['ticketID','onuMac','remarks'].forEach(id=>document.getElementById(id).value='');
-    document.getElementById('remarksCount').textContent='0/500';
-    resetToggle('bnocToggle');resetToggle('wifiScoringToggle');
-  }else showToast('Error submitting! Try again.','error');
+  if(ok>0){showToast(`Successfully submitted ${ok} ticket(s)!`,'success');btn.innerHTML=`<i class="fas fa-check-circle"></i> ${ok} Submitted!`;setTimeout(()=>{btn.innerHTML=`<i class="fas fa-paper-plane"></i> Submit Done Tickets`},2400);['ticketID','onuMac','remarks'].forEach(id=>document.getElementById(id).value='');document.getElementById('remarksCount').textContent='0/500';resetToggle('bnocToggle');resetToggle('wifiScoringToggle');}
+  else showToast('Error submitting! Try again.','error');
   btn.disabled=false;
 }
-
-/* ════════════════════════════════
-   MY TASK — clickable tabs
-════════════════════════════════ */
-function setTodayTab(tab){
-  todayActiveTab=tab;
-  const tabs={all:'tabAll',Installation:'tabInstall',Troubleshoot:'tabTrouble',CR:'tabCR',Survey:'tabSurvey'};
-  Object.entries(tabs).forEach(([k,id])=>{
-    const el=document.getElementById(id);
-    if(el) el.classList.toggle('active-tab',k===tab);
-  });
-}
-
-function filterTodayByCategory(cat){
-  setTodayTab(cat);
-  const fd=document.getElementById('todayFilterDate').value;
-  const d=fd||new Date().toISOString().split('T')[0];
-  let tasks=getTasks().filter(t=>t.date===d);
-  if(cat!=='all') tasks=tasks.filter(t=>t.category===cat);
-  renderTodayList(tasks, cat);
-}
-
+function setTodayTab(tab){todayActiveTab=tab;const tabs={all:'tabAll',Installation:'tabInstall',Troubleshoot:'tabTrouble',CR:'tabCR',Survey:'tabSurvey'};Object.entries(tabs).forEach(([k,id])=>{const el=document.getElementById(id);if(el)el.classList.toggle('active-tab',k===tab);});}
+function filterTodayByCategory(cat){setTodayTab(cat);const fd=document.getElementById('todayFilterDate').value,d=fd||new Date().toISOString().split('T')[0];let tasks=getTasks().filter(t=>t.date===d);if(cat!=='all')tasks=tasks.filter(t=>t.category===cat);renderTodayList(tasks);}
 function renderToday(){
-  const fd=document.getElementById('todayFilterDate').value;
-  const d=fd||new Date().toISOString().split('T')[0];
-  const all=getTasks().filter(t=>t.date===d);
-  // Update counts
-  document.getElementById('sTotalToday').textContent=all.length;
-  document.getElementById('sInstall').textContent =all.filter(t=>t.category==='Installation').length;
-  document.getElementById('sTrouble').textContent  =all.filter(t=>t.category==='Troubleshoot').length;
-  document.getElementById('sCR').textContent       =all.filter(t=>t.category==='CR').length;
-  document.getElementById('sSurvey').textContent   =all.filter(t=>t.category==='Survey').length;
-  // Render list based on active tab
-  let tasks=all;
-  if(todayActiveTab!=='all') tasks=all.filter(t=>t.category===todayActiveTab);
-  renderTodayList(tasks, todayActiveTab);
+  const fd=document.getElementById('todayFilterDate').value,d=fd||new Date().toISOString().split('T')[0],all=getTasks().filter(t=>t.date===d);
+  document.getElementById('sTotalToday').textContent=all.length;document.getElementById('sInstall').textContent=all.filter(t=>t.category==='Installation').length;document.getElementById('sTrouble').textContent=all.filter(t=>t.category==='Troubleshoot').length;document.getElementById('sCR').textContent=all.filter(t=>t.category==='CR').length;document.getElementById('sSurvey').textContent=all.filter(t=>t.category==='Survey').length;
+  let tasks=all;if(todayActiveTab!=='all')tasks=all.filter(t=>t.category===todayActiveTab);renderTodayList(tasks);
 }
-
-function renderTodayList(tasks, filterCat){
-  const list=document.getElementById('todayTasksList');
-  if(!tasks.length){
-    list.innerHTML='<div class="empty-state"><i class="fas fa-inbox"></i><p>No tasks for selected date.</p></div>';return;
-  }
-  // Get full day tasks for total numbering
-  const fd=document.getElementById('todayFilterDate').value;
-  const d=fd||new Date().toISOString().split('T')[0];
-  const allDay=getTasks().filter(t=>t.date===d);
-  list.innerHTML='';
+function renderTodayList(tasks){
+  const list=document.getElementById('todayTasksList');if(!tasks.length){list.innerHTML='<div class="empty-state"><i class="fas fa-inbox"></i><p>No tasks for selected date.</p></div>';return;}
+  const fd=document.getElementById('todayFilterDate').value,d=fd||new Date().toISOString().split('T')[0],allDay=getTasks().filter(t=>t.date===d);
+  list.innerHTML='';tasks.slice().reverse().forEach(t=>{const div=document.createElement('div');div.className='task-item';div.innerHTML=`<div class="task-num">${allDay.indexOf(t)+1}</div><div class="task-info-left"><span class="task-ticket">${t.ticket}</span><span class="task-date"><i class="fas fa-calendar-day"></i>${fmtDate(t.date)}</span></div><span class="task-cat-badge ${catClass(t.category)}">${t.category}</span>`;list.appendChild(div);});
+}
+function resetTodayFilter(){document.getElementById('todayFilterDate').value=new Date().toISOString().split('T')[0];todayActiveTab='all';setTodayTab('all');renderToday();}
+function buildCatCounts(){
+  const box=document.getElementById('completedCatCounts');if(!box)return;
+  const cats=[{key:'Installation',cls:'ccb-install',icon:'⚙️'},{key:'Troubleshoot',cls:'ccb-trouble',icon:'🔧'},{key:'CR',cls:'ccb-cr',icon:'🔄'},{key:'Survey',cls:'ccb-survey',icon:'📐'}];
+  const all=getTasks();box.innerHTML='';
+  cats.forEach(c=>{const cnt=all.filter(t=>t.category===c.key).length,active=completedCatFilter===c.key?'active-filter':'',div=document.createElement('div');div.className=`cat-count-box ${c.cls} ${active}`;div.innerHTML=`<span>${c.icon}</span><span>${c.key}</span><span class="cnt-num">${cnt}</span>`;div.onclick=()=>togCatFilter(c.key);box.appendChild(div);});
+}
+function togCatFilter(cat){completedCatFilter=(completedCatFilter===cat)?null:cat;document.getElementById('cFilterDate').value='';renderCompleted();}
+function renderCompleted(fd){
+  let tasks=getTasks();if(fd)tasks=tasks.filter(t=>t.date===fd);if(completedCatFilter)tasks=tasks.filter(t=>t.category===completedCatFilter);
+  buildCatCounts();const tbody=document.getElementById('completedBody');tbody.innerHTML='';
+  if(!tasks.length){tbody.innerHTML=`<tr><td colspan="10" style="text-align:center;padding:32px;color:#9ca3af"><i class="fas fa-inbox" style="display:block;font-size:2rem;color:#bee3f8;margin-bottom:10px"></i>No tasks found.</td></tr>`;return;}
   tasks.slice().reverse().forEach((t,i)=>{
-    const div=document.createElement('div');div.className='task-item';
-    const cClass=catClass(t.category);
-    // Find original index in full list
-    const origIdx=allDay.indexOf(t);
-    div.innerHTML=`
-      <div class="task-num">${origIdx+1}</div>
-      <div class="task-info-left">
-        <span class="task-ticket">${t.ticket}</span>
-        <span class="task-date"><i class="fas fa-calendar-day"></i>${fmtDate(t.date)}</span>
-      </div>
-      <span class="task-cat-badge ${cClass}">${t.category}</span>`;
-    list.appendChild(div);
-  });
-}
-
-function resetTodayFilter(){
-  document.getElementById('todayFilterDate').value=new Date().toISOString().split('T')[0];
-  todayActiveTab='all';
-  setTodayTab('all');
-  renderToday();
-}
-
-/* ════════════════════════════════
-   COMPLETED — category count boxes
-════════════════════════════════ */
-function buildCompletedCatCounts(tasks){
-  const box=document.getElementById('completedCatCounts');
-  if(!box)return;
-  const cats=[
-    {key:'Installation',cls:'ccb-install',icon:'⚙️'},
-    {key:'Troubleshoot',cls:'ccb-trouble',icon:'🔧'},
-    {key:'CR',cls:'ccb-cr',icon:'🔄'},
-    {key:'Survey',cls:'ccb-survey',icon:'📐'},
-  ];
-  const allTasks=getTasks();// count from all tasks always
-  box.innerHTML='';
-  cats.forEach(c=>{
-    const cnt=allTasks.filter(t=>t.category===c.key).length;
-    const active=completedCatFilter===c.key?'active-filter':'';
-    const div=document.createElement('div');
-    div.className=`cat-count-box ${c.cls} ${active}`;
-    div.innerHTML=`<span>${c.icon}</span><span>${c.key}</span><span class="cnt-num">${cnt}</span>`;
-    div.onclick=()=>toggleCompletedCatFilter(c.key);
-    box.appendChild(div);
-  });
-}
-
-function toggleCompletedCatFilter(cat){
-  if(completedCatFilter===cat){
-    completedCatFilter=null;
-  }else{
-    completedCatFilter=cat;
-  }
-  // Clear date filter when clicking category
-  document.getElementById('cFilterDate').value='';
-  renderCompleted();
-}
-
-function renderCompleted(dateFd){
-  let tasks=getTasks();
-  if(dateFd) tasks=tasks.filter(t=>t.date===dateFd);
-  if(completedCatFilter) tasks=tasks.filter(t=>t.category===completedCatFilter);
-  buildCompletedCatCounts(tasks);
-  const tbody=document.getElementById('completedBody');
-  tbody.innerHTML='';
-  if(!tasks.length){
-    tbody.innerHTML=`<tr><td colspan="10" style="text-align:center;padding:32px;color:#9ca3af"><i class="fas fa-inbox" style="display:block;font-size:2rem;color:#bee3f8;margin-bottom:10px"></i>No tasks found.</td></tr>`;
-    return;
-  }
-  tasks.slice().reverse().forEach((t,i)=>{
-    const tr=document.createElement('tr');
-    const bd=t.backend&&t.backend.trim()?t.backend:'-';
-    const ou=t.onuMac?(t.onuMac.length>18?t.onuMac.substring(0,18)+'…':t.onuMac):'-';
-    const ticketHtml=t.remarks&&t.remarks.trim()
-      ?`${t.ticket} <span title="${t.remarks.replace(/"/g,'&quot;')}" style="margin-left:4px;color:#1d4ed8;font-size:.6rem;background:#dbeafe;padding:1px 7px;border-radius:20px;border:1px solid #93c5fd;cursor:default;font-family:'Montserrat',sans-serif;font-weight:700">💬 ${t.remarks.substring(0,18)+(t.remarks.length>18?'…':'')}</span>`
-      :t.ticket;
-    tr.innerHTML=`
-      <td style="color:#94a3b8;font-size:.68rem;font-weight:800">${tasks.length-i}</td>
-      <td style="font-weight:700">${fmtDate(t.date)}</td>
-      <td style="font-weight:800;font-family:'Montserrat',sans-serif;font-size:.7rem;letter-spacing:.3px">${ticketHtml}</td>
-      <td>${t.category}</td>
-      <td style="font-size:.7rem">${t.taskType||'-'}</td>
-      <td style="font-weight:700">${t.engineer}</td>
-      <td>${bd}</td>
-      <td style="font-weight:800;color:${t.wifiScoring==='Yes'?'#0f766e':'#94a3b8'}">${t.wifiScoring||'No'}</td>
-      <td class="mono" title="${t.onuMac||''}">${ou}</td>
-      <td><span class="badge">SYNCED</span></td>`;
+    const tr=document.createElement('tr'),bd=t.backend&&t.backend.trim()?t.backend:'-',ou=t.onuMac?(t.onuMac.length>18?t.onuMac.substring(0,18)+'…':t.onuMac):'-';
+    const th=t.remarks&&t.remarks.trim()?`${t.ticket} <span title="${t.remarks.replace(/"/g,'&quot;')}" style="margin-left:4px;color:#1d4ed8;font-size:.6rem;background:#dbeafe;padding:1px 7px;border-radius:20px;border:1px solid #93c5fd;cursor:default;font-family:'Montserrat',sans-serif;font-weight:700">💬 ${t.remarks.substring(0,18)+(t.remarks.length>18?'…':'')}</span>`:t.ticket;
+    tr.innerHTML=`<td style="color:#94a3b8;font-size:.68rem;font-weight:800">${tasks.length-i}</td><td style="font-weight:700">${fmtDate(t.date)}</td><td style="font-weight:800;font-family:'Montserrat',sans-serif;font-size:.7rem;letter-spacing:.3px">${th}</td><td>${t.category}</td><td style="font-size:.7rem">${t.taskType||'-'}</td><td style="font-weight:700">${t.engineer}</td><td>${bd}</td><td style="font-weight:800;color:${t.wifiScoring==='Yes'?'#0f766e':'#94a3b8'}">${t.wifiScoring||'No'}</td><td class="mono" title="${t.onuMac||''}">${ou}</td><td><span class="badge">SYNCED</span></td>`;
     tbody.appendChild(tr);
   });
 }
-
-function filterCompleted(){
-  const fd=document.getElementById('cFilterDate').value;
-  completedCatFilter=null;// reset cat filter on date search
-  renderCompleted(fd);
-  if(fd){const c=getTasks().filter(t=>t.date===fd).length;showToast(`${c} task(s) on ${fmtDate(fd)}`,c?'success':'warning')}
-  else showToast('Showing all tasks','info');
-}
-
-function clearCompletedFilter(){
-  document.getElementById('cFilterDate').value='';
-  completedCatFilter=null;
-  renderCompleted();
-}
-
-/* ════════════════════════════════
-   DEVICES
-════════════════════════════════ */
+function filterCompleted(){const fd=document.getElementById('cFilterDate').value;completedCatFilter=null;renderCompleted(fd);if(fd){const c=getTasks().filter(t=>t.date===fd).length;showToast(`${c} task(s) on ${fmtDate(fd)}`,c?'success':'warning')}else showToast('Showing all tasks','info');}
+function clearCompletedFilter(){document.getElementById('cFilterDate').value='';completedCatFilter=null;renderCompleted();}
 function renderDevices(){
-  const fd=document.getElementById('devFilterDate').value;
-  const sq=(document.getElementById('devSearchInput').value||'').trim().toLowerCase();
+  const fd=document.getElementById('devFilterDate').value,sq=(document.getElementById('devSearchInput').value||'').trim().toLowerCase();
   let withMac=(fd?getTasks().filter(t=>t.date===fd):getTasks()).filter(t=>t.onuMac&&t.onuMac.trim());
-  if(sq) withMac=withMac.filter(t=>t.onuMac.toLowerCase().includes(sq));
+  if(sq)withMac=withMac.filter(t=>t.onuMac.toLowerCase().includes(sq));
   document.getElementById('devShowCount').textContent=withMac.length;
+  const mb=document.getElementById('devMeBadgeTab');if(mb)mb.textContent=getTasks().filter(t=>t.onuMac&&t.onuMac.trim()).length;
   const grid=document.getElementById('devicesGrid');
   if(!withMac.length){grid.innerHTML='<div class="empty-state"><i class="fas fa-server"></i><p>No ONU MAC devices found.</p></div>';return}
-  grid.innerHTML='';
-  withMac.slice().reverse().forEach(t=>{
-    const pClass=purposeTagClass(t.category);
-    const div=document.createElement('div');div.className='d-card';
-    div.innerHTML=`
-      <div class="d-card-inner">
-        <div class="d-icon"><i class="fas fa-router"></i></div>
-        <div class="d-left">
-          <div class="d-mac-label">Device MAC / Serial</div>
-          <div class="d-mac">${t.onuMac}</div>
-        </div>
-        <div class="d-mid">
-          <div class="d-mid-row"><i class="fas fa-calendar-day"></i><b>${fmtDate(t.date)}</b></div>
-          <div class="d-mid-row"><i class="fas fa-ticket-alt"></i><b>${t.ticket}</b></div>
-        </div>
-        <div class="d-right">
-          <span class="mtag ${pClass}"><i class="fas fa-tag"></i> ${t.category}</span>
-        </div>
-      </div>`;
-    grid.appendChild(div);
-  });
+  grid.innerHTML='';withMac.slice().reverse().forEach(t=>{const div=document.createElement('div');div.className='d-card';div.innerHTML=`<div class="d-card-inner"><div class="d-icon"><i class="fas fa-router"></i></div><div class="d-left"><div class="d-mac-label">Device MAC / Serial</div><div class="d-mac">${t.onuMac}</div></div><div class="d-mid"><div class="d-mid-row"><i class="fas fa-calendar-day"></i><b>${fmtDate(t.date)}</b></div><div class="d-mid-row"><i class="fas fa-ticket-alt"></i><b>${t.ticket}</b></div></div><div class="d-right"><span class="mtag ${purpClass(t.category)}"><i class="fas fa-tag"></i> ${t.category}</span></div></div>`;grid.appendChild(div);});
 }
-function clearDevFilter(){
-  document.getElementById('devFilterDate').value='';
-  document.getElementById('devSearchInput').value='';
-  renderDevices();
-}
-
-/* ════════════════════════════════
-   WIFI — clickable tabs
-════════════════════════════════ */
-function setWifiTab(tab){
-  wifiActiveTab=tab;
-  ['all','today','month'].forEach(k=>{
-    const el=document.getElementById('wTab'+k[0].toUpperCase()+k.slice(1));
-    if(el) el.classList.toggle('active-tab',k===tab);
-  });
-}
-
-function filterWifiByTab(tab){
-  setWifiTab(tab);
-  const today=new Date().toISOString().split('T')[0];
-  const cm=today.substring(0,7);
-  const all=getTasks().filter(t=>t.wifiScoring==='Yes');
-  let filtered=all;
-  if(tab==='today') filtered=all.filter(t=>t.date===today);
-  else if(tab==='month') filtered=all.filter(t=>t.date&&t.date.startsWith(cm));
-  document.getElementById('wifiShowCount').textContent=filtered.length;
-  renderWifiList(filtered);
-}
-
+function clearDevFilter(){document.getElementById('devFilterDate').value='';document.getElementById('devSearchInput').value='';renderDevices();}
+function setWifiTab(tab){wifiActiveTab=tab;['all','today','month'].forEach(k=>{const el=document.getElementById('wTab'+k[0].toUpperCase()+k.slice(1));if(el)el.classList.toggle('active-tab',k===tab);});}
+function filterWifiByTab(tab){setWifiTab(tab);const td=new Date().toISOString().split('T')[0],cm=td.substring(0,7),all=getTasks().filter(t=>t.wifiScoring==='Yes');let f=all;if(tab==='today')f=all.filter(t=>t.date===td);else if(tab==='month')f=all.filter(t=>t.date&&t.date.startsWith(cm));document.getElementById('wifiShowCount').textContent=f.length;renderWifiList(f);}
 function renderWifi(){
-  const fd=document.getElementById('wifiFilterDate').value;
-  const today=new Date().toISOString().split('T')[0];
-  const cm=today.substring(0,7);
-  const all=getTasks().filter(t=>t.wifiScoring==='Yes');
-  document.getElementById('wifiAllCount').textContent  =all.length;
-  document.getElementById('wifiTodayCount').textContent=all.filter(t=>t.date===today).length;
-  document.getElementById('wifiMonthCount').textContent=all.filter(t=>t.date&&t.date.startsWith(cm)).length;
-  // Apply date filter or tab filter
-  let filtered;
-  if(fd){
-    filtered=all.filter(t=>t.date===fd);
-    // Reset tab when date filter applied
-    wifiActiveTab='all';setWifiTab('all');
-  } else {
-    if(wifiActiveTab==='today') filtered=all.filter(t=>t.date===today);
-    else if(wifiActiveTab==='month') filtered=all.filter(t=>t.date&&t.date.startsWith(cm));
-    else filtered=all;
-  }
-  document.getElementById('wifiShowCount').textContent=filtered.length;
-  renderWifiList(filtered);
+  const fd=document.getElementById('wifiFilterDate').value,td=new Date().toISOString().split('T')[0],cm=td.substring(0,7),all=getTasks().filter(t=>t.wifiScoring==='Yes');
+  document.getElementById('wifiAllCount').textContent=all.length;document.getElementById('wifiTodayCount').textContent=all.filter(t=>t.date===td).length;document.getElementById('wifiMonthCount').textContent=all.filter(t=>t.date&&t.date.startsWith(cm)).length;
+  let f;if(fd){f=all.filter(t=>t.date===fd);wifiActiveTab='all';setWifiTab('all');}else{if(wifiActiveTab==='today')f=all.filter(t=>t.date===td);else if(wifiActiveTab==='month')f=all.filter(t=>t.date&&t.date.startsWith(cm));else f=all;}
+  document.getElementById('wifiShowCount').textContent=f.length;renderWifiList(f);
 }
-
-function renderWifiList(filtered){
-  const grid=document.getElementById('wifiGrid');
-  if(!filtered.length){grid.innerHTML='<div class="empty-state"><i class="fas fa-wifi"></i><p>No WiFi scoring records found.</p></div>';return}
-  grid.innerHTML='';
-  filtered.slice().reverse().forEach(t=>{
-    const div=document.createElement('div');div.className='d-card wifi-c';
-    div.innerHTML=`
-      <div class="d-card-inner">
-        <div class="d-icon wi"><i class="fas fa-wifi"></i></div>
-        <div class="d-left">
-          <div class="d-mac-label">Ticket ID</div>
-          <div class="d-mac" style="font-family:'Montserrat',sans-serif;color:#4338ca;font-size:.82rem">${t.ticket}</div>
-        </div>
-        <div class="d-mid">
-          <div class="d-mid-row"><i class="fas fa-calendar-day"></i><b>${fmtDate(t.date)}</b></div>
-        </div>
-        <div class="d-right">
-          <span class="mtag ${purposeTagClass(t.category)}"><i class="fas fa-tag"></i> ${t.category}</span>
-        </div>
-      </div>`;
-    grid.appendChild(div);
-  });
+function renderWifiList(f){
+  const grid=document.getElementById('wifiGrid');if(!f.length){grid.innerHTML='<div class="empty-state"><i class="fas fa-wifi"></i><p>No WiFi scoring records found.</p></div>';return}
+  grid.innerHTML='';f.slice().reverse().forEach(t=>{const div=document.createElement('div');div.className='d-card wifi-c';div.innerHTML=`<div class="d-card-inner"><div class="d-icon wi"><i class="fas fa-wifi"></i></div><div class="d-left"><div class="d-mac-label">Ticket ID</div><div class="d-mac" style="font-family:'Montserrat',sans-serif;color:#4338ca;font-size:.82rem">${t.ticket}</div></div><div class="d-mid"><div class="d-mid-row"><i class="fas fa-calendar-day"></i><b>${fmtDate(t.date)}</b></div></div><div class="d-right"><span class="mtag ${purpClass(t.category)}"><i class="fas fa-tag"></i> ${t.category}</span></div></div>`;grid.appendChild(div);});
 }
-
-function clearWifiFilter(){
-  document.getElementById('wifiFilterDate').value='';
-  wifiActiveTab='all';
-  setWifiTab('all');
-  renderWifi();
-}
-
-/* ════════════════════════════════
-   TASK REPORT — Auto refresh only, no manual button
-════════════════════════════════ */
-const RPT_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vT513ZUf5kxkdYXdelbShs75SNIc_FZHmOytEWD8eUXDhUu51QlL1DK4Y2F8UZ2gEjbmy2hsOahjLJj/pubhtml?gid=42649250&single=true&chrome=false';
-let rptTimer=null;
-let rptCountdownVal=20;
-let rptCountdownTimer=null;
-
-function renderReport(){startRptAutoRefresh();}
-
-function onIframeLoad(iframe){
-  const now=new Date().toLocaleTimeString();
-  const el=document.getElementById('rptLastLoad');
-  if(el)el.textContent=now;
-  rptCountdownVal=20;
-}
-
-function startRptAutoRefresh(){
-  if(rptTimer)clearInterval(rptTimer);
-  if(rptCountdownTimer)clearInterval(rptCountdownTimer);
-  rptCountdownVal=20;
-  // Countdown every second
-  rptCountdownTimer=setInterval(()=>{
-    rptCountdownVal--;
-    const el=document.getElementById('rptCountdown');
-    if(el)el.textContent=rptCountdownVal<=0?'0':rptCountdownVal;
-    if(rptCountdownVal<=0)rptCountdownVal=20;
-  },1000);
-  // Reload iframe every 20s
-  rptTimer=setInterval(()=>{
-    const iframe=document.getElementById('reportIframe');
-    if(iframe&&document.getElementById('panelReport').classList.contains('active')){
-      iframe.src=RPT_URL+'&t='+Date.now();
-    }
-  },20000);
-}
-
-function stopRptAutoRefresh(){
-  if(rptTimer){clearInterval(rptTimer);rptTimer=null;}
-  if(rptCountdownTimer){clearInterval(rptCountdownTimer);rptCountdownTimer=null;}
-}
-
-/* ── MISC ── */
-function updateRemarksCount(){
-  document.getElementById('remarksCount').textContent=document.getElementById('remarks').value.length+'/500';
-}
-
-/* ── INIT ── */
+function clearWifiFilter(){document.getElementById('wifiFilterDate').value='';wifiActiveTab='all';setWifiTab('all');renderWifi();}
+function updateRemarksCount(){document.getElementById('remarksCount').textContent=document.getElementById('remarks').value.length+'/500';}
 window.onload=function(){
   updateClock();setInterval(updateClock,1000);
   const today=new Date().toISOString().split('T')[0];
-  ['taskDate','cFilterDate','devFilterDate','wifiFilterDate','todayFilterDate'].forEach(id=>{
-    const el=document.getElementById(id);if(el)el.value=today;
-  });
-  window.catDD =new CDD('taskCategoryDropdown');
-  window.typeDD=new CDD('taskTypeDropdown');
-  window.teamDD=new CDD('teamTypeDropdown');
+  ['taskDate','cFilterDate','devFilterDate','wifiFilterDate','todayFilterDate'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=today;});
+  window.catDD=new CDD('taskCategoryDropdown');window.typeDD=new CDD('taskTypeDropdown');window.teamDD=new CDD('teamTypeDropdown');
   initToggle('bnocToggle');initToggle('wifiScoringToggle');
-  refreshBadges();
-  // Init completed cat counts
-  buildCompletedCatCounts([]);
+  refreshBadges();buildCatCounts();
+  startAllDevRefresh();loadAllDev();
 };
 </script>
 </body>
