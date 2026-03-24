@@ -150,7 +150,7 @@ input:focus,select:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(33,150,2
 .tc-survey{background:linear-gradient(90deg,#ede9fe,#ddd6fe);color:#5b21b6;border:1px solid #c4b5fd}
 .tc-nonticket{background:linear-gradient(90deg,#fce7f3,#fbcfe8);color:#9d174d;border:1px solid #f9a8d4}
 .cards-grid{display:flex;flex-direction:column;gap:9px}
-.d-card{background:#fff;border:1.5px solid #bee3f8;border-radius:13px;padding:13px 16px;box-shadow:0 3px 12px rgba(26,58,143,.07);transition:all .22s;border-left:4px solid #2196f3;}
+.d-card{background:#fff;border:1.5px solid #bee3f8;border-radius:13px;padding:13px 16px;box-shadow:0 3px 12px rgba(26,58,143,.07);transition:all .22s;border-left:4px solid #2196f3;display:flex;align-items:center;}
 .d-card:hover{transform:translateX(4px);box-shadow:0 6px 20px rgba(26,58,143,.14);border-left-color:#1a3a8f}
 .d-card.wifi-c{border-left-color:#7c3aed}
 .d-card.wifi-c:hover{border-left-color:#5b21b6;box-shadow:0 6px 20px rgba(109,40,217,.12)}
@@ -202,7 +202,7 @@ input:focus,select:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(33,150,2
 .iframe-clip.h520 iframe{height:568px;}
 .iframe-clip.h480 iframe{height:478px;}
 .wifi-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
-.table-section{background:var(--card);border-radius:14px;border:1px solid rgba(190,227,248,.75);overflow:hidden;box-shadow:var(--shadow)}
+.table-section{background:var(--card);border-radius:14px;border:1px solid rgba(190,227,248,.75);box-shadow:var(--shadow)}
 .table-header-bar{padding:11px 18px;background:linear-gradient(90deg,#dbeafe,#bfdbfe,#e0f2fe);font-family:'Montserrat',sans-serif;font-weight:900;color:#0d1f5c;border-bottom:2px solid #90caf9;text-transform:uppercase;letter-spacing:.7px;font-size:.72rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
 .tbl-title{display:flex;align-items:center;gap:8px}
 .tbl-title i{color:#1d4ed8;font-size:.95rem}
@@ -221,14 +221,40 @@ input:focus,select:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(33,150,2
 .tbl-btn{background:linear-gradient(135deg,#1a3a8f,#2196f3);color:#fff;border:none;padding:0 10px;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:800;cursor:pointer;height:28px;transition:all .25s;display:flex;align-items:center;gap:3px;box-shadow:0 3px 8px rgba(26,58,143,.2);}
 .tbl-btn:hover{transform:translateY(-1px);filter:brightness(1.1)}
 .tbl-btn.alt{background:linear-gradient(135deg,#5b21b6,#7c3aed)}
-.table-wrapper{overflow-x:auto;max-height:460px;overflow-y:auto}
+.table-wrapper{overflow-x:auto;overflow-y:visible;border-radius:0 0 14px 14px;}
 table{width:100%;border-collapse:collapse;min-width:820px}
-th{padding:9px 12px;text-align:left;font-family:'Montserrat',sans-serif;font-size:.6rem;background:#e8f4fd;color:#0d1f5c;border-bottom:2px solid #90caf9;letter-spacing:.5px;font-weight:900;position:sticky;top:0;z-index:10;white-space:nowrap;}
+th{padding:9px 12px;text-align:left;font-family:'Montserrat',sans-serif;font-size:.6rem;background:#e8f4fd;color:#0d1f5c;border-bottom:2px solid #90caf9;letter-spacing:.5px;font-weight:900;white-space:nowrap;}
 td{padding:8px 12px;font-size:.74rem;font-family:'Outfit',sans-serif;font-weight:500;color:#1a2340;white-space:nowrap;vertical-align:middle}
 td.mono{font-family:'JetBrains Mono',monospace;font-size:.68rem}
 tbody tr:nth-child(even){background:#f0f8ff}tbody tr:nth-child(odd){background:#fff}
 tbody tr:hover{background:#dbeafe}tbody tr{border-bottom:1px solid #e2eaf5;transition:background .15s}
 .badge{background:linear-gradient(90deg,#dbeafe,#bfdbfe);color:#1a3a8f;padding:2px 8px;border-radius:20px;font-family:'Montserrat',sans-serif;font-size:.56rem;font-weight:800;display:inline-block;text-transform:uppercase;border:1px solid #93c5fd;letter-spacing:.3px;}
+/* ── Delete Toolbar ── */
+.del-toolbar{display:none;align-items:center;gap:8px;background:linear-gradient(90deg,#fff1f2,#ffe4e6);border:1.5px solid #fca5a5;border-radius:10px;padding:7px 14px;margin-bottom:10px;box-shadow:0 2px 8px rgba(239,68,68,.1);}
+.del-toolbar.show{display:flex}
+.del-toolbar-label{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:800;color:#991b1b;display:flex;align-items:center;gap:5px;flex:1}
+.del-toolbar-label i{color:#dc2626}
+.del-sel-count{background:#dc2626;color:#fff;border-radius:20px;padding:1px 8px;font-size:.6rem;font-weight:900;font-family:'Montserrat',sans-serif;}
+.btn-del-sel{background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;border:none;padding:0 12px;border-radius:7px;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:800;cursor:pointer;height:28px;display:flex;align-items:center;gap:5px;box-shadow:0 3px 8px rgba(220,38,38,.28);transition:all .22s;letter-spacing:.3px;}
+.btn-del-sel:hover{filter:brightness(1.1);transform:translateY(-1px);box-shadow:0 5px 14px rgba(220,38,38,.35)}
+.btn-del-all{background:linear-gradient(135deg,#7f1d1d,#b91c1c);color:#fff;border:none;padding:0 12px;border-radius:7px;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:800;cursor:pointer;height:28px;display:flex;align-items:center;gap:5px;box-shadow:0 3px 8px rgba(127,29,29,.28);transition:all .22s;letter-spacing:.3px;}
+.btn-del-all:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-del-cancel{background:#fff;color:#6b7280;border:1.5px solid #d1d5db;padding:0 10px;border-radius:7px;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:700;cursor:pointer;height:28px;transition:all .22s;}
+.btn-del-cancel:hover{border-color:#9ca3af;background:#f9fafb}
+/* task-item checkbox select mode */
+.task-item.sel-mode{padding-left:8px}
+.task-sel-cb{width:18px;height:18px;border-radius:4px;border:2px solid #90caf9;background:#fff;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;}
+.task-sel-cb.checked{background:linear-gradient(135deg,#dc2626,#ef4444);border-color:#dc2626;}
+.task-sel-cb.checked::after{content:'✓';color:#fff;font-size:.65rem;font-weight:900;}
+.task-item.selected-row{background:#fff1f2!important;border-left-color:#dc2626!important;border-color:#fca5a5!important}
+/* table checkbox */
+.tbl-cb-wrap{width:32px;text-align:center}
+.tbl-cb{width:15px;height:15px;border-radius:3px;border:2px solid #90caf9;background:#fff;cursor:pointer;appearance:none;outline:none;display:inline-block;vertical-align:middle;transition:all .18s;position:relative;}
+.tbl-cb:checked{background:linear-gradient(135deg,#dc2626,#ef4444);border-color:#dc2626;}
+.tbl-cb:checked::after{content:'✓';position:absolute;top:-1px;left:1px;color:#fff;font-size:.6rem;font-weight:900;}
+tbody tr.selected-row{background:#fff1f2!important;outline:1.5px solid #fca5a5;}
+.tbl-selall-cb{width:15px;height:15px;border-radius:3px;border:2px solid #90caf9;background:#fff;cursor:pointer;appearance:none;outline:none;display:inline-block;vertical-align:middle;transition:all .18s;}
+.tbl-selall-cb:checked{background:linear-gradient(135deg,#dc2626,#ef4444);border-color:#dc2626;}
 .report-iframe-wrap{position:relative;width:100%;overflow:hidden;border-radius:10px;border:1.5px solid #bee3f8;box-shadow:0 4px 14px rgba(26,58,143,.08);line-height:0;}
 .report-iframe-wrap iframe{width:100%;height:480px;border:none;display:block;}
 .report-top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;}
@@ -382,12 +408,21 @@ tbody tr:hover{background:#dbeafe}tbody tr{border-bottom:1px solid #e2eaf5;trans
       <div class="card">
         <div class="panel-header">
           <div class="panel-title"><i class="fas fa-calendar-check"></i>My Task</div>
-          <div class="filter-bar" style="margin-bottom:0;padding:5px 12px">
-            <span class="filter-bar-label"><i class="fas fa-filter"></i>Date:</span>
-            <input type="date" id="todayFilterDate" class="filter-date-input">
-            <button class="fb-btn" onclick="renderToday()"><i class="fas fa-search"></i>Go</button>
-            <button class="fb-btn alt" onclick="resetTodayFilter()"><i class="fas fa-calendar-day"></i>Today</button>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <div class="filter-bar" style="margin-bottom:0;padding:5px 12px">
+              <span class="filter-bar-label"><i class="fas fa-filter"></i>Date:</span>
+              <input type="date" id="todayFilterDate" class="filter-date-input">
+              <button class="fb-btn" onclick="renderToday()"><i class="fas fa-search"></i>Go</button>
+              <button class="fb-btn alt" onclick="resetTodayFilter()"><i class="fas fa-calendar-day"></i>Today</button>
+            </div>
+            <button class="fb-btn" id="todaySelectBtn" onclick="toggleTodaySelectMode()" style="background:linear-gradient(135deg,#dc2626,#ef4444);box-shadow:0 3px 8px rgba(220,38,38,.25)"><i class="fas fa-trash-alt"></i>Delete</button>
           </div>
+        </div>
+        <div class="del-toolbar" id="todayDelToolbar">
+          <span class="del-toolbar-label"><i class="fas fa-trash-alt"></i>Selected: <span class="del-sel-count" id="todaySelCount">0</span></span>
+          <button class="btn-del-sel" onclick="deleteSelectedToday()"><i class="fas fa-trash"></i>Delete Selected</button>
+          <button class="btn-del-all" onclick="deleteAllToday()"><i class="fas fa-trash-alt"></i>Delete All Visible</button>
+          <button class="btn-del-cancel" onclick="toggleTodaySelectMode()"><i class="fas fa-times"></i>Cancel</button>
         </div>
         <div class="stats-grid" style="grid-template-columns:repeat(5,1fr)">
           <div class="stat-card active-tab" id="tabAll" onclick="filterTodayByCategory('all')"><span class="stat-ico">📋</span><span class="stat-num" id="sTotalToday">0</span><span class="stat-lbl">Total</span></div>
@@ -444,6 +479,13 @@ tbody tr:hover{background:#dbeafe}tbody tr{border-bottom:1px solid #e2eaf5;trans
             <span class="filter-bar-label" style="margin-left:6px"><i class="fas fa-search"></i>Search:</span>
             <input type="text" id="devSearchInput" class="filter-text-input" placeholder="Search MAC / Serial…" oninput="renderDevices()">
             <span class="fb-count">Showing: <b id="devShowCount">0</b> devices</span>
+            <button class="fb-btn" onclick="toggleDevSelectMode()" id="devSelectBtn" style="background:linear-gradient(135deg,#dc2626,#ef4444);box-shadow:0 3px 8px rgba(220,38,38,.25);margin-left:4px"><i class="fas fa-trash-alt"></i>Delete</button>
+          </div>
+          <div class="del-toolbar" id="devDelToolbar">
+            <span class="del-toolbar-label"><i class="fas fa-trash-alt"></i>Selected: <span class="del-sel-count" id="devSelCount">0</span></span>
+            <button class="btn-del-sel" onclick="deleteSelectedDev()"><i class="fas fa-trash"></i>Delete Selected</button>
+            <button class="btn-del-all" onclick="deleteAllDev()"><i class="fas fa-trash-alt"></i>Delete All Visible</button>
+            <button class="btn-del-cancel" onclick="toggleDevSelectMode()"><i class="fas fa-times"></i>Cancel</button>
           </div>
           <div class="cards-grid" id="devicesGrid"><div class="empty-state"><i class="fas fa-server"></i><p>No ONU MAC devices found.</p></div></div>
         </div>
@@ -453,7 +495,16 @@ tbody tr:hover{background:#dbeafe}tbody tr{border-bottom:1px solid #e2eaf5;trans
     <!-- WIFI -->
     <div class="panel" id="panelWifi">
       <div class="card">
-        <div class="panel-header"><div class="panel-title"><i class="fas fa-wifi"></i>My WiFi Scoring Records</div></div>
+        <div class="panel-header">
+          <div class="panel-title"><i class="fas fa-wifi"></i>My WiFi Scoring Records</div>
+          <button class="fb-btn" onclick="toggleWifiSelectMode()" id="wifiSelectBtn" style="background:linear-gradient(135deg,#dc2626,#ef4444);box-shadow:0 3px 8px rgba(220,38,38,.25)"><i class="fas fa-trash-alt"></i>Delete</button>
+        </div>
+        <div class="del-toolbar" id="wifiDelToolbar">
+          <span class="del-toolbar-label"><i class="fas fa-trash-alt"></i>Selected: <span class="del-sel-count" id="wifiSelCount">0</span></span>
+          <button class="btn-del-sel" onclick="deleteSelectedWifi()"><i class="fas fa-trash"></i>Delete Selected</button>
+          <button class="btn-del-all" onclick="deleteAllWifi()"><i class="fas fa-trash-alt"></i>Delete All Visible</button>
+          <button class="btn-del-cancel" onclick="toggleWifiSelectMode()"><i class="fas fa-times"></i>Cancel</button>
+        </div>
         <div class="filter-bar">
           <span class="filter-bar-label"><i class="fas fa-filter"></i>Date:</span>
           <input type="date" id="wifiFilterDate" class="filter-date-input">
@@ -485,32 +536,37 @@ tbody tr:hover{background:#dbeafe}tbody tr{border-bottom:1px solid #e2eaf5;trans
       </div>
       <div id="cmpAllSection">
         <div class="live-iframe-wrap">
-          <div class="iframe-clip h480">
-            <iframe id="allEngIframe" src="about:blank" frameborder="0" scrolling="yes" onload="onAllEngLoad()"></iframe>
+          <div style="line-height:0;overflow:hidden;position:relative;height:calc(100vh - 185px);min-height:500px;">
+            <iframe id="allEngIframe" src="about:blank" frameborder="0" scrolling="yes" onload="onAllEngLoad()" style="width:100%;height:calc(100% + 34px);border:none;display:block;position:absolute;top:-29px;left:0;"></iframe>
           </div>
         </div>
       </div>
       <div id="cmpMeSection" style="display:none">
-        <div class="table-section">
-          <div class="table-header-bar">
-            <div class="tbl-title" style="flex-wrap:wrap;gap:8px;align-items:center">
-              <i class="fas fa-clipboard-list"></i><span>All Completed Tasks</span>
+        <div class="card" style="margin-bottom:0">
+          <div class="panel-header" style="margin-bottom:10px">
+            <div style="display:flex;flex-direction:column;gap:8px;width:100%">
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+                <div class="panel-title"><i class="fas fa-clipboard-list"></i>All Completed Tasks</div>
+                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                  <div class="filter-bar" style="margin-bottom:0;padding:5px 12px">
+                    <span class="filter-bar-label"><i class="fas fa-filter"></i>Filter:</span>
+                    <input type="date" id="cFilterDate" class="filter-date-input">
+                    <button class="fb-btn" onclick="filterCompleted()"><i class="fas fa-search"></i>Go</button>
+                    <button class="fb-btn alt" onclick="clearCompletedFilter()"><i class="fas fa-list"></i>All</button>
+                  </div>
+                  <button class="fb-btn" id="cmpSelectBtn" onclick="toggleCmpSelectMode()" style="background:linear-gradient(135deg,#dc2626,#ef4444);box-shadow:0 3px 8px rgba(220,38,38,.25)"><i class="fas fa-trash-alt"></i>Delete</button>
+                </div>
+              </div>
               <div class="completed-cat-counts" id="completedCatCounts"></div>
             </div>
-            <div class="tbl-filters">
-              <span style="font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:800;color:#0d1f5c;display:flex;align-items:center;gap:3px"><i class="fas fa-filter"></i>Filter:</span>
-              <input type="date" id="cFilterDate" class="tbl-date-in">
-              <button class="tbl-btn" onclick="filterCompleted()"><i class="fas fa-search"></i>Go</button>
-              <button class="tbl-btn alt" onclick="clearCompletedFilter()"><i class="fas fa-list"></i>All</button>
-            </div>
           </div>
-          <div class="table-wrapper">
-            <table><thead><tr>
-              <th>#</th><th><i class="fas fa-calendar-day"></i> Date</th><th><i class="fas fa-ticket-alt"></i> Ticket ID</th>
-              <th><i class="fas fa-tag"></i> Category</th><th><i class="fas fa-toolbox"></i> Task Type</th><th><i class="fas fa-user-cog"></i> Engineer</th>
-              <th><i class="fas fa-headset"></i> Backend</th><th><i class="fas fa-wifi"></i> WiFi</th><th><i class="fas fa-network-wired"></i> ONU MAC</th><th><i class="fas fa-check-circle"></i> Status</th>
-            </tr></thead><tbody id="completedBody"></tbody></table>
+          <div class="del-toolbar" id="cmpDelToolbar">
+            <span class="del-toolbar-label"><i class="fas fa-trash-alt"></i>Selected: <span class="del-sel-count" id="cmpSelCount">0</span></span>
+            <button class="btn-del-sel" onclick="deleteSelectedCmp()"><i class="fas fa-trash"></i>Delete Selected</button>
+            <button class="btn-del-all" onclick="deleteAllCmp()"><i class="fas fa-trash-alt"></i>Delete All Visible</button>
+            <button class="btn-del-cancel" onclick="toggleCmpSelectMode()"><i class="fas fa-times"></i>Cancel</button>
           </div>
+          <div class="tasks-list" id="completedBody"></div>
         </div>
       </div>
     </div>
@@ -654,7 +710,21 @@ function renderToday(){
 function renderTodayList(tasks){
   const list=document.getElementById('todayTasksList');if(!tasks.length){list.innerHTML='<div class="empty-state"><i class="fas fa-inbox"></i><p>No tasks for selected date.</p></div>';return;}
   const fd=document.getElementById('todayFilterDate').value,d=fd||new Date().toISOString().split('T')[0],allDay=getTasks().filter(t=>t.date===d);
-  list.innerHTML='';tasks.slice().reverse().forEach(t=>{const div=document.createElement('div');div.className='task-item';div.innerHTML=`<div class="task-num">${allDay.indexOf(t)+1}</div><div class="task-info-left"><span class="task-ticket">${t.ticket}</span><span class="task-date"><i class="fas fa-calendar-day"></i>${fmtDate(t.date)}</span></div><span class="task-cat-badge ${catClass(t.category)}">${t.category}</span>`;list.appendChild(div);});
+  list.innerHTML='';tasks.slice().reverse().forEach(t=>{
+    const div=document.createElement('div');div.className='task-item'+(todaySelectMode?' sel-mode':'');
+    div._taskTicket=t.ticket;div._taskDate=t.date;
+    if(todaySelectMode){
+      const cb=document.createElement('div');cb.className='task-sel-cb';
+      if(todaySelected.has(t.ticket+t.date))cb.classList.add('checked');
+      cb.onclick=e=>{e.stopPropagation();toggleTodayItem(t.ticket,t.date,cb,div);};
+      div.appendChild(cb);
+      if(todaySelected.has(t.ticket+t.date))div.classList.add('selected-row');
+    }
+    const inner=document.createElement('div');inner.style.cssText='display:flex;align-items:center;gap:12px;flex:1';
+    inner.innerHTML=`<div class="task-num">${allDay.indexOf(t)+1}</div><div class="task-info-left"><span class="task-ticket">${t.ticket}</span><span class="task-date"><i class="fas fa-calendar-day"></i>${fmtDate(t.date)}</span></div><span class="task-cat-badge ${catClass(t.category)}">${t.category}</span>`;
+    div.appendChild(inner);
+    list.appendChild(div);
+  });
 }
 function resetTodayFilter(){document.getElementById('todayFilterDate').value=new Date().toISOString().split('T')[0];todayActiveTab='all';setTodayTab('all');renderToday();}
 function buildCatCounts(){
@@ -666,13 +736,40 @@ function buildCatCounts(){
 function togCatFilter(cat){completedCatFilter=(completedCatFilter===cat)?null:cat;document.getElementById('cFilterDate').value='';renderCompleted();}
 function renderCompleted(fd){
   let tasks=getTasks();if(fd)tasks=tasks.filter(t=>t.date===fd);if(completedCatFilter)tasks=tasks.filter(t=>t.category===completedCatFilter);
-  buildCatCounts();const tbody=document.getElementById('completedBody');tbody.innerHTML='';
-  if(!tasks.length){tbody.innerHTML=`<tr><td colspan="10" style="text-align:center;padding:32px;color:#9ca3af"><i class="fas fa-inbox" style="display:block;font-size:2rem;color:#bee3f8;margin-bottom:10px"></i>No tasks found.</td></tr>`;return;}
+  buildCatCounts();
+  const list=document.getElementById('completedBody');list.innerHTML='';
+  if(!tasks.length){list.innerHTML='<div class="empty-state"><i class="fas fa-inbox"></i><p>No tasks found.</p></div>';return;}
   tasks.slice().reverse().forEach((t,i)=>{
-    const tr=document.createElement('tr'),bd=t.backend&&t.backend.trim()?t.backend:'-',ou=t.onuMac?(t.onuMac.length>18?t.onuMac.substring(0,18)+'…':t.onuMac):'-';
-    const th=t.remarks&&t.remarks.trim()?`${t.ticket} <span title="${t.remarks.replace(/"/g,'&quot;')}" style="margin-left:4px;color:#1d4ed8;font-size:.6rem;background:#dbeafe;padding:1px 7px;border-radius:20px;border:1px solid #93c5fd;cursor:default;font-family:'Montserrat',sans-serif;font-weight:700">💬 ${t.remarks.substring(0,18)+(t.remarks.length>18?'…':'')}</span>`:t.ticket;
-    tr.innerHTML=`<td style="color:#94a3b8;font-size:.68rem;font-weight:800">${tasks.length-i}</td><td style="font-weight:700">${fmtDate(t.date)}</td><td style="font-weight:800;font-family:'Montserrat',sans-serif;font-size:.7rem;letter-spacing:.3px">${th}</td><td>${t.category}</td><td style="font-size:.7rem">${t.taskType||'-'}</td><td style="font-weight:700">${t.engineer}</td><td>${bd}</td><td style="font-weight:800;color:${t.wifiScoring==='Yes'?'#0f766e':'#94a3b8'}">${t.wifiScoring||'No'}</td><td class="mono" title="${t.onuMac||''}">${ou}</td><td><span class="badge">SYNCED</span></td>`;
-    tbody.appendChild(tr);
+    const key=t.ticket+t.date;
+    const div=document.createElement('div');
+    div.className='task-item'+(cmpSelectMode?' sel-mode':'');
+    if(cmpSelectMode&&cmpSelected.has(key))div.classList.add('selected-row');
+    // Checkbox
+    if(cmpSelectMode){
+      const cb=document.createElement('div');cb.className='task-sel-cb';
+      if(cmpSelected.has(key))cb.classList.add('checked');
+      cb.onclick=e=>{e.stopPropagation();if(cmpSelected.has(key)){cmpSelected.delete(key);cb.classList.remove('checked');div.classList.remove('selected-row');}else{cmpSelected.add(key);cb.classList.add('checked');div.classList.add('selected-row');}document.getElementById('cmpSelCount').textContent=cmpSelected.size;};
+      div.appendChild(cb);
+    }
+    // Number badge
+    const num=document.createElement('div');num.className='task-num';num.textContent=tasks.length-i;div.appendChild(num);
+    // Info
+    const info=document.createElement('div');info.className='task-info-left';info.style.cssText='flex:1;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0';
+    const remarksBadge=t.remarks&&t.remarks.trim()?`<span title="${t.remarks.replace(/"/g,'&quot;')}" style="color:#1d4ed8;font-size:.58rem;background:#dbeafe;padding:1px 7px;border-radius:20px;border:1px solid #93c5fd;cursor:default;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap">💬 ${t.remarks.substring(0,18)+(t.remarks.length>18?'…':'')}</span>`:'';
+    info.innerHTML=`
+      <span class="task-ticket">${t.ticket}</span>
+      ${remarksBadge}
+      <span class="task-date"><i class="fas fa-calendar-day"></i>${fmtDate(t.date)}</span>
+      <span class="task-date" style="color:#0f766e"><i class="fas fa-user-cog"></i>${t.engineer}</span>
+      ${t.taskType?`<span class="task-date" style="color:#7c3aed"><i class="fas fa-toolbox"></i>${t.taskType}</span>`:''}
+      ${t.backend&&t.backend.trim()?`<span class="task-date" style="color:#b45309"><i class="fas fa-headset"></i>BNOC</span>`:''}
+      ${t.wifiScoring==='Yes'?`<span class="task-date" style="color:#0891b2"><i class="fas fa-wifi"></i>WiFi ✓</span>`:''}
+      ${t.onuMac&&t.onuMac.trim()?`<span class="task-date" style="color:#6b7280;font-family:'JetBrains Mono',monospace;font-size:.62rem"><i class="fas fa-network-wired"></i>${t.onuMac.length>16?t.onuMac.substring(0,16)+'…':t.onuMac}</span>`:''}
+    `;
+    div.appendChild(info);
+    // Category badge
+    const cat=document.createElement('span');cat.className='task-cat-badge '+catClass(t.category);cat.textContent=t.category;div.appendChild(cat);
+    list.appendChild(div);
   });
 }
 function filterCompleted(){const fd=document.getElementById('cFilterDate').value;completedCatFilter=null;renderCompleted(fd);if(fd){const c=getTasks().filter(t=>t.date===fd).length;showToast(`${c} task(s) on ${fmtDate(fd)}`,c?'success':'warning')}else showToast('Showing all tasks','info');}
@@ -685,7 +782,19 @@ function renderDevices(){
   const mb=document.getElementById('devMeBadgeTab');if(mb)mb.textContent=getTasks().filter(t=>t.onuMac&&t.onuMac.trim()).length;
   const grid=document.getElementById('devicesGrid');
   if(!withMac.length){grid.innerHTML='<div class="empty-state"><i class="fas fa-server"></i><p>No ONU MAC devices found.</p></div>';return}
-  grid.innerHTML='';withMac.slice().reverse().forEach(t=>{const div=document.createElement('div');div.className='d-card';div.innerHTML=`<div class="d-card-inner"><div class="d-icon"><i class="fas fa-router"></i></div><div class="d-left"><div class="d-mac-label">Device MAC / Serial</div><div class="d-mac">${t.onuMac}</div></div><div class="d-mid"><div class="d-mid-row"><i class="fas fa-calendar-day"></i><b>${fmtDate(t.date)}</b></div><div class="d-mid-row"><i class="fas fa-ticket-alt"></i><b>${t.ticket}</b></div></div><div class="d-right"><span class="mtag ${purpClass(t.category)}"><i class="fas fa-tag"></i> ${t.category}</span></div></div>`;grid.appendChild(div);});
+  grid.innerHTML='';withMac.slice().reverse().forEach(t=>{
+    const div=document.createElement('div');div.className='d-card'+(devSelectMode?' sel-mode':'');
+    const key=t.ticket+t.date;if(devSelectMode&&devSelected.has(key))div.classList.add('selected-row');
+    if(devSelectMode){
+      const cb=document.createElement('div');cb.className='task-sel-cb';cb.style.cssText='margin-right:4px;flex-shrink:0';
+      if(devSelected.has(key))cb.classList.add('checked');
+      cb.onclick=e=>{e.stopPropagation();const k=t.ticket+t.date;if(devSelected.has(k)){devSelected.delete(k);cb.classList.remove('checked');div.classList.remove('selected-row');}else{devSelected.add(k);cb.classList.add('checked');div.classList.add('selected-row');}document.getElementById('devSelCount').textContent=devSelected.size;};
+      div.appendChild(cb);
+    }
+    const inner=document.createElement('div');inner.className='d-card-inner';inner.style.cssText='flex:1';
+    inner.innerHTML=`<div class="d-icon"><i class="fas fa-router"></i></div><div class="d-left"><div class="d-mac-label">Device MAC / Serial</div><div class="d-mac">${t.onuMac}</div></div><div class="d-mid"><div class="d-mid-row"><i class="fas fa-calendar-day"></i><b>${fmtDate(t.date)}</b></div><div class="d-mid-row"><i class="fas fa-ticket-alt"></i><b>${t.ticket}</b></div></div><div class="d-right"><span class="mtag ${purpClass(t.category)}"><i class="fas fa-tag"></i> ${t.category}</span></div>`;
+    div.appendChild(inner);grid.appendChild(div);
+  });
 }
 function clearDevFilter(){document.getElementById('devFilterDate').value='';document.getElementById('devSearchInput').value='';renderDevices();}
 function setWifiTab(tab){wifiActiveTab=tab;['all','today','month'].forEach(k=>{const el=document.getElementById('wTab'+k[0].toUpperCase()+k.slice(1));if(el)el.classList.toggle('active-tab',k===tab);});}
@@ -698,10 +807,144 @@ function renderWifi(){
 }
 function renderWifiList(f){
   const grid=document.getElementById('wifiGrid');if(!f.length){grid.innerHTML='<div class="empty-state"><i class="fas fa-wifi"></i><p>No WiFi scoring records found.</p></div>';return}
-  grid.innerHTML='';f.slice().reverse().forEach(t=>{const div=document.createElement('div');div.className='d-card wifi-c';div.innerHTML=`<div class="d-card-inner"><div class="d-icon wi"><i class="fas fa-wifi"></i></div><div class="d-left"><div class="d-mac-label">Ticket ID</div><div class="d-mac" style="font-family:'Montserrat',sans-serif;color:#4338ca;font-size:.82rem">${t.ticket}</div></div><div class="d-mid"><div class="d-mid-row"><i class="fas fa-calendar-day"></i><b>${fmtDate(t.date)}</b></div></div><div class="d-right"><span class="mtag ${purpClass(t.category)}"><i class="fas fa-tag"></i> ${t.category}</span></div></div>`;grid.appendChild(div);});
+  grid.innerHTML='';f.slice().reverse().forEach(t=>{
+    const div=document.createElement('div');div.className='d-card wifi-c'+(wifiSelectMode?' sel-mode':'');
+    const key=t.ticket+t.date;if(wifiSelectMode&&wifiSelected.has(key))div.classList.add('selected-row');
+    div.style.cssText='display:flex;align-items:center';
+    if(wifiSelectMode){
+      const cb=document.createElement('div');cb.className='task-sel-cb';cb.style.cssText='margin-right:8px;flex-shrink:0';
+      if(wifiSelected.has(key))cb.classList.add('checked');
+      cb.onclick=e=>{e.stopPropagation();const k=t.ticket+t.date;if(wifiSelected.has(k)){wifiSelected.delete(k);cb.classList.remove('checked');div.classList.remove('selected-row');}else{wifiSelected.add(k);cb.classList.add('checked');div.classList.add('selected-row');}document.getElementById('wifiSelCount').textContent=wifiSelected.size;};
+      div.appendChild(cb);
+    }
+    const inner=document.createElement('div');inner.className='d-card-inner';inner.style.cssText='flex:1';
+    inner.innerHTML=`<div class="d-icon wi"><i class="fas fa-wifi"></i></div><div class="d-left"><div class="d-mac-label">Ticket ID</div><div class="d-mac" style="font-family:'Montserrat',sans-serif;color:#4338ca;font-size:.82rem">${t.ticket}</div></div><div class="d-mid"><div class="d-mid-row"><i class="fas fa-calendar-day"></i><b>${fmtDate(t.date)}</b></div></div><div class="d-right"><span class="mtag ${purpClass(t.category)}"><i class="fas fa-tag"></i> ${t.category}</span></div>`;
+    div.appendChild(inner);grid.appendChild(div);
+  });
 }
 function clearWifiFilter(){document.getElementById('wifiFilterDate').value='';wifiActiveTab='all';setWifiTab('all');renderWifi();}
 function updateRemarksCount(){document.getElementById('remarksCount').textContent=document.getElementById('remarks').value.length+'/500';}
+/* ── Used Devices (Me) Select & Delete ── */
+let devSelectMode=false,devSelected=new Set();
+function toggleDevSelectMode(){
+  devSelectMode=!devSelectMode;devSelected.clear();
+  const tb=document.getElementById('devDelToolbar');tb.classList.toggle('show',devSelectMode);
+  document.getElementById('devSelCount').textContent='0';
+  renderDevices();
+}
+function deleteSelectedDev(){
+  if(!devSelected.size){showToast('কোনো device select করা হয়নি!','warning');return;}
+  if(!confirm(`নির্বাচিত ${devSelected.size} টি device entry delete করবেন?`))return;
+  let all=getTasks();all=all.filter(t=>!devSelected.has(t.ticket+t.date));
+  localStorage.setItem('completedTasks',JSON.stringify(all));devSelected.clear();
+  refreshBadges();showToast('Selected devices deleted!','success');
+  document.getElementById('devSelCount').textContent='0';renderDevices();
+}
+function deleteAllDev(){
+  const fd=document.getElementById('devFilterDate').value,sq=(document.getElementById('devSearchInput').value||'').trim().toLowerCase();
+  let visible=(fd?getTasks().filter(t=>t.date===fd):getTasks()).filter(t=>t.onuMac&&t.onuMac.trim());
+  if(sq)visible=visible.filter(t=>t.onuMac.toLowerCase().includes(sq));
+  if(!visible.length){showToast('Delete করার মতো device নেই!','warning');return;}
+  if(!confirm(`এই view-তে দৃশ্যমান সব ${visible.length} টি device entry delete করবেন?`))return;
+  const delKeys=new Set(visible.map(t=>t.ticket+t.date));
+  const remaining=getTasks().filter(t=>!delKeys.has(t.ticket+t.date));
+  localStorage.setItem('completedTasks',JSON.stringify(remaining));
+  devSelectMode=false;devSelected.clear();document.getElementById('devDelToolbar').classList.remove('show');
+  refreshBadges();showToast(`${visible.length} device entry deleted!`,'success');renderDevices();
+}
+/* ── WiFi Scoring Select & Delete ── */
+let wifiSelectMode=false,wifiSelected=new Set();
+function toggleWifiSelectMode(){
+  wifiSelectMode=!wifiSelectMode;wifiSelected.clear();
+  const tb=document.getElementById('wifiDelToolbar');tb.classList.toggle('show',wifiSelectMode);
+  document.getElementById('wifiSelCount').textContent='0';
+  renderWifi();
+}
+function deleteSelectedWifi(){
+  if(!wifiSelected.size){showToast('কোনো WiFi record select করা হয়নি!','warning');return;}
+  if(!confirm(`নির্বাচিত ${wifiSelected.size} টি WiFi record delete করবেন?`))return;
+  let all=getTasks();all=all.filter(t=>!wifiSelected.has(t.ticket+t.date));
+  localStorage.setItem('completedTasks',JSON.stringify(all));wifiSelected.clear();
+  refreshBadges();showToast('Selected WiFi records deleted!','success');
+  document.getElementById('wifiSelCount').textContent='0';renderWifi();
+}
+function deleteAllWifi(){
+  const fd=document.getElementById('wifiFilterDate').value,td=new Date().toISOString().split('T')[0],cm=td.substring(0,7),all=getTasks().filter(t=>t.wifiScoring==='Yes');
+  let visible=all;if(fd){visible=all.filter(t=>t.date===fd);}else if(wifiActiveTab==='today'){visible=all.filter(t=>t.date===td);}else if(wifiActiveTab==='month'){visible=all.filter(t=>t.date&&t.date.startsWith(cm));}
+  if(!visible.length){showToast('Delete করার মতো record নেই!','warning');return;}
+  if(!confirm(`এই view-তে দৃশ্যমান সব ${visible.length} টি WiFi record delete করবেন?`))return;
+  const delKeys=new Set(visible.map(t=>t.ticket+t.date));
+  const remaining=getTasks().filter(t=>!delKeys.has(t.ticket+t.date));
+  localStorage.setItem('completedTasks',JSON.stringify(remaining));
+  wifiSelectMode=false;wifiSelected.clear();document.getElementById('wifiDelToolbar').classList.remove('show');
+  refreshBadges();showToast(`${visible.length} WiFi record deleted!`,'success');renderWifi();
+}
+/* ── Today / My Task Select & Delete ── */
+let todaySelectMode=false,todaySelected=new Set();
+function toggleTodaySelectMode(){
+  todaySelectMode=!todaySelectMode;todaySelected.clear();
+  const tb=document.getElementById('todayDelToolbar');tb.classList.toggle('show',todaySelectMode);
+  document.getElementById('todaySelCount').textContent='0';
+  const fd=document.getElementById('todayFilterDate').value,d=fd||new Date().toISOString().split('T')[0],all=getTasks().filter(t=>t.date===d);
+  let tasks=all;if(todayActiveTab!=='all')tasks=all.filter(t=>t.category===todayActiveTab);renderTodayList(tasks);
+}
+function toggleTodayItem(ticket,date,cb,row){
+  const key=ticket+date;
+  if(todaySelected.has(key)){todaySelected.delete(key);cb.classList.remove('checked');row.classList.remove('selected-row');}
+  else{todaySelected.add(key);cb.classList.add('checked');row.classList.add('selected-row');}
+  document.getElementById('todaySelCount').textContent=todaySelected.size;
+}
+function deleteSelectedToday(){
+  if(!todaySelected.size){showToast('কোনো task select করা হয়নি!','warning');return;}
+  if(!confirm(`নির্বাচিত ${todaySelected.size} টি task delete করবেন?`))return;
+  let all=getTasks();
+  all=all.filter(t=>!todaySelected.has(t.ticket+t.date));
+  localStorage.setItem('completedTasks',JSON.stringify(all));
+  todaySelected.clear();refreshBadges();
+  showToast('Selected tasks deleted!','success');
+  const fd=document.getElementById('todayFilterDate').value,d=fd||new Date().toISOString().split('T')[0],remaining=all.filter(t=>t.date===d);
+  document.getElementById('sTotalToday').textContent=remaining.length;document.getElementById('sInstall').textContent=remaining.filter(t=>t.category==='Installation').length;document.getElementById('sTrouble').textContent=remaining.filter(t=>t.category==='Troubleshoot').length;document.getElementById('sCR').textContent=remaining.filter(t=>t.category==='CR').length;document.getElementById('sSurvey').textContent=remaining.filter(t=>t.category==='Survey').length;
+  let tasks=remaining;if(todayActiveTab!=='all')tasks=remaining.filter(t=>t.category===todayActiveTab);renderTodayList(tasks);
+  document.getElementById('todaySelCount').textContent='0';
+}
+function deleteAllToday(){
+  const fd=document.getElementById('todayFilterDate').value,d=fd||new Date().toISOString().split('T')[0];
+  let visible=getTasks().filter(t=>t.date===d);if(todayActiveTab!=='all')visible=visible.filter(t=>t.category===todayActiveTab);
+  if(!visible.length){showToast('Delete করার মতো task নেই!','warning');return;}
+  if(!confirm(`এই view-তে দৃশ্যমান সব ${visible.length} টি task delete করবেন?`))return;
+  const delKeys=new Set(visible.map(t=>t.ticket+t.date));
+  const remaining=getTasks().filter(t=>!delKeys.has(t.ticket+t.date));
+  localStorage.setItem('completedTasks',JSON.stringify(remaining));
+  todaySelectMode=false;todaySelected.clear();document.getElementById('todayDelToolbar').classList.remove('show');
+  refreshBadges();showToast(`${visible.length} task deleted!`,'success');renderToday();
+}
+/* ── Completed Table Select & Delete ── */
+let cmpSelectMode=false,cmpSelected=new Set();
+function toggleCmpSelectMode(){
+  cmpSelectMode=!cmpSelectMode;cmpSelected.clear();
+  const tb=document.getElementById('cmpDelToolbar');tb.classList.toggle('show',cmpSelectMode);
+  document.getElementById('cmpSelCount').textContent='0';
+  renderCompleted(document.getElementById('cFilterDate').value||undefined);
+}
+function deleteSelectedCmp(){
+  if(!cmpSelected.size){showToast('কোনো task select করা হয়নি!','warning');return;}
+  if(!confirm(`নির্বাচিত ${cmpSelected.size} টি task delete করবেন?`))return;
+  let all=getTasks();all=all.filter(t=>!cmpSelected.has(t.ticket+t.date));
+  localStorage.setItem('completedTasks',JSON.stringify(all));cmpSelected.clear();
+  refreshBadges();showToast('Selected tasks deleted!','success');
+  document.getElementById('cmpSelCount').textContent='0';
+  renderCompleted(document.getElementById('cFilterDate').value||undefined);
+}
+function deleteAllCmp(){
+  let visible=getTasks();const fd=document.getElementById('cFilterDate').value;if(fd)visible=visible.filter(t=>t.date===fd);if(completedCatFilter)visible=visible.filter(t=>t.category===completedCatFilter);
+  if(!visible.length){showToast('Delete করার মতো task নেই!','warning');return;}
+  if(!confirm(`এই view-তে দৃশ্যমান সব ${visible.length} টি task delete করবেন?`))return;
+  const delKeys=new Set(visible.map(t=>t.ticket+t.date));
+  const remaining=getTasks().filter(t=>!delKeys.has(t.ticket+t.date));
+  localStorage.setItem('completedTasks',JSON.stringify(remaining));
+  cmpSelectMode=false;cmpSelected.clear();document.getElementById('cmpDelToolbar').classList.remove('show');
+  refreshBadges();showToast(`${visible.length} task deleted!`,'success');renderCompleted();
+}
 window.onload=function(){
   updateClock();setInterval(updateClock,1000);
   const today=new Date().toISOString().split('T')[0];
