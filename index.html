@@ -542,30 +542,54 @@ tbody tr.selected-row{background:#fff1f2!important;outline:1.5px solid #fca5a5;}
 
     <!-- WIFI -->
     <div class="panel" id="panelWifi">
-      <div class="card">
-        <div class="panel-header">
-          <div class="panel-title"><i class="fas fa-wifi"></i>My WiFi Scoring Records</div>
-          <button class="fb-btn" onclick="toggleWifiSelectMode()" id="wifiSelectBtn" style="background:linear-gradient(135deg,#dc2626,#ef4444);box-shadow:0 3px 8px rgba(220,38,38,.25)"><i class="fas fa-trash-alt"></i>Delete</button>
+      <div class="subtab-bar" style="position:relative;">
+        <div class="subtab-item active" id="wifiTabAll" onclick="switchWifiTab('all')">
+          <i class="fas fa-table"></i>All WiFi Scoring Data<span class="subtab-badge subtab-badge-live">● Live</span>
         </div>
-        <div class="del-toolbar" id="wifiDelToolbar">
-          <span class="del-toolbar-label"><i class="fas fa-trash-alt"></i>Selected: <span class="del-sel-count" id="wifiSelCount">0</span></span>
-          <button class="btn-del-sel" onclick="deleteSelectedWifi()"><i class="fas fa-trash"></i>Delete Selected</button>
-          <button class="btn-del-all" onclick="deleteAllWifi()"><i class="fas fa-trash-alt"></i>Delete All Visible</button>
-          <button class="btn-del-cancel" onclick="toggleWifiSelectMode()"><i class="fas fa-times"></i>Cancel</button>
+        <div class="subtab-item" id="wifiTabMe" onclick="switchWifiTab('me')">
+          <i class="fas fa-user-check"></i>My WiFi Scoring Records<span class="subtab-badge" id="wifiMeBadgeTab">0</span>
         </div>
-        <div class="filter-bar">
-          <span class="filter-bar-label"><i class="fas fa-filter"></i>Date:</span>
-          <input type="date" id="wifiFilterDate" class="filter-date-input">
-          <button class="fb-btn" onclick="renderWifi()"><i class="fas fa-search"></i>Go</button>
-          <button class="fb-btn alt" onclick="clearWifiFilter()"><i class="fas fa-times"></i>All</button>
-          <span class="fb-count">Showing: <b id="wifiShowCount">0</b></span>
+        <div style="display:flex;align-items:center;gap:6px;padding:0 14px;font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:700;color:#1a3a8f;white-space:nowrap;border-left:1px solid #bee3f8;">
+          <div class="live-dot"></div><span class="live-lastupd">Last updated:</span><span class="live-lasttime" id="allWifiLastTime">—</span>
         </div>
-        <div class="wifi-stats">
-          <div class="stat-card active-tab" id="wTabAll" onclick="filterWifiByTab('all')"><span class="stat-ico">📶</span><span class="stat-num" id="wifiAllCount">0</span><span class="stat-lbl">Total Ever</span></div>
-          <div class="stat-card" id="wTabToday" onclick="filterWifiByTab('today')"><span class="stat-ico">📅</span><span class="stat-num" id="wifiTodayCount">0</span><span class="stat-lbl">Today</span></div>
-          <div class="stat-card" id="wTabMonth" onclick="filterWifiByTab('month')"><span class="stat-ico">🗓️</span><span class="stat-num" id="wifiMonthCount">0</span><span class="stat-lbl">This Month</span></div>
+      </div>
+
+      <!-- ALL WIFI SCORING DATA (iframe) -->
+      <div id="wifiAllSection">
+        <div class="live-iframe-wrap">
+          <div style="line-height:0;overflow:hidden;position:relative;height:calc(100vh - 185px);min-height:500px;">
+            <iframe id="allWifiIframe" src="about:blank" frameborder="0" scrolling="yes" onload="onAllWifiLoad()" style="width:100%;height:calc(100% + 34px);border:none;display:block;position:absolute;top:-29px;left:0;"></iframe>
+          </div>
         </div>
-        <div class="cards-grid" id="wifiGrid"><div class="empty-state"><i class="fas fa-wifi"></i><p>No WiFi scoring records found.</p></div></div>
+      </div>
+
+      <!-- MY WIFI SCORING RECORDS -->
+      <div id="wifiMeSection" style="display:none">
+        <div class="card" style="margin-bottom:0">
+          <div class="panel-header">
+            <div class="panel-title"><i class="fas fa-wifi"></i>My WiFi Scoring Records</div>
+            <button class="fb-btn" onclick="toggleWifiSelectMode()" id="wifiSelectBtn" style="background:linear-gradient(135deg,#dc2626,#ef4444);box-shadow:0 3px 8px rgba(220,38,38,.25)"><i class="fas fa-trash-alt"></i>Delete</button>
+          </div>
+          <div class="del-toolbar" id="wifiDelToolbar">
+            <span class="del-toolbar-label"><i class="fas fa-trash-alt"></i>Selected: <span class="del-sel-count" id="wifiSelCount">0</span></span>
+            <button class="btn-del-sel" onclick="deleteSelectedWifi()"><i class="fas fa-trash"></i>Delete Selected</button>
+            <button class="btn-del-all" onclick="deleteAllWifi()"><i class="fas fa-trash-alt"></i>Delete All Visible</button>
+            <button class="btn-del-cancel" onclick="toggleWifiSelectMode()"><i class="fas fa-times"></i>Cancel</button>
+          </div>
+          <div class="filter-bar">
+            <span class="filter-bar-label"><i class="fas fa-filter"></i>Date:</span>
+            <input type="date" id="wifiFilterDate" class="filter-date-input">
+            <button class="fb-btn" onclick="renderWifi()"><i class="fas fa-search"></i>Go</button>
+            <button class="fb-btn alt" onclick="clearWifiFilter()"><i class="fas fa-times"></i>All</button>
+            <span class="fb-count">Showing: <b id="wifiShowCount">0</b></span>
+          </div>
+          <div class="wifi-stats">
+            <div class="stat-card active-tab" id="wTabAll" onclick="filterWifiByTab('all')"><span class="stat-ico">📶</span><span class="stat-num" id="wifiAllCount">0</span><span class="stat-lbl">Total Ever</span></div>
+            <div class="stat-card" id="wTabToday" onclick="filterWifiByTab('today')"><span class="stat-ico">📅</span><span class="stat-num" id="wifiTodayCount">0</span><span class="stat-lbl">Today</span></div>
+            <div class="stat-card" id="wTabMonth" onclick="filterWifiByTab('month')"><span class="stat-ico">🗓️</span><span class="stat-num" id="wifiMonthCount">0</span><span class="stat-lbl">This Month</span></div>
+          </div>
+          <div class="cards-grid" id="wifiGrid"><div class="empty-state"><i class="fas fa-wifi"></i><p>No WiFi scoring records found.</p></div></div>
+        </div>
       </div>
     </div>
 
@@ -579,11 +603,13 @@ const SCRIPT_URL='https://script.google.com/macros/s/AKfycbz2_9FujiuKu28uv8MOEcb
 const ALL_DEV_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vT513ZUf5kxkdYXdelbShs75SNIc_FZHmOytEWD8eUXDhUu51QlL1DK4Y2F8UZ2gEjbmy2hsOahjLJj/pubhtml?gid=424221590&single=true';
 const ALL_ENG_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vT513ZUf5kxkdYXdelbShs75SNIc_FZHmOytEWD8eUXDhUu51QlL1DK4Y2F8UZ2gEjbmy2hsOahjLJj/pubhtml?gid=0&single=true';
 const RPT_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vT513ZUf5kxkdYXdelbShs75SNIc_FZHmOytEWD8eUXDhUu51QlL1DK4Y2F8UZ2gEjbmy2hsOahjLJj/pubhtml?gid=42649250&single=true&chrome=false';
+const ALL_WIFI_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vT513ZUf5kxkdYXdelbShs75SNIc_FZHmOytEWD8eUXDhUu51QlL1DK4Y2F8UZ2gEjbmy2hsOahjLJj/pubhtml?gid=1101103023&single=true';
 const PANELS=['main','today','report','completed','devices','wifi'];
 let todayActiveTab='all',wifiActiveTab='all',completedCatFilter=null;
-let devTab='all',cmpTab='all';
+let devTab='all',cmpTab='all',wifiTab='all';
 let allDevTimer=null,allDevCdVal=30,allDevCdTimer=null,allDevLoaded=false;
 let allEngTimer=null,allEngCdVal=20,allEngCdTimer=null,allEngLoaded=false;
+let allWifiTimer=null,allWifiCdVal=30,allWifiCdTimer=null,allWifiLoaded=false;
 let rptTimer=null,rptCdVal=20,rptCdTimer=null;
 function getTasks(){return JSON.parse(localStorage.getItem('completedTasks'))||[]}
 function saveTask(d){const a=getTasks();a.push(d);localStorage.setItem('completedTasks',JSON.stringify(a))}
@@ -595,6 +621,8 @@ function refreshBadges(){
   const cb=document.getElementById('cmpMeBadge');if(cb)cb.textContent=all.length;
   const dc=all.filter(t=>t.onuMac&&t.onuMac.trim()).length;
   const mb=document.getElementById('devMeBadgeTab');if(mb)mb.textContent=dc;
+  const wc=all.filter(t=>t.wifiScoring==='Yes').length;
+  const wb=document.getElementById('wifiMeBadgeTab');if(wb)wb.textContent=wc;
 }
 function updateClock(){
   const n=new Date();
@@ -615,11 +643,12 @@ function showPanel(name){
   if(name==='today')renderToday();
   if(name==='completed'){if(cmpTab==='all'){renderCompleted();startAllEngRefresh();if(!allEngLoaded)loadAllEng();}else{renderCompleted();stopAllEngRefresh();}}
   if(name==='devices'){if(devTab==='all'){startAllDevRefresh();if(!allDevLoaded)loadAllDev();}else{renderDevices();stopAllDevRefresh();}}
-  if(name==='wifi')renderWifi();
+  if(name==='wifi'){if(wifiTab==='all'){startAllWifiRefresh();if(!allWifiLoaded)loadAllWifi();}else{renderWifi();stopAllWifiRefresh();}}
   if(name==='report')startRptRefresh();
   if(name!=='devices')stopAllDevRefresh();
   if(name!=='report')stopRptRefresh();
   if(name!=='completed')stopAllEngRefresh();
+  if(name!=='wifi')stopAllWifiRefresh();
 }
 function switchDevTab(tab){
   devTab=tab;
@@ -653,6 +682,22 @@ function startAllEngRefresh(){
   allEngTimer=setInterval(()=>{const p=document.getElementById('panelCompleted');if(p&&p.classList.contains('active')&&cmpTab==='all')loadAllEng();},20000);
 }
 function stopAllEngRefresh(){if(allEngTimer){clearInterval(allEngTimer);allEngTimer=null;}if(allEngCdTimer){clearInterval(allEngCdTimer);allEngCdTimer=null;}}
+function switchWifiTab(tab){
+  wifiTab=tab;
+  document.getElementById('wifiTabAll').classList.toggle('active',tab==='all');
+  document.getElementById('wifiTabMe').classList.toggle('active',tab==='me');
+  document.getElementById('wifiAllSection').style.display=tab==='all'?'block':'none';
+  document.getElementById('wifiMeSection').style.display=tab==='me'?'block':'none';
+  if(tab==='all'){startAllWifiRefresh();if(!allWifiLoaded)loadAllWifi();}else{stopAllWifiRefresh();renderWifi();}
+}
+function loadAllWifi(){const f=document.getElementById('allWifiIframe');if(f){f.src=ALL_WIFI_URL+'&t='+Date.now();allWifiLoaded=true;}}
+function onAllWifiLoad(){const el=document.getElementById('allWifiLastTime');if(el)el.textContent=new Date().toLocaleTimeString();allWifiCdVal=30;}
+function startAllWifiRefresh(){
+  stopAllWifiRefresh();allWifiCdVal=30;
+  allWifiCdTimer=setInterval(()=>{allWifiCdVal--;if(allWifiCdVal<=0)allWifiCdVal=30;},1000);
+  allWifiTimer=setInterval(()=>{const p=document.getElementById('panelWifi');if(p&&p.classList.contains('active')&&wifiTab==='all')loadAllWifi();},30000);
+}
+function stopAllWifiRefresh(){if(allWifiTimer){clearInterval(allWifiTimer);allWifiTimer=null;}if(allWifiCdTimer){clearInterval(allWifiCdTimer);allWifiCdTimer=null;}}
 function startRptRefresh(){
   stopRptRefresh();rptCdVal=20;
   rptCdTimer=setInterval(()=>{rptCdVal--;const el=document.getElementById('rptCountdown');if(el)el.textContent=rptCdVal<=0?'0':rptCdVal;if(rptCdVal<=0)rptCdVal=20;},1000);
@@ -942,6 +987,7 @@ window.onload=function(){
   initToggle('bnocToggle');initToggle('wifiScoringToggle');
   refreshBadges();buildCatCounts();
   startAllDevRefresh();loadAllDev();
+  startAllWifiRefresh();loadAllWifi();
 };
 </script>
 </body>
