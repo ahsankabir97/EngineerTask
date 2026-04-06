@@ -8,7 +8,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&family=Orbitron:wght@700;800&family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500;700&family=Arial:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-/* ═══ LOGIN SCREEN ═══ */
+/* ═══ USER MANAGEMENT ═══ */
+.um-table{width:100%;border-collapse:collapse;font-family:'Outfit',sans-serif;}
+.um-table th{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:800;color:#1a3a8f;text-transform:uppercase;letter-spacing:.5px;padding:9px 14px;background:linear-gradient(90deg,#e8f4fd,#f0f8ff);border-bottom:2px solid #bee3f8;text-align:left;}
+.um-table td{padding:10px 14px;border-bottom:1px solid #e8f4fd;font-size:.82rem;color:#1a2340;vertical-align:middle;}
+.um-table tr:last-child td{border-bottom:none;}
+.um-table tr:hover td{background:#f0f8ff;}
+.um-badge-admin{display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#0d1f5c,#1d4ed8);color:#fff;border-radius:20px;padding:2px 10px;font-size:.62rem;font-weight:800;font-family:'Montserrat',sans-serif;letter-spacing:.3px;}
+.um-badge-eng{display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#059669,#10b981);color:#fff;border-radius:20px;padding:2px 10px;font-size:.62rem;font-weight:800;font-family:'Montserrat',sans-serif;letter-spacing:.3px;}
+.um-btn{height:30px;padding:0 12px;border:none;border-radius:7px;font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:800;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:5px;}
+.um-btn-reset{background:linear-gradient(135deg,#d97706,#f59e0b);color:#fff;box-shadow:0 2px 6px rgba(217,119,6,.3);}
+.um-btn-reset:hover{filter:brightness(1.1);}
+.um-btn-del{background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;box-shadow:0 2px 6px rgba(220,38,38,.3);}
+.um-btn-del:hover{filter:brightness(1.1);}
+
+
 #loginScreen{position:fixed;inset:0;background:linear-gradient(145deg,#0d1f5c 0%,#1a3a8f 45%,#2196f3 100%);display:none;align-items:center;justify-content:center;z-index:9999;overflow:hidden;}
 #loginScreen::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 30%,rgba(33,150,243,.25) 0%,transparent 45%),radial-gradient(ellipse at 80% 70%,rgba(255,255,255,.06) 0%,transparent 45%);pointer-events:none;}
 .login-box{background:rgba(255,255,255,.96);border-radius:22px;padding:42px 38px 36px;width:100%;max-width:420px;box-shadow:0 30px 80px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.15);position:relative;z-index:1;}
@@ -95,7 +109,6 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .nav-label{font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:.3px;white-space:nowrap;transition:color .2s;}
 .nav-item:hover .nav-label,.nav-item.active .nav-label{color:#fff}
 .nav-sep{margin:8px 18px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent)}
-/* User info in sidebar */
 .nav-user-info{margin:4px 10px;padding:8px 12px;border-radius:11px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;gap:10px;}
 .nav-user-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#2196f3,#64b5f6);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:900;color:#fff;}
 .nav-user-name{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px;}
@@ -277,47 +290,6 @@ input:focus,select:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(33,150,2
 .toast.show{transform:translateX(0) translateY(-50%);opacity:1;pointer-events:all}
 .toast-icon{font-size:1.2rem;background:rgba(255,255,255,.2);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 #toastMessage{font-size:.77rem;font-weight:700;line-height:1.4;flex:1}
-/* ═══ ACTIVE USERS ═══ */
-.nav-active-users-btn{margin:2px 10px;padding:0 12px;height:40px;display:flex;align-items:center;gap:11px;cursor:pointer;border-radius:11px;border:1.5px solid rgba(34,197,94,.45);background:rgba(34,197,94,.12);transition:all .22s;position:relative;}
-.nav-active-users-btn:hover{background:rgba(34,197,94,.22);border-color:rgba(34,197,94,.7);transform:translateX(4px);}
-.nav-active-users-btn .nav-icon-wrap{background:rgba(34,197,94,.2);}
-.nav-active-users-btn .nav-icon-wrap i{color:#4ade80;}
-.nav-active-users-btn .nav-label{color:#86efac;font-weight:700;}
-.nav-active-users-btn:hover .nav-label{color:#bbf7d0;}
-.active-users-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse-dot 1.5s ease-in-out infinite;flex-shrink:0;margin-left:auto;}
-.active-users-count-badge{background:linear-gradient(135deg,#16a34a,#22c55e);color:#fff;font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:900;padding:2px 7px;border-radius:20px;margin-left:auto;min-width:20px;text-align:center;}
-
-/* Active Users Floating Modal */
-#activeUsersModal{position:fixed;inset:0;background:rgba(13,31,92,.5);display:none;align-items:center;justify-content:center;z-index:9000;backdrop-filter:blur(4px);}
-#activeUsersModal.show{display:flex;}
-.aum-box{background:#fff;border-radius:20px;padding:0;width:100%;max-width:420px;box-shadow:0 28px 70px rgba(0,0,0,.28);position:relative;overflow:hidden;animation:fadeIn .3s ease-out both;}
-.aum-header{background:linear-gradient(110deg,#0d1f5c,#1d4ed8,#22c55e);padding:20px 24px 18px;display:flex;align-items:center;gap:12px;}
-.aum-header-icon{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.aum-header-icon i{color:#fff;font-size:1.1rem;}
-.aum-header-text{flex:1;}
-.aum-title{font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:900;color:#fff;letter-spacing:.4px;}
-.aum-subtitle{font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:600;color:rgba(255,255,255,.7);margin-top:2px;display:flex;align-items:center;gap:5px;}
-.aum-live-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulse-dot 1.5s ease-in-out infinite;display:inline-block;}
-.aum-close-btn{background:rgba(255,255,255,.18);border:none;cursor:pointer;color:#fff;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:background .2s;flex-shrink:0;}
-.aum-close-btn:hover{background:rgba(255,255,255,.32);}
-.aum-body{padding:20px 24px 24px;}
-.aum-summary{display:flex;align-items:center;gap:10px;background:linear-gradient(90deg,#f0fdf4,#dcfce7);border:1.5px solid #86efac;border-radius:12px;padding:12px 16px;margin-bottom:16px;}
-.aum-summary-num{font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:900;color:#16a34a;line-height:1;}
-.aum-summary-label{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;color:#15803d;text-transform:uppercase;letter-spacing:.5px;}
-.aum-summary-sub{font-family:'Outfit',sans-serif;font-size:.65rem;color:#4ade80;margin-top:2px;}
-.aum-list{display:flex;flex-direction:column;gap:8px;max-height:320px;overflow-y:auto;}
-.aum-user-row{display:flex;align-items:center;gap:12px;background:#f8faff;border:1.5px solid #bee3f8;border-radius:12px;padding:10px 14px;transition:all .2s;}
-.aum-user-row:hover{background:#eff6ff;border-color:#93c5fd;transform:translateX(3px);}
-.aum-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#1a3a8f,#2196f3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:900;color:#fff;box-shadow:0 3px 10px rgba(26,58,143,.25);}
-.aum-avatar.admin-av{background:linear-gradient(135deg,#92400e,#f59e0b);}
-.aum-user-info{flex:1;}
-.aum-user-name{font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:800;color:#0d1f5c;}
-.aum-user-role{font-family:'Outfit',sans-serif;font-size:.63rem;color:#64748b;margin-top:1px;}
-.aum-online-tag{display:flex;align-items:center;gap:5px;background:linear-gradient(90deg,#f0fdf4,#dcfce7);border:1px solid #86efac;border-radius:20px;padding:3px 10px;font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:800;color:#16a34a;}
-.aum-online-tag-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse-dot 1.5s ease-in-out infinite;}
-.aum-empty{text-align:center;padding:32px 20px;color:#9ca3af;}
-.aum-empty i{font-size:2rem;color:#bee3f8;display:block;margin-bottom:8px;}
-.aum-empty p{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;color:#b0c8e0;}
 .del-toolbar{display:none;align-items:center;gap:8px;background:linear-gradient(90deg,#fff1f2,#ffe4e6);border:1.5px solid #fca5a5;border-radius:10px;padding:7px 14px;margin-bottom:10px;box-shadow:0 2px 8px rgba(239,68,68,.1);}
 .del-toolbar.show{display:flex}
 .del-toolbar-label{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:800;color:#991b1b;display:flex;align-items:center;gap:5px;flex:1}
@@ -441,13 +413,7 @@ input:focus,select:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(33,150,2
   <div class="nav-item" onclick="showPanel('completed')" title="All Completed Tasks"><div class="nav-icon-wrap"><i class="fas fa-clipboard-list"></i></div><span class="nav-label">All Completed Tasks</span></div>
   <div class="nav-item" onclick="showPanel('devices')" title="Used Devices"><div class="nav-icon-wrap"><i class="fas fa-network-wired"></i></div><span class="nav-label">Used Devices</span></div>
   <div class="nav-item" onclick="showPanel('wifi')" title="WiFi Scoring"><div class="nav-icon-wrap"><i class="fas fa-wifi"></i></div><span class="nav-label">WiFi Scoring</span></div>
-  <div class="nav-sep"></div>
-  <div class="nav-active-users-btn" id="activeUsersNavBtn" onclick="openActiveUsers()" title="Active Users" style="display:none;">
-    <div class="nav-icon-wrap"><i class="fas fa-users"></i></div>
-    <span class="nav-label">Active Users</span>
-    <span class="active-users-count-badge" id="activeUsersBadge">0</span>
-    <span class="active-users-dot"></span>
-  </div>
+  <div class="nav-item" id="navUserMgmt" onclick="showPanel('usermgmt')" title="User Management" style="display:none"><div class="nav-icon-wrap"><i class="fas fa-users-cog"></i></div><span class="nav-label">User Management</span></div>
   <div class="nav-sep"></div>
   <div class="nav-action-item" onclick="openChangePw()" title="Change Password"><i class="fas fa-key"></i><span>Change Password</span></div>
   <div class="nav-action-item logout" onclick="doLogout()" title="Logout"><i class="fas fa-sign-out-alt"></i><span>Logout</span></div>
@@ -718,36 +684,68 @@ input:focus,select:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(33,150,2
     </div>
 
   </div>
-</div>
-<!-- ═══ ACTIVE USERS MODAL ═══ -->
-<div id="activeUsersModal">
-  <div class="aum-box">
-    <div class="aum-header">
-      <div class="aum-header-icon"><i class="fas fa-users"></i></div>
-      <div class="aum-header-text">
-        <div class="aum-title">Active Users</div>
-        <div class="aum-subtitle"><span class="aum-live-dot"></span> Currently logged in — Live</div>
+
+    <!-- USER MANAGEMENT (Admin only) -->
+    <div class="panel" id="panelUsermgmt">
+      <div class="card">
+        <div class="panel-header">
+          <div class="panel-title"><i class="fas fa-users-cog"></i>User Management</div>
+        </div>
+
+        <!-- Create New User -->
+        <div style="background:linear-gradient(135deg,#f0f8ff,#e8f4fd);border:1.5px solid #bee3f8;border-radius:14px;padding:20px 22px;margin-bottom:18px;">
+          <div style="font-family:'Montserrat',sans-serif;font-size:.85rem;font-weight:900;color:#0d1f5c;margin-bottom:14px;display:flex;align-items:center;gap:8px;"><i class="fas fa-user-plus" style="color:#2196f3"></i>Create New User</div>
+          <div class="row row-3" style="margin-bottom:10px">
+            <div class="input-group">
+              <label><i class="fas fa-user"></i>Username (Login Key)</label>
+              <input type="text" id="newUserKey" placeholder="e.g. Rahim (no spaces)" spellcheck="false">
+            </div>
+            <div class="input-group">
+              <label><i class="fas fa-id-badge"></i>Display Name</label>
+              <input type="text" id="newUserDisplay" placeholder="e.g. Md. Rahim Uddin">
+            </div>
+            <div class="input-group">
+              <label><i class="fas fa-lock"></i>Password</label>
+              <div class="pw-wrap">
+                <input type="password" id="newUserPw" placeholder="Min 6 characters">
+                <button class="pw-toggle" onclick="togglePwVis('newUserPw',this)" type="button"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+          </div>
+          <div id="umCreateErr" style="display:none;background:#fff1f2;border:1.5px solid #fca5a5;border-radius:8px;padding:9px 14px;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;color:#991b1b;margin-bottom:10px;"></div>
+          <button onclick="createUser()" style="height:40px;padding:0 22px;background:linear-gradient(135deg,#0d1f5c,#1d4ed8,#2196f3);color:#fff;border:none;border-radius:9px;font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:800;cursor:pointer;letter-spacing:.5px;box-shadow:0 5px 14px rgba(26,58,143,.3);transition:all .22s;display:inline-flex;align-items:center;gap:8px;" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter=''"><i class="fas fa-plus-circle"></i>Create User</button>
+        </div>
+
+        <!-- User List -->
+        <div style="font-family:'Montserrat',sans-serif;font-size:.85rem;font-weight:900;color:#0d1f5c;margin-bottom:12px;display:flex;align-items:center;gap:8px;"><i class="fas fa-list-ul" style="color:#2196f3"></i>All Users</div>
+        <div id="userListTable"></div>
       </div>
-      <button class="aum-close-btn" onclick="closeActiveUsers()"><i class="fas fa-times"></i></button>
     </div>
-    <div class="aum-body">
-      <div class="aum-summary">
-        <div>
-          <div class="aum-summary-num" id="aumCount">0</div>
-        </div>
-        <div>
-          <div class="aum-summary-label">Users Online</div>
-          <div class="aum-summary-sub" id="aumTime">Updated just now</div>
-        </div>
+
+  </div>
+</div>
+</div><!-- end appScreen -->
+
+<!-- Reset Password Modal -->
+<div id="resetPwModal" style="position:fixed;inset:0;background:rgba(13,31,92,.55);display:none;align-items:center;justify-content:center;z-index:8100;">
+  <div style="background:#fff;border-radius:18px;padding:30px 28px 26px;width:100%;max-width:360px;box-shadow:0 24px 60px rgba(0,0,0,.3);position:relative;">
+    <button onclick="closeResetPw()" style="position:absolute;top:14px;right:16px;background:none;border:none;cursor:pointer;color:#94a3b8;font-size:1rem;"><i class="fas fa-times"></i></button>
+    <div style="font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:900;color:#0d1f5c;margin-bottom:6px;display:flex;align-items:center;gap:9px;"><i class="fas fa-key" style="color:#2196f3"></i>Reset Password</div>
+    <div id="resetPwTarget" style="font-family:'Outfit',sans-serif;font-size:.8rem;color:#5b7fa6;margin-bottom:18px;"></div>
+    <div style="margin-bottom:14px;">
+      <label style="display:block;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:800;color:#1a3a8f;text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px;">New Password</label>
+      <div class="pw-wrap">
+        <input type="password" id="resetPwInput" placeholder="Min 6 characters" style="width:100%;padding:9px 14px;border:1.5px solid #bee3f8;border-radius:9px;font-size:.84rem;font-family:'Outfit',sans-serif;font-weight:500;outline:none;background:#f0f8ff;color:#1a2340;height:40px;padding-right:42px;">
+        <button class="pw-toggle" onclick="togglePwVis('resetPwInput',this)" type="button"><i class="fas fa-eye"></i></button>
       </div>
-      <div class="aum-list" id="aumList">
-        <div class="aum-empty"><i class="fas fa-user-slash"></i><p>No users currently online.</p></div>
-      </div>
+    </div>
+    <div id="resetPwErr" style="display:none;background:#fff1f2;border:1.5px solid #fca5a5;border-radius:8px;padding:8px 12px;font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;color:#991b1b;margin-bottom:12px;"></div>
+    <div style="display:flex;gap:9px;">
+      <button onclick="doResetPw()" style="flex:1;height:40px;background:linear-gradient(135deg,#0d1f5c,#1d4ed8);color:#fff;border:none;border-radius:9px;font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:800;cursor:pointer;transition:all .22s;" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter=''"><i class="fas fa-save"></i> Save</button>
+      <button onclick="closeResetPw()" style="height:40px;padding:0 16px;background:#fff;color:#6b7280;border:1.5px solid #d1d5db;border-radius:9px;font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:700;cursor:pointer;">Cancel</button>
     </div>
   </div>
 </div>
-
-</div><!-- end appScreen -->
 
 <div id="toast" class="toast"><span class="toast-icon">✓</span><span id="toastMessage"></span></div>
 
@@ -816,25 +814,19 @@ function doLogin() {
   document.getElementById('loginScreen').style.display = 'none';
   const appEl = document.getElementById('appScreen');
   appEl.classList.add('show');
-  const displayName = USER_DISPLAY[userKey] || userKey;
+  const displayName = (getUserDisplay()[userKey]) || userKey;
   document.getElementById('navUserName').textContent = displayName;
   document.getElementById('navUserRole').textContent = userKey === 'Admin' ? 'Administrator' : 'Engineer';
   document.getElementById('navUserAvatar').textContent = displayName.substring(0, 2).toUpperCase();
-  // Track active session
-  markUserOnline(userKey);
-  // Show Active Users button only for Admin
-  if (userKey === 'Admin') {
-    document.getElementById('activeUsersNavBtn').style.display = 'flex';
-    updateActiveUsersBadge();
-  }
+  // Show User Management nav only for Admin
+  const umNav = document.getElementById('navUserMgmt');
+  if (umNav) umNav.style.display = userKey === 'Admin' ? 'flex' : 'none';
   initApp();
 }
 
 function doLogout() {
   if (!confirm('Logout করবেন?')) return;
-  markUserOffline(currentUser);
   localStorage.removeItem('l3_current_session');
-  document.getElementById('activeUsersNavBtn').style.display = 'none';
   currentUser = null;
   document.getElementById('loginPw').value = '';
   document.getElementById('loginUser').value = '';
@@ -888,8 +880,8 @@ const ALL_DEV_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vT513ZUf5kxkd
 const ALL_ENG_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vT513ZUf5kxkdYXdelbShs75SNIc_FZHmOytEWD8eUXDhUu51QlL1DK4Y2F8UZ2gEjbmy2hsOahjLJj/pubhtml?gid=0&single=true';
 const RPT_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vT513ZUf5kxkdYXdelbShs75SNIc_FZHmOytEWD8eUXDhUu51QlL1DK4Y2F8UZ2gEjbmy2hsOahjLJj/pubhtml?gid=42649250&single=true&chrome=false';
 const ALL_WIFI_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vT513ZUf5kxkdYXdelbShs75SNIc_FZHmOytEWD8eUXDhUu51QlL1DK4Y2F8UZ2gEjbmy2hsOahjLJj/pubhtml?gid=1101103023&single=true';
-const PANELS=['main','today','report','completed','devices','wifi'];
-const PANEL_TITLES={main:'Daily Work Dashboard',today:'My Task',report:'Task Report',completed:'All Completed Tasks',devices:'Used Devices',wifi:'WiFi Scoring'};
+const PANELS=['main','today','report','completed','devices','wifi','usermgmt'];
+const PANEL_TITLES={main:'Daily Work Dashboard',today:'My Task',report:'Task Report',completed:'All Completed Tasks',devices:'Used Devices',wifi:'WiFi Scoring',usermgmt:'User Management'};
 let todayActiveTab='all',wifiActiveTab='all',completedCatFilter=null;
 let devTab='all',cmpTab='all',wifiTab='all';
 let allDevTimer=null,allDevLoaded=false;
@@ -931,6 +923,7 @@ function showPanel(name){
   const tgt=document.getElementById('panel'+name[0].toUpperCase()+name.slice(1));if(tgt)tgt.classList.add('active');
   const idx=PANELS.indexOf(name);if(idx>=0){const ni=document.querySelectorAll('.nav-item');if(ni[idx])ni[idx].classList.add('active');}
   if(name==='today')renderToday();
+  if(name==='usermgmt')renderUserList();
   if(name==='completed'){if(cmpTab==='all'){renderCompleted();startAllEngRefresh();if(!allEngLoaded)loadAllEng();}else{renderCompleted();stopAllEngRefresh();}}
   if(name==='devices'){if(devTab==='all'){startAllDevRefresh();if(!allDevLoaded)loadAllDev();}else{renderDevices();stopAllDevRefresh();}}
   if(name==='wifi'){if(wifiTab==='all'){startAllWifiRefresh();if(!allWifiLoaded)loadAllWifi();}else{renderWifi();stopAllWifiRefresh();}}
@@ -1055,67 +1048,105 @@ function deleteSelectedCmp(){if(!cmpSelected.size){showToast('কোনো task 
 function deleteAllCmp(){let visible=getTasks();const fd=document.getElementById('cFilterDate').value;if(fd)visible=visible.filter(t=>t.date===fd);if(completedCatFilter)visible=visible.filter(t=>t.category===completedCatFilter);if(!visible.length){showToast('Delete করার মতো task নেই!','warning');return;}if(!confirm(`এই view-তে দৃশ্যমান সব ${visible.length} টি task delete করবেন?`))return;const delKeys=new Set(visible.map(t=>t.ticket+t.date));const remaining=getTasks().filter(t=>!delKeys.has(t.ticket+t.date));localStorage.setItem('completedTasks',JSON.stringify(remaining));cmpSelectMode=false;cmpSelected.clear();document.getElementById('cmpDelToolbar').classList.remove('show');refreshBadges();showToast(`${visible.length} task deleted!`,'success');renderCompleted();}
 
 /* ═══════════════════════════════════
-   ACTIVE USERS SYSTEM
+   USER MANAGEMENT (Admin)
 ═══════════════════════════════════ */
-function getActiveSessions() {
-  try { return JSON.parse(localStorage.getItem('l3_active_sessions')) || {}; } catch(e) { return {}; }
+function getUserDisplay() {
+  const stored = localStorage.getItem('l3_user_display');
+  if (stored) return JSON.parse(stored);
+  localStorage.setItem('l3_user_display', JSON.stringify(USER_DISPLAY));
+  return { ...USER_DISPLAY };
 }
-function saveActiveSessions(s) {
-  localStorage.setItem('l3_active_sessions', JSON.stringify(s));
+function saveUserDisplay(ud) {
+  localStorage.setItem('l3_user_display', JSON.stringify(ud));
 }
-function markUserOnline(userKey) {
-  const sessions = getActiveSessions();
-  sessions[userKey] = { loginTime: new Date().toISOString(), display: USER_DISPLAY[userKey] || userKey };
-  saveActiveSessions(sessions);
-}
-function markUserOffline(userKey) {
-  if (!userKey) return;
-  const sessions = getActiveSessions();
-  delete sessions[userKey];
-  saveActiveSessions(sessions);
-}
-function updateActiveUsersBadge() {
-  const sessions = getActiveSessions();
-  const count = Object.keys(sessions).length;
-  const badge = document.getElementById('activeUsersBadge');
-  if (badge) badge.textContent = count;
-}
-function openActiveUsers() {
-  updateActiveUsersBadge();
-  const sessions = getActiveSessions();
-  const keys = Object.keys(sessions);
-  document.getElementById('aumCount').textContent = keys.length;
-  document.getElementById('aumTime').textContent = 'Updated: ' + new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'});
-  const list = document.getElementById('aumList');
-  if (!keys.length) {
-    list.innerHTML = '<div class="aum-empty"><i class="fas fa-user-slash"></i><p>No users currently online.</p></div>';
-  } else {
-    list.innerHTML = keys.map(k => {
-      const u = sessions[k];
-      const initials = (u.display||k).substring(0,2).toUpperCase();
-      const isAdmin = k === 'Admin';
-      const loginTime = u.loginTime ? new Date(u.loginTime).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}) : '—';
-      return `<div class="aum-user-row">
-        <div class="aum-avatar ${isAdmin?'admin-av':''}">${initials}</div>
-        <div class="aum-user-info">
-          <div class="aum-user-name">${u.display||k}</div>
-          <div class="aum-user-role">${isAdmin?'Administrator':'Engineer'} · Login: ${loginTime}</div>
-        </div>
-        <div class="aum-online-tag"><span class="aum-online-tag-dot"></span>Online</div>
-      </div>`;
-    }).join('');
-  }
-  document.getElementById('activeUsersModal').classList.add('show');
-}
-function closeActiveUsers() {
-  document.getElementById('activeUsersModal').classList.remove('show');
-}
-// Close modal on backdrop click
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('activeUsersModal').addEventListener('click', function(e) {
-    if (e.target === this) closeActiveUsers();
+
+function renderUserList() {
+  const passwords = getPasswords();
+  const display = getUserDisplay();
+  const tbody = document.getElementById('userListTable');
+  if (!tbody) return;
+  const keys = Object.keys(passwords);
+  if (!keys.length) { tbody.innerHTML = '<p style="color:#94a3b8;font-family:Outfit,sans-serif;font-size:.8rem;padding:10px">No users found.</p>'; return; }
+  let html = '<table class="um-table"><thead><tr><th>#</th><th>Username</th><th>Display Name</th><th>Role</th><th>Actions</th></tr></thead><tbody>';
+  keys.forEach((k, i) => {
+    const isAdmin = k === 'Admin';
+    const dn = display[k] || k;
+    html += `<tr>
+      <td style="font-family:'Montserrat',sans-serif;font-weight:700;color:#5b7fa6">${i+1}</td>
+      <td><span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:600;color:#0d1f5c">${k}</span></td>
+      <td style="font-weight:600">${dn}</td>
+      <td>${isAdmin ? '<span class="um-badge-admin"><i class="fas fa-shield-alt"></i> Admin</span>' : '<span class="um-badge-eng"><i class="fas fa-hard-hat"></i> Engineer</span>'}</td>
+      <td style="display:flex;gap:7px;flex-wrap:wrap;">
+        <button class="um-btn um-btn-reset" onclick="openResetPw('${k}','${dn}')"><i class="fas fa-key"></i>Reset PW</button>
+        ${!isAdmin ? `<button class="um-btn um-btn-del" onclick="deleteUser('${k}')"><i class="fas fa-trash"></i>Delete</button>` : ''}
+      </td>
+    </tr>`;
   });
-});
+  html += '</tbody></table>';
+  tbody.innerHTML = html;
+}
+
+function createUser() {
+  const keyEl = document.getElementById('newUserKey');
+  const dispEl = document.getElementById('newUserDisplay');
+  const pwEl = document.getElementById('newUserPw');
+  const errEl = document.getElementById('umCreateErr');
+  errEl.style.display = 'none';
+  const key = keyEl.value.trim();
+  const disp = dispEl.value.trim();
+  const pw = pwEl.value;
+  if (!key) { errEl.textContent = 'Username (Login Key) দিন।'; errEl.style.display = 'block'; return; }
+  if (/\s/.test(key)) { errEl.textContent = 'Username-এ space দেওয়া যাবে না।'; errEl.style.display = 'block'; return; }
+  if (!disp) { errEl.textContent = 'Display Name দিন।'; errEl.style.display = 'block'; return; }
+  if (pw.length < 6) { errEl.textContent = 'Password কমপক্ষে ৬ অক্ষর হতে হবে।'; errEl.style.display = 'block'; return; }
+  const passwords = getPasswords();
+  if (passwords[key]) { errEl.textContent = `"${key}" নামে user ইতিমধ্যে আছে।`; errEl.style.display = 'block'; return; }
+  passwords[key] = pw;
+  savePasswords(passwords);
+  const ud = getUserDisplay();
+  ud[key] = disp;
+  saveUserDisplay(ud);
+  keyEl.value = ''; dispEl.value = ''; pwEl.value = '';
+  showToast(`User "${disp}" তৈরি হয়েছে!`, 'success');
+  renderUserList();
+}
+
+let resetTarget = null;
+function openResetPw(key, disp) {
+  resetTarget = key;
+  document.getElementById('resetPwTarget').textContent = `User: ${disp} (${key})`;
+  document.getElementById('resetPwInput').value = '';
+  document.getElementById('resetPwErr').style.display = 'none';
+  document.getElementById('resetPwModal').style.display = 'flex';
+}
+function closeResetPw() {
+  document.getElementById('resetPwModal').style.display = 'none';
+  resetTarget = null;
+}
+function doResetPw() {
+  const pw = document.getElementById('resetPwInput').value;
+  const errEl = document.getElementById('resetPwErr');
+  errEl.style.display = 'none';
+  if (pw.length < 6) { errEl.textContent = 'Password কমপক্ষে ৬ অক্ষর হতে হবে।'; errEl.style.display = 'block'; return; }
+  const passwords = getPasswords();
+  passwords[resetTarget] = pw;
+  savePasswords(passwords);
+  closeResetPw();
+  showToast(`Password reset সফল!`, 'success');
+}
+
+function deleteUser(key) {
+  const ud = getUserDisplay();
+  const name = ud[key] || key;
+  if (!confirm(`"${name}" user টি delete করবেন? এটি পূর্বাবস্থায় ফেরানো যাবে না।`)) return;
+  const passwords = getPasswords();
+  delete passwords[key];
+  savePasswords(passwords);
+  delete ud[key];
+  saveUserDisplay(ud);
+  showToast(`User "${name}" delete হয়েছে।`, 'success');
+  renderUserList();
+}
 
 function initApp(){
   updateClock();
@@ -1131,7 +1162,6 @@ function initApp(){
 window.onload=function(){
   setInterval(updateClock,1000);
   updateClock();
-  // ── Restore session on page refresh ──
   const savedUser = localStorage.getItem('l3_current_session');
   if (savedUser) {
     const passwords = getPasswords();
@@ -1139,22 +1169,18 @@ window.onload=function(){
       currentUser = savedUser;
       const appEl = document.getElementById('appScreen');
       appEl.classList.add('show');
-      const displayName = USER_DISPLAY[savedUser] || savedUser;
+      const displayName = (getUserDisplay()[savedUser]) || savedUser;
       document.getElementById('navUserName').textContent = displayName;
       document.getElementById('navUserRole').textContent = savedUser === 'Admin' ? 'Administrator' : 'Engineer';
       document.getElementById('navUserAvatar').textContent = displayName.substring(0,2).toUpperCase();
-      markUserOnline(savedUser);
-      if (savedUser === 'Admin') {
-        document.getElementById('activeUsersNavBtn').style.display = 'flex';
-        updateActiveUsersBadge();
-      }
+      const umNav = document.getElementById('navUserMgmt');
+      if (umNav) umNav.style.display = savedUser === 'Admin' ? 'flex' : 'none';
       initApp();
       return;
     } else {
       localStorage.removeItem('l3_current_session');
     }
   }
-  // No valid session — show login
   document.getElementById('loginScreen').style.display = 'flex';
 };
 </script>
