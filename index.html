@@ -8,6 +8,52 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&family=Orbitron:wght@700;800&family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500;700&family=Arial:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
+/* ═══ LOGIN SCREEN ═══ */
+#loginScreen{position:fixed;inset:0;background:linear-gradient(145deg,#0d1f5c 0%,#1a3a8f 45%,#2196f3 100%);display:none;align-items:center;justify-content:center;z-index:9999;overflow:hidden;}
+#loginScreen::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 30%,rgba(33,150,243,.25) 0%,transparent 45%),radial-gradient(ellipse at 80% 70%,rgba(255,255,255,.06) 0%,transparent 45%);pointer-events:none;}
+.login-box{background:rgba(255,255,255,.96);border-radius:22px;padding:42px 38px 36px;width:100%;max-width:420px;box-shadow:0 30px 80px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.15);position:relative;z-index:1;}
+.login-logo-wrap{text-align:center;margin-bottom:28px;}
+.login-logo-wrap img{width:72px;height:72px;object-fit:contain;border-radius:14px;border:3px solid rgba(33,150,243,.3);box-shadow:0 8px 24px rgba(26,58,143,.2);padding:4px;background:#fff;}
+.login-brand{font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:800;color:#0d1f5c;letter-spacing:.4px;margin-top:10px;}
+.login-zone{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:600;color:#5b7fa6;margin-top:2px;}
+.login-title{font-family:'Montserrat',sans-serif;font-size:1.25rem;font-weight:900;color:#0d1f5c;text-align:center;margin-bottom:24px;letter-spacing:.5px;}
+.login-field{margin-bottom:16px;}
+.login-field label{display:block;font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:800;color:#1a3a8f;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px;}
+.login-field select,.login-field input{width:100%;padding:10px 14px;border:1.5px solid #bee3f8;border-radius:10px;font-size:.88rem;font-family:'Outfit',sans-serif;font-weight:500;outline:none;transition:all .25s;background:#f0f8ff;color:#1a2340;height:42px;box-sizing:border-box;}
+.login-field select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231a3a8f' d='M6 9L1 4h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;background-color:#f0f8ff;}
+.login-field input:focus,.login-field select:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(33,150,243,.15);background:#fff;}
+.pw-wrap{position:relative;}
+.pw-wrap input{padding-right:42px;}
+.pw-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#5b7fa6;font-size:.9rem;padding:4px;transition:color .2s;}
+.pw-toggle:hover{color:#1a3a8f;}
+.login-btn{width:100%;height:46px;background:linear-gradient(135deg,#0d1f5c,#1d4ed8,#2196f3);color:#fff;border:none;border-radius:11px;font-family:'Montserrat',sans-serif;font-size:.88rem;font-weight:800;cursor:pointer;text-transform:uppercase;letter-spacing:.8px;box-shadow:0 8px 22px rgba(26,58,143,.35);transition:all .25s;display:flex;align-items:center;justify-content:center;gap:9px;margin-top:8px;}
+.login-btn:hover{transform:translateY(-2px);filter:brightness(1.1);box-shadow:0 12px 30px rgba(26,58,143,.45);}
+.login-btn:active{transform:translateY(0);}
+.login-err{background:linear-gradient(90deg,#fff1f2,#ffe4e6);border:1.5px solid #fca5a5;border-radius:9px;padding:10px 14px;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;color:#991b1b;display:none;align-items:center;gap:8px;margin-bottom:14px;}
+.login-err.show{display:flex;}
+.login-footer{text-align:center;margin-top:18px;font-family:'Outfit',sans-serif;font-size:.62rem;color:#94a3b8;}
+
+/* ═══ CHANGE PASSWORD MODAL ═══ */
+#changePwModal{position:fixed;inset:0;background:rgba(13,31,92,.55);display:none;align-items:center;justify-content:center;z-index:8000;}
+#changePwModal.show{display:flex;}
+.cpw-box{background:#fff;border-radius:18px;padding:32px 30px 28px;width:100%;max-width:380px;box-shadow:0 24px 60px rgba(0,0,0,.3);position:relative;}
+.cpw-title{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:900;color:#0d1f5c;margin-bottom:20px;display:flex;align-items:center;gap:9px;}
+.cpw-title i{color:#2196f3;}
+.cpw-field{margin-bottom:14px;}
+.cpw-field label{display:block;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:800;color:#1a3a8f;text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px;}
+.cpw-field input{width:100%;padding:9px 14px;border:1.5px solid #bee3f8;border-radius:9px;font-size:.84rem;font-family:'Outfit',sans-serif;font-weight:500;outline:none;transition:all .25s;background:#f0f8ff;color:#1a2340;height:40px;}
+.cpw-field input:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(33,150,243,.15);background:#fff;}
+.cpw-actions{display:flex;gap:9px;margin-top:6px;}
+.cpw-save{flex:1;height:40px;background:linear-gradient(135deg,#0d1f5c,#1d4ed8);color:#fff;border:none;border-radius:9px;font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:800;cursor:pointer;transition:all .22s;}
+.cpw-save:hover{filter:brightness(1.1);}
+.cpw-cancel{height:40px;padding:0 16px;background:#fff;color:#6b7280;border:1.5px solid #d1d5db;border-radius:9px;font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:700;cursor:pointer;transition:all .22s;}
+.cpw-cancel:hover{border-color:#9ca3af;background:#f9fafb;}
+.cpw-err{background:#fff1f2;border:1.5px solid #fca5a5;border-radius:8px;padding:8px 12px;font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;color:#991b1b;display:none;align-items:center;gap:6px;margin-bottom:12px;}
+.cpw-err.show{display:flex;}
+.cpw-close{position:absolute;top:14px;right:16px;background:none;border:none;cursor:pointer;color:#94a3b8;font-size:1rem;transition:color .2s;}
+.cpw-close:hover{color:#1a3a8f;}
+
+/* ═══ MAIN APP ═══ */
 :root{
   --nav-top:#0d1f5c;--nav-mid:#1a3a8f;--nav-bot:#2354c7;--nav-w:270px;
   --hdr-left:#1a3a8f;--hdr-right:#2196f3;
@@ -15,8 +61,10 @@
   --card:#fff;--border:#bee3f8;--text:#1a2340;
   --shadow:0 6px 20px rgba(26,58,143,.10);--cb:17px;
 }
+#appScreen{display:none;width:100%;min-height:100vh;}
+#appScreen.show{display:flex;}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Outfit',sans-serif;background:linear-gradient(145deg,var(--page-bg1) 0%,var(--page-bg2) 50%,var(--page-bg3) 100%);color:var(--text);min-height:100vh;background-attachment:fixed;display:flex;overflow-x:hidden;}
+body{font-family:'Outfit',sans-serif;background:linear-gradient(145deg,var(--page-bg1) 0%,var(--page-bg2) 50%,var(--page-bg3) 100%);color:var(--text);min-height:100vh;background-attachment:fixed;display:flex;overflow-x:hidden;width:100%;}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 15% 20%,rgba(33,150,243,.06) 0%,transparent 35%),radial-gradient(ellipse at 85% 80%,rgba(26,58,143,.05) 0%,transparent 35%);z-index:-1;pointer-events:none;}
 .sidebar{width:var(--nav-w);min-height:100vh;background:linear-gradient(180deg,var(--nav-top) 0%,var(--nav-mid) 45%,var(--nav-bot) 100%);position:fixed;left:0;top:0;bottom:0;display:flex;flex-direction:column;z-index:300;box-shadow:5px 0 28px rgba(13,31,92,.38);overflow:hidden;}
 .sidebar-logo{padding:20px 16px 16px;border-bottom:2px solid rgba(255,255,255,.18);display:flex;align-items:center;gap:13px;background:rgba(0,0,0,.18);position:relative;}
@@ -47,8 +95,19 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .nav-label{font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:.3px;white-space:nowrap;transition:color .2s;}
 .nav-item:hover .nav-label,.nav-item.active .nav-label{color:#fff}
 .nav-sep{margin:8px 18px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent)}
+/* User info in sidebar */
+.nav-user-info{margin:4px 10px;padding:8px 12px;border-radius:11px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;gap:10px;}
+.nav-user-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#2196f3,#64b5f6);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:900;color:#fff;}
+.nav-user-name{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px;}
+.nav-user-role{font-family:'Montserrat',sans-serif;font-size:.56rem;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.4px;}
+.nav-action-item{margin:2px 10px;padding:0 12px;height:38px;display:flex;align-items:center;gap:11px;cursor:pointer;border-radius:11px;border:1px solid transparent;transition:all .22s;}
+.nav-action-item:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);}
+.nav-action-item i{font-size:.78rem;color:rgba(255,255,255,.65);min-width:20px;text-align:center;}
+.nav-action-item span{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.65);}
+.nav-action-item.logout:hover{background:rgba(239,68,68,.15);border-color:rgba(239,68,68,.4);}
+.nav-action-item.logout:hover i,.nav-action-item.logout:hover span{color:#fca5a5;}
 .sidebar-footer{margin-top:auto;padding:13px 18px;border-top:1px solid rgba(255,255,255,.1);font-family:'Outfit',sans-serif;font-size:.6rem;color:rgba(255,255,255,.32);text-align:center;letter-spacing:.3px;}
-.main-wrap{margin-left:var(--nav-w);flex:1;display:flex;flex-direction:column;min-height:100vh;padding:12px;}
+.main-wrap{margin-left:var(--nav-w);flex:1;display:flex;flex-direction:column;min-height:100vh;width:calc(100% - var(--nav-w));padding:12px;}
 header{background:linear-gradient(110deg,var(--hdr-left) 0%,#1d4ed8 45%,var(--hdr-right) 100%);padding:0 26px;height:88px;border-radius:16px;color:#fff;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;box-shadow:0 8px 32px rgba(26,58,143,.30);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.12);}
 header::before{content:'';position:absolute;top:-50%;right:-10%;width:200px;height:200px;background:radial-gradient(circle,rgba(33,150,243,.25),transparent 65%);pointer-events:none;}
 header::after{content:'';position:absolute;bottom:-40%;left:30%;width:180px;height:180px;background:radial-gradient(circle,rgba(255,255,255,.07),transparent 65%);pointer-events:none;}
@@ -186,24 +245,11 @@ input:focus,select:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(33,150,2
 @keyframes live-pulse-white{0%{box-shadow:0 0 0 0 rgba(255,255,255,.55)}60%{box-shadow:0 0 0 5px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
 @keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}50%{box-shadow:0 0 0 5px rgba(34,197,94,0)}}
 .live-iframe-wrap{background:#fff;border-radius:12px;border:1.5px solid #bee3f8;overflow:hidden;box-shadow:var(--shadow);}
-.live-topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:linear-gradient(90deg,#dbeafe,#e0f2fe);border-bottom:1.5px solid #bee3f8;flex-wrap:wrap;gap:8px;}
-.live-title{font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:900;color:#0d1f5c;display:flex;align-items:center;gap:7px;}
-.live-info-box{display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid #bee3f8;border-radius:8px;padding:5px 12px;}
 .live-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse-dot 1.5s ease-in-out infinite;flex-shrink:0}
-.live-info-text{font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:700;color:#1a3a8f;display:flex;align-items:center;gap:5px}
-.live-countdown{color:#2196f3;font-weight:900;font-size:.72rem;min-width:14px;display:inline-block;text-align:center}
 .live-lastupd{color:#64748b;font-weight:600}
 .live-lasttime{color:#0d1f5c;font-weight:800}
-.live-sep{color:#bee3f8}
-.iframe-clip{line-height:0;overflow:hidden;position:relative;}
-.iframe-clip iframe{width:100%;border:none;display:block;margin-top:-29px;}
-.iframe-clip.h520 iframe{height:568px;}
-.iframe-clip.h480 iframe{height:478px;}
 .wifi-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
 .table-section{background:var(--card);border-radius:14px;border:1px solid rgba(190,227,248,.75);box-shadow:var(--shadow)}
-.table-header-bar{padding:11px 18px;background:linear-gradient(90deg,#dbeafe,#bfdbfe,#e0f2fe);font-family:'Montserrat',sans-serif;font-weight:900;color:#0d1f5c;border-bottom:2px solid #90caf9;text-transform:uppercase;letter-spacing:.7px;font-size:.72rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
-.tbl-title{display:flex;align-items:center;gap:8px}
-.tbl-title i{color:#1d4ed8;font-size:.95rem}
 .completed-cat-counts{display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
 .cat-count-box{display:flex;align-items:center;gap:5px;padding:4px 11px;border-radius:8px;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:800;border:1.5px solid;transition:all .22s;user-select:none;}
 .cat-count-box:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.12)}
@@ -213,53 +259,12 @@ input:focus,select:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(33,150,2
 .ccb-trouble{color:#92400e;background:#fef3c7;border-color:#fcd34d}.ccb-trouble.active-filter{background:#92400e;color:#fff;border-color:#92400e}
 .ccb-cr{color:#065f46;background:#d1fae5;border-color:#6ee7b7}.ccb-cr.active-filter{background:#065f46;color:#fff;border-color:#065f46}
 .ccb-survey{color:#5b21b6;background:#ede9fe;border-color:#c4b5fd}.ccb-survey.active-filter{background:#5b21b6;color:#fff;border-color:#5b21b6}
-.tbl-filters{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.tbl-date-in{padding:4px 7px;border:1.5px solid #90caf9;border-radius:5px;font-family:'Outfit',sans-serif;font-size:.68rem;background:#fff;color:var(--text);width:110px;height:28px;outline:none}
-.tbl-date-in:focus{border-color:#2196f3}
-.tbl-btn{background:linear-gradient(135deg,#1a3a8f,#2196f3);color:#fff;border:none;padding:0 10px;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:800;cursor:pointer;height:28px;transition:all .25s;display:flex;align-items:center;gap:3px;box-shadow:0 3px 8px rgba(26,58,143,.2);}
-.tbl-btn:hover{transform:translateY(-1px);filter:brightness(1.1)}
-.tbl-btn.alt{background:linear-gradient(135deg,#5b21b6,#7c3aed)}
-.table-wrapper{overflow-x:auto;overflow-y:visible;border-radius:0 0 14px 14px;}
-table{width:100%;border-collapse:collapse;min-width:820px}
-th{padding:9px 12px;text-align:left;font-family:'Montserrat',sans-serif;font-size:.6rem;background:#e8f4fd;color:#0d1f5c;border-bottom:2px solid #90caf9;letter-spacing:.5px;font-weight:900;white-space:nowrap;}
-td{padding:8px 12px;font-size:.74rem;font-family:'Outfit',sans-serif;font-weight:500;color:#1a2340;white-space:nowrap;vertical-align:middle}
-td.mono{font-family:'JetBrains Mono',monospace;font-size:.68rem}
-tbody tr:nth-child(even){background:#f0f8ff}tbody tr:nth-child(odd){background:#fff}
-tbody tr:hover{background:#dbeafe}tbody tr{border-bottom:1px solid #e2eaf5;transition:background .15s}
-.badge{background:linear-gradient(90deg,#dbeafe,#bfdbfe);color:#1a3a8f;padding:2px 8px;border-radius:20px;font-family:'Montserrat',sans-serif;font-size:.56rem;font-weight:800;display:inline-block;text-transform:uppercase;border:1px solid #93c5fd;letter-spacing:.3px;}
-/* ── Delete Toolbar ── */
-.del-toolbar{display:none;align-items:center;gap:8px;background:linear-gradient(90deg,#fff1f2,#ffe4e6);border:1.5px solid #fca5a5;border-radius:10px;padding:7px 14px;margin-bottom:10px;box-shadow:0 2px 8px rgba(239,68,68,.1);}
-.del-toolbar.show{display:flex}
-.del-toolbar-label{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:800;color:#991b1b;display:flex;align-items:center;gap:5px;flex:1}
-.del-toolbar-label i{color:#dc2626}
-.del-sel-count{background:#dc2626;color:#fff;border-radius:20px;padding:1px 8px;font-size:.6rem;font-weight:900;font-family:'Montserrat',sans-serif;}
-.btn-del-sel{background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;border:none;padding:0 12px;border-radius:7px;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:800;cursor:pointer;height:28px;display:flex;align-items:center;gap:5px;box-shadow:0 3px 8px rgba(220,38,38,.28);transition:all .22s;letter-spacing:.3px;}
-.btn-del-sel:hover{filter:brightness(1.1);transform:translateY(-1px);box-shadow:0 5px 14px rgba(220,38,38,.35)}
-.btn-del-all{background:linear-gradient(135deg,#7f1d1d,#b91c1c);color:#fff;border:none;padding:0 12px;border-radius:7px;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:800;cursor:pointer;height:28px;display:flex;align-items:center;gap:5px;box-shadow:0 3px 8px rgba(127,29,29,.28);transition:all .22s;letter-spacing:.3px;}
-.btn-del-all:hover{filter:brightness(1.1);transform:translateY(-1px)}
-.btn-del-cancel{background:#fff;color:#6b7280;border:1.5px solid #d1d5db;padding:0 10px;border-radius:7px;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:700;cursor:pointer;height:28px;transition:all .22s;}
-.btn-del-cancel:hover{border-color:#9ca3af;background:#f9fafb}
-/* task-item checkbox select mode */
-.task-item.sel-mode{padding-left:8px}
-.task-sel-cb{width:18px;height:18px;border-radius:4px;border:2px solid #90caf9;background:#fff;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;}
-.task-sel-cb.checked{background:linear-gradient(135deg,#dc2626,#ef4444);border-color:#dc2626;}
-.task-sel-cb.checked::after{content:'✓';color:#fff;font-size:.65rem;font-weight:900;}
-.task-item.selected-row{background:#fff1f2!important;border-left-color:#dc2626!important;border-color:#fca5a5!important}
-/* table checkbox */
-.tbl-cb-wrap{width:32px;text-align:center}
-.tbl-cb{width:15px;height:15px;border-radius:3px;border:2px solid #90caf9;background:#fff;cursor:pointer;appearance:none;outline:none;display:inline-block;vertical-align:middle;transition:all .18px;position:relative;}
-.tbl-cb:checked{background:linear-gradient(135deg,#dc2626,#ef4444);border-color:#dc2626;}
-.tbl-cb:checked::after{content:'✓';position:absolute;top:-1px;left:1px;color:#fff;font-size:.6rem;font-weight:900;}
-tbody tr.selected-row{background:#fff1f2!important;outline:1.5px solid #fca5a5;}
-.tbl-selall-cb{width:15px;height:15px;border-radius:3px;border:2px solid #90caf9;background:#fff;cursor:pointer;appearance:none;outline:none;display:inline-block;vertical-align:middle;transition:all .18s;}
-.tbl-selall-cb:checked{background:linear-gradient(135deg,#dc2626,#ef4444);border-color:#dc2626;}
 .report-iframe-wrap{position:relative;width:100%;overflow:hidden;border-radius:10px;border:1.5px solid #bee3f8;box-shadow:0 4px 14px rgba(26,58,143,.08);line-height:0;}
-.report-iframe-wrap iframe{width:100%;height:480px;border:none;display:block;}
+.report-iframe-wrap iframe{width:100%;height:calc(100vh - 220px);min-height:480px;border:none;display:block;}
 .report-top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;}
 .rpt-live-info{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #bee3f8;border-radius:9px;padding:6px 14px;box-shadow:var(--shadow);}
 .rpt-live-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse-dot 1.5s ease-in-out infinite;flex-shrink:0;}
 .rpt-info-text{font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:700;color:#1a3a8f;display:flex;align-items:center;gap:6px;}
-.rpt-countdown-val{color:#2196f3;font-weight:900;font-size:.75rem;min-width:14px;display:inline-block;text-align:center;}
 .rpt-last-upd{color:#64748b;font-weight:600}.rpt-last-time{color:#0d1f5c;font-weight:800}.rpt-sep{color:#bee3f8;font-size:.7rem}
 .rpt-live-badge{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#16a34a,#22c55e);color:#fff;font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:900;padding:2px 10px 2px 7px;border-radius:20px;letter-spacing:.4px;text-transform:uppercase;box-shadow:0 0 0 0 rgba(34,197,94,.7);animation:rpt-live-pulse 1.8s ease-in-out infinite;vertical-align:middle;margin-left:6px;}
 .rpt-live-badge-dot{width:6px;height:6px;border-radius:50%;background:#fff;opacity:.9;display:inline-block;flex-shrink:0;animation:rpt-dot-blink 1.2s ease-in-out infinite;}
@@ -272,10 +277,68 @@ tbody tr.selected-row{background:#fff1f2!important;outline:1.5px solid #fca5a5;}
 .toast.show{transform:translateX(0) translateY(-50%);opacity:1;pointer-events:all}
 .toast-icon{font-size:1.2rem;background:rgba(255,255,255,.2);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 #toastMessage{font-size:.77rem;font-weight:700;line-height:1.4;flex:1}
+/* ═══ ACTIVE USERS ═══ */
+.nav-active-users-btn{margin:2px 10px;padding:0 12px;height:40px;display:flex;align-items:center;gap:11px;cursor:pointer;border-radius:11px;border:1.5px solid rgba(34,197,94,.45);background:rgba(34,197,94,.12);transition:all .22s;position:relative;}
+.nav-active-users-btn:hover{background:rgba(34,197,94,.22);border-color:rgba(34,197,94,.7);transform:translateX(4px);}
+.nav-active-users-btn .nav-icon-wrap{background:rgba(34,197,94,.2);}
+.nav-active-users-btn .nav-icon-wrap i{color:#4ade80;}
+.nav-active-users-btn .nav-label{color:#86efac;font-weight:700;}
+.nav-active-users-btn:hover .nav-label{color:#bbf7d0;}
+.active-users-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse-dot 1.5s ease-in-out infinite;flex-shrink:0;margin-left:auto;}
+.active-users-count-badge{background:linear-gradient(135deg,#16a34a,#22c55e);color:#fff;font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:900;padding:2px 7px;border-radius:20px;margin-left:auto;min-width:20px;text-align:center;}
+
+/* Active Users Floating Modal */
+#activeUsersModal{position:fixed;inset:0;background:rgba(13,31,92,.5);display:none;align-items:center;justify-content:center;z-index:9000;backdrop-filter:blur(4px);}
+#activeUsersModal.show{display:flex;}
+.aum-box{background:#fff;border-radius:20px;padding:0;width:100%;max-width:420px;box-shadow:0 28px 70px rgba(0,0,0,.28);position:relative;overflow:hidden;animation:fadeIn .3s ease-out both;}
+.aum-header{background:linear-gradient(110deg,#0d1f5c,#1d4ed8,#22c55e);padding:20px 24px 18px;display:flex;align-items:center;gap:12px;}
+.aum-header-icon{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.aum-header-icon i{color:#fff;font-size:1.1rem;}
+.aum-header-text{flex:1;}
+.aum-title{font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:900;color:#fff;letter-spacing:.4px;}
+.aum-subtitle{font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:600;color:rgba(255,255,255,.7);margin-top:2px;display:flex;align-items:center;gap:5px;}
+.aum-live-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulse-dot 1.5s ease-in-out infinite;display:inline-block;}
+.aum-close-btn{background:rgba(255,255,255,.18);border:none;cursor:pointer;color:#fff;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:background .2s;flex-shrink:0;}
+.aum-close-btn:hover{background:rgba(255,255,255,.32);}
+.aum-body{padding:20px 24px 24px;}
+.aum-summary{display:flex;align-items:center;gap:10px;background:linear-gradient(90deg,#f0fdf4,#dcfce7);border:1.5px solid #86efac;border-radius:12px;padding:12px 16px;margin-bottom:16px;}
+.aum-summary-num{font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:900;color:#16a34a;line-height:1;}
+.aum-summary-label{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;color:#15803d;text-transform:uppercase;letter-spacing:.5px;}
+.aum-summary-sub{font-family:'Outfit',sans-serif;font-size:.65rem;color:#4ade80;margin-top:2px;}
+.aum-list{display:flex;flex-direction:column;gap:8px;max-height:320px;overflow-y:auto;}
+.aum-user-row{display:flex;align-items:center;gap:12px;background:#f8faff;border:1.5px solid #bee3f8;border-radius:12px;padding:10px 14px;transition:all .2s;}
+.aum-user-row:hover{background:#eff6ff;border-color:#93c5fd;transform:translateX(3px);}
+.aum-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#1a3a8f,#2196f3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:900;color:#fff;box-shadow:0 3px 10px rgba(26,58,143,.25);}
+.aum-avatar.admin-av{background:linear-gradient(135deg,#92400e,#f59e0b);}
+.aum-user-info{flex:1;}
+.aum-user-name{font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:800;color:#0d1f5c;}
+.aum-user-role{font-family:'Outfit',sans-serif;font-size:.63rem;color:#64748b;margin-top:1px;}
+.aum-online-tag{display:flex;align-items:center;gap:5px;background:linear-gradient(90deg,#f0fdf4,#dcfce7);border:1px solid #86efac;border-radius:20px;padding:3px 10px;font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:800;color:#16a34a;}
+.aum-online-tag-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse-dot 1.5s ease-in-out infinite;}
+.aum-empty{text-align:center;padding:32px 20px;color:#9ca3af;}
+.aum-empty i{font-size:2rem;color:#bee3f8;display:block;margin-bottom:8px;}
+.aum-empty p{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;color:#b0c8e0;}
+.del-toolbar{display:none;align-items:center;gap:8px;background:linear-gradient(90deg,#fff1f2,#ffe4e6);border:1.5px solid #fca5a5;border-radius:10px;padding:7px 14px;margin-bottom:10px;box-shadow:0 2px 8px rgba(239,68,68,.1);}
+.del-toolbar.show{display:flex}
+.del-toolbar-label{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:800;color:#991b1b;display:flex;align-items:center;gap:5px;flex:1}
+.del-toolbar-label i{color:#dc2626}
+.del-sel-count{background:#dc2626;color:#fff;border-radius:20px;padding:1px 8px;font-size:.6rem;font-weight:900;font-family:'Montserrat',sans-serif;}
+.btn-del-sel{background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;border:none;padding:0 12px;border-radius:7px;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:800;cursor:pointer;height:28px;display:flex;align-items:center;gap:5px;box-shadow:0 3px 8px rgba(220,38,38,.28);transition:all .22s;letter-spacing:.3px;}
+.btn-del-sel:hover{filter:brightness(1.1);transform:translateY(-1px);box-shadow:0 5px 14px rgba(220,38,38,.35)}
+.btn-del-all{background:linear-gradient(135deg,#7f1d1d,#b91c1c);color:#fff;border:none;padding:0 12px;border-radius:7px;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:800;cursor:pointer;height:28px;display:flex;align-items:center;gap:5px;box-shadow:0 3px 8px rgba(127,29,29,.28);transition:all .22s;letter-spacing:.3px;}
+.btn-del-all:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-del-cancel{background:#fff;color:#6b7280;border:1.5px solid #d1d5db;padding:0 10px;border-radius:7px;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:700;cursor:pointer;height:28px;transition:all .22s;}
+.btn-del-cancel:hover{border-color:#9ca3af;background:#f9fafb}
+.task-item.sel-mode{padding-left:8px}
+.task-sel-cb{width:18px;height:18px;border-radius:4px;border:2px solid #90caf9;background:#fff;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;}
+.task-sel-cb.checked{background:linear-gradient(135deg,#dc2626,#ef4444);border-color:#dc2626;}
+.task-sel-cb.checked::after{content:'✓';color:#fff;font-size:.65rem;font-weight:900;}
+.task-item.selected-row{background:#fff1f2!important;border-left-color:#dc2626!important;border-color:#fca5a5!important}
 @media(max-width:900px){.stats-grid{grid-template-columns:repeat(3,1fr)}.wifi-stats{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){
   :root{--nav-w:58px}
-  .nav-label,.nav-section-title,.sidebar-footer,.nav-sep,.logo-text{display:none}
+  .nav-label,.nav-section-title,.sidebar-footer,.nav-sep,.logo-text,.nav-user-info,.nav-user-name,.nav-user-role{display:none}
+  .nav-action-item span{display:none}
   .sidebar-logo{justify-content:center;padding:12px 7px}
   .logo-img-wrap img{width:36px;height:36px}
   .nav-item{justify-content:center;padding:0;height:46px;border-radius:0;border-left:none;margin:1px 0}
@@ -291,20 +354,68 @@ tbody tr.selected-row{background:#fff1f2!important;outline:1.5px solid #fca5a5;}
   .btn-done{width:100%}
   .toast{right:8px;left:8px;max-width:calc(100% - 16px);min-width:auto}
   .toast.show{transform:translateY(-50%) translateX(0)}
-  .table-header-bar{flex-direction:column;align-items:flex-start}
-  .d-card-inner{flex-direction:column;align-items:flex-start}
-  .d-mid{border:none;padding:0}
-  .d-right{justify-content:flex-start}
-  .subtab-bar{flex-direction:column;border-radius:11px}
-  .subtab-item{border-right:none;border-bottom:1px solid #bee3f8}
-  .subtab-item:last-child{border-bottom:none}
 }
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.card,.table-section,.d-card,.task-item,.stat-card{animation:fadeIn .38s ease-out both}
+.card,.d-card,.task-item,.stat-card{animation:fadeIn .38s ease-out both}
 </style>
 </head>
 <body>
 
+<!-- ═══ LOGIN SCREEN ═══ -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo-wrap">
+      <img src="https://z-cdn-media.chatglm.cn/files/ec97a2bb-1f62-4aa3-b8dd-d7c5349ef71e.png?auth_key=1870751333-bce0d43ce17a472f82b7ca62e6852b21-0-33f4b6311a64ec23a2a122fb5366adb1" alt="Link3">
+      <div class="login-brand">Link3 Technologies Ltd</div>
+      <div class="login-zone">Motijheel Zone — NCSS Team</div>
+    </div>
+    <div class="login-title"><i class="fas fa-lock" style="color:#2196f3;font-size:1rem;margin-right:8px"></i>Dashboard Login</div>
+    <div class="login-err" id="loginErr"><i class="fas fa-exclamation-circle"></i><span id="loginErrMsg">Invalid username or password.</span></div>
+    <form id="loginForm" autocomplete="on" onsubmit="event.preventDefault();doLogin();">
+    <div class="login-field">
+      <label><i class="fas fa-user" style="color:#2196f3;font-size:.75rem"></i> Enter Username</label>
+      <input type="text" id="loginUser" name="username" placeholder="Type your username..." autocomplete="username" spellcheck="false">
+    </div>
+    <div class="login-field">
+      <label><i class="fas fa-key" style="color:#2196f3;font-size:.75rem"></i> Password</label>
+      <div class="pw-wrap">
+        <input type="password" id="loginPw" name="password" placeholder="Enter your password" autocomplete="current-password">
+        <button class="pw-toggle" onclick="togglePwVis('loginPw',this)" type="button"><i class="fas fa-eye"></i></button>
+      </div>
+    </div>
+    <button class="login-btn" type="submit"><i class="fas fa-sign-in-alt"></i> Login</button>
+    </form>
+    <div class="login-footer">© Ahsanul Kabir &nbsp;·&nbsp; NCSS Team (CEx)</div>
+  </div>
+</div>
+
+<!-- ═══ CHANGE PASSWORD MODAL ═══ -->
+<div id="changePwModal">
+  <div class="cpw-box">
+    <button class="cpw-close" onclick="closeChangePw()"><i class="fas fa-times"></i></button>
+    <div class="cpw-title"><i class="fas fa-lock"></i>Change Password</div>
+    <div class="cpw-err" id="cpwErr"><i class="fas fa-exclamation-circle"></i><span id="cpwErrMsg"></span></div>
+    <div class="cpw-field">
+      <label>Current Password</label>
+      <input type="password" id="cpwCurrent" placeholder="Enter current password">
+    </div>
+    <div class="cpw-field">
+      <label>New Password</label>
+      <input type="password" id="cpwNew" placeholder="Enter new password (min 6 chars)">
+    </div>
+    <div class="cpw-field">
+      <label>Confirm New Password</label>
+      <input type="password" id="cpwConfirm" placeholder="Re-enter new password">
+    </div>
+    <div class="cpw-actions">
+      <button class="cpw-save" onclick="saveNewPassword()"><i class="fas fa-save"></i> Save Password</button>
+      <button class="cpw-cancel" onclick="closeChangePw()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MAIN APP ═══ -->
+<div id="appScreen">
 <nav class="sidebar">
   <div class="sidebar-logo">
     <div class="logo-img-wrap"><div class="logo-glow"></div>
@@ -315,6 +426,14 @@ tbody tr.selected-row{background:#fff1f2!important;outline:1.5px solid #fca5a5;}
       <span class="logo-zone"><i class="fas fa-building"></i> Motijheel Zone</span>
     </div>
   </div>
+  <!-- Logged in user info -->
+  <div class="nav-user-info" style="margin-top:10px">
+    <div class="nav-user-avatar" id="navUserAvatar">?</div>
+    <div>
+      <div class="nav-user-name" id="navUserName">User</div>
+      <div class="nav-user-role" id="navUserRole">Engineer</div>
+    </div>
+  </div>
   <div class="nav-section-title">Navigation</div>
   <div class="nav-item active" onclick="showPanel('main')" title="Dashboard"><div class="nav-icon-wrap"><i class="fas fa-tachometer-alt"></i></div><span class="nav-label">Dashboard</span></div>
   <div class="nav-item" onclick="showPanel('today')" title="My Task"><div class="nav-icon-wrap"><i class="fas fa-calendar-check"></i></div><span class="nav-label">My Task</span></div>
@@ -323,6 +442,15 @@ tbody tr.selected-row{background:#fff1f2!important;outline:1.5px solid #fca5a5;}
   <div class="nav-item" onclick="showPanel('devices')" title="Used Devices"><div class="nav-icon-wrap"><i class="fas fa-network-wired"></i></div><span class="nav-label">Used Devices</span></div>
   <div class="nav-item" onclick="showPanel('wifi')" title="WiFi Scoring"><div class="nav-icon-wrap"><i class="fas fa-wifi"></i></div><span class="nav-label">WiFi Scoring</span></div>
   <div class="nav-sep"></div>
+  <div class="nav-active-users-btn" id="activeUsersNavBtn" onclick="openActiveUsers()" title="Active Users" style="display:none;">
+    <div class="nav-icon-wrap"><i class="fas fa-users"></i></div>
+    <span class="nav-label">Active Users</span>
+    <span class="active-users-count-badge" id="activeUsersBadge">0</span>
+    <span class="active-users-dot"></span>
+  </div>
+  <div class="nav-sep"></div>
+  <div class="nav-action-item" onclick="openChangePw()" title="Change Password"><i class="fas fa-key"></i><span>Change Password</span></div>
+  <div class="nav-action-item logout" onclick="doLogout()" title="Logout"><i class="fas fa-sign-out-alt"></i><span>Logout</span></div>
   <div class="sidebar-footer">© Ahsanul Kabir</div>
 </nav>
 
@@ -553,7 +681,6 @@ tbody tr.selected-row{background:#fff1f2!important;outline:1.5px solid #fca5a5;}
           <div class="live-dot"></div><span class="live-lastupd">Last updated:</span><span class="live-lasttime" id="allWifiLastTime">—</span>
         </div>
       </div>
-
       <div id="wifiAllSection">
         <div class="live-iframe-wrap">
           <div style="line-height:0;overflow:hidden;position:relative;height:calc(100vh - 185px);min-height:500px;">
@@ -561,7 +688,6 @@ tbody tr.selected-row{background:#fff1f2!important;outline:1.5px solid #fca5a5;}
           </div>
         </div>
       </div>
-
       <div id="wifiMeSection" style="display:none">
         <div class="card" style="margin-bottom:0">
           <div class="panel-header">
@@ -593,10 +719,170 @@ tbody tr.selected-row{background:#fff1f2!important;outline:1.5px solid #fca5a5;}
 
   </div>
 </div>
+<!-- ═══ ACTIVE USERS MODAL ═══ -->
+<div id="activeUsersModal">
+  <div class="aum-box">
+    <div class="aum-header">
+      <div class="aum-header-icon"><i class="fas fa-users"></i></div>
+      <div class="aum-header-text">
+        <div class="aum-title">Active Users</div>
+        <div class="aum-subtitle"><span class="aum-live-dot"></span> Currently logged in — Live</div>
+      </div>
+      <button class="aum-close-btn" onclick="closeActiveUsers()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="aum-body">
+      <div class="aum-summary">
+        <div>
+          <div class="aum-summary-num" id="aumCount">0</div>
+        </div>
+        <div>
+          <div class="aum-summary-label">Users Online</div>
+          <div class="aum-summary-sub" id="aumTime">Updated just now</div>
+        </div>
+      </div>
+      <div class="aum-list" id="aumList">
+        <div class="aum-empty"><i class="fas fa-user-slash"></i><p>No users currently online.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end appScreen -->
 
 <div id="toast" class="toast"><span class="toast-icon">✓</span><span id="toastMessage"></span></div>
 
 <script>
+/* ═══════════════════════════════════
+   PASSWORD SYSTEM
+═══════════════════════════════════ */
+const DEFAULT_PASSWORDS = {
+  'Admin':       '78773597in',
+  'Arifuzzaman': 'arif1234',
+  'Maruf':       'maruf1234',
+  'AbuSayed':    'sayed1234',
+  'Rupchan':     'rupchan1234',
+  'Amit':        'amit1234',
+  'Tamim':       'tamim1234',
+  'Nazrul':      'nazrul1234',
+  'Basudeb':     'basudeb1234'
+};
+
+const USER_DISPLAY = {
+  'Admin':       'Admin',
+  'Arifuzzaman': 'ATM Arifuzzaman',
+  'Maruf':       'Maruf Hasan',
+  'AbuSayed':    'Abu Sayed',
+  'Rupchan':     'Rupchan',
+  'Amit':        'Amit Hasan',
+  'Tamim':       'Tamim',
+  'Nazrul':      'Nazrul Islam',
+  'Basudeb':     'Basudeb Roy'
+};
+
+function getPasswords() {
+  const stored = localStorage.getItem('l3_passwords');
+  if (stored) return JSON.parse(stored);
+  localStorage.setItem('l3_passwords', JSON.stringify(DEFAULT_PASSWORDS));
+  return { ...DEFAULT_PASSWORDS };
+}
+
+function savePasswords(pw) {
+  localStorage.setItem('l3_passwords', JSON.stringify(pw));
+}
+
+let currentUser = null;
+
+function doLogin() {
+  const userKey = document.getElementById('loginUser').value.trim();
+  const pw = document.getElementById('loginPw').value;
+  const errEl = document.getElementById('loginErr');
+  const errMsg = document.getElementById('loginErrMsg');
+  errEl.classList.remove('show');
+  if (!userKey) { errMsg.textContent = 'Please enter your username.'; errEl.classList.add('show'); return; }
+  if (!pw) { errMsg.textContent = 'Please enter your password.'; errEl.classList.add('show'); return; }
+  const passwords = getPasswords();
+  if (!passwords[userKey]) {
+    errMsg.textContent = 'Username not found. Please check your username.';
+    errEl.classList.add('show'); return;
+  }
+  if (passwords[userKey] !== pw) {
+    errMsg.textContent = 'Incorrect password. Please try again.';
+    errEl.classList.add('show');
+    document.getElementById('loginPw').value = '';
+    return;
+  }
+  currentUser = userKey;
+  localStorage.setItem('l3_current_session', userKey);
+  document.getElementById('loginScreen').style.display = 'none';
+  const appEl = document.getElementById('appScreen');
+  appEl.classList.add('show');
+  const displayName = USER_DISPLAY[userKey] || userKey;
+  document.getElementById('navUserName').textContent = displayName;
+  document.getElementById('navUserRole').textContent = userKey === 'Admin' ? 'Administrator' : 'Engineer';
+  document.getElementById('navUserAvatar').textContent = displayName.substring(0, 2).toUpperCase();
+  // Track active session
+  markUserOnline(userKey);
+  // Show Active Users button only for Admin
+  if (userKey === 'Admin') {
+    document.getElementById('activeUsersNavBtn').style.display = 'flex';
+    updateActiveUsersBadge();
+  }
+  initApp();
+}
+
+function doLogout() {
+  if (!confirm('Logout করবেন?')) return;
+  markUserOffline(currentUser);
+  localStorage.removeItem('l3_current_session');
+  document.getElementById('activeUsersNavBtn').style.display = 'none';
+  currentUser = null;
+  document.getElementById('loginPw').value = '';
+  document.getElementById('loginUser').value = '';
+  document.getElementById('loginErr').classList.remove('show');
+  document.getElementById('appScreen').classList.remove('show');
+  document.getElementById('loginScreen').style.display = 'flex';
+  stopAllDevRefresh(); stopAllEngRefresh(); stopAllWifiRefresh(); stopRptRefresh();
+}
+
+function openChangePw() {
+  document.getElementById('cpwCurrent').value = '';
+  document.getElementById('cpwNew').value = '';
+  document.getElementById('cpwConfirm').value = '';
+  document.getElementById('cpwErr').classList.remove('show');
+  document.getElementById('changePwModal').classList.add('show');
+}
+
+function closeChangePw() {
+  document.getElementById('changePwModal').classList.remove('show');
+}
+
+function saveNewPassword() {
+  const cur = document.getElementById('cpwCurrent').value;
+  const nw = document.getElementById('cpwNew').value;
+  const cf = document.getElementById('cpwConfirm').value;
+  const errEl = document.getElementById('cpwErr');
+  const errMsg = document.getElementById('cpwErrMsg');
+  errEl.classList.remove('show');
+  const passwords = getPasswords();
+  if (passwords[currentUser] !== cur) { errMsg.textContent = 'Current password is incorrect.'; errEl.classList.add('show'); return; }
+  if (nw.length < 6) { errMsg.textContent = 'New password must be at least 6 characters.'; errEl.classList.add('show'); return; }
+  if (nw !== cf) { errMsg.textContent = 'New passwords do not match.'; errEl.classList.add('show'); return; }
+  passwords[currentUser] = nw;
+  savePasswords(passwords);
+  closeChangePw();
+  showToast('Password changed successfully!', 'success');
+}
+
+function togglePwVis(inputId, btn) {
+  const inp = document.getElementById(inputId);
+  const icon = btn.querySelector('i');
+  if (inp.type === 'password') { inp.type = 'text'; icon.className = 'fas fa-eye-slash'; }
+  else { inp.type = 'password'; icon.className = 'fas fa-eye'; }
+}
+
+/* ═══════════════════════════════════
+   ORIGINAL DASHBOARD LOGIC
+═══════════════════════════════════ */
 const SCRIPT_URL='https://script.google.com/macros/s/AKfycbz2_9FujiuKu28uv8MOEcbfSJlZ98HtPxNECbMjZ_Li2sJosjN0Tac8XYGMuJV3CYBNiA/exec';
 const ALL_DEV_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vT513ZUf5kxkdYXdelbShs75SNIc_FZHmOytEWD8eUXDhUu51QlL1DK4Y2F8UZ2gEjbmy2hsOahjLJj/pubhtml?gid=424221590&single=true';
 const ALL_ENG_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vT513ZUf5kxkdYXdelbShs75SNIc_FZHmOytEWD8eUXDhUu51QlL1DK4Y2F8UZ2gEjbmy2hsOahjLJj/pubhtml?gid=0&single=true';
@@ -606,10 +892,10 @@ const PANELS=['main','today','report','completed','devices','wifi'];
 const PANEL_TITLES={main:'Daily Work Dashboard',today:'My Task',report:'Task Report',completed:'All Completed Tasks',devices:'Used Devices',wifi:'WiFi Scoring'};
 let todayActiveTab='all',wifiActiveTab='all',completedCatFilter=null;
 let devTab='all',cmpTab='all',wifiTab='all';
-let allDevTimer=null,allDevCdVal=30,allDevCdTimer=null,allDevLoaded=false;
-let allEngTimer=null,allEngCdVal=20,allEngCdTimer=null,allEngLoaded=false;
-let allWifiTimer=null,allWifiCdVal=30,allWifiCdTimer=null,allWifiLoaded=false;
-let rptTimer=null,rptCdVal=20,rptCdTimer=null;
+let allDevTimer=null,allDevLoaded=false;
+let allEngTimer=null,allEngLoaded=false;
+let allWifiTimer=null,allWifiLoaded=false;
+let rptTimer=null;
 function getTasks(){return JSON.parse(localStorage.getItem('completedTasks'))||[]}
 function saveTask(d){const a=getTasks();a.push(d);localStorage.setItem('completedTasks',JSON.stringify(a))}
 function fmtDate(iso){if(!iso)return'-';const[y,m,d]=iso.split('-');return`${d}-${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]}-${y}`;}
@@ -635,10 +921,8 @@ function showToast(msg,type='success'){
   t.classList.remove('show');void t.offsetWidth;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200);
 }
 function updateHeaderTitle(name){
-  const ht=document.getElementById('headerTitle');
-  if(!ht)return;
-  ht.style.opacity='0';
-  setTimeout(()=>{ht.textContent=PANEL_TITLES[name]||'Daily Work Dashboard';ht.style.opacity='1';},150);
+  const ht=document.getElementById('headerTitle');if(!ht)return;
+  ht.style.opacity='0';setTimeout(()=>{ht.textContent=PANEL_TITLES[name]||'Daily Work Dashboard';ht.style.opacity='1';},150);
 }
 function showPanel(name){
   updateHeaderTitle(name);
@@ -656,70 +940,26 @@ function showPanel(name){
   if(name!=='completed')stopAllEngRefresh();
   if(name!=='wifi')stopAllWifiRefresh();
 }
-function switchDevTab(tab){
-  devTab=tab;
-  document.getElementById('devTabAll').classList.toggle('active',tab==='all');
-  document.getElementById('devTabMe').classList.toggle('active',tab==='me');
-  document.getElementById('devAllSection').style.display=tab==='all'?'block':'none';
-  document.getElementById('devMeSection').style.display=tab==='me'?'block':'none';
-  if(tab==='all'){startAllDevRefresh();if(!allDevLoaded)loadAllDev();}else{stopAllDevRefresh();renderDevices();}
-}
+function switchDevTab(tab){devTab=tab;document.getElementById('devTabAll').classList.toggle('active',tab==='all');document.getElementById('devTabMe').classList.toggle('active',tab==='me');document.getElementById('devAllSection').style.display=tab==='all'?'block':'none';document.getElementById('devMeSection').style.display=tab==='me'?'block':'none';if(tab==='all'){startAllDevRefresh();if(!allDevLoaded)loadAllDev();}else{stopAllDevRefresh();renderDevices();}}
 function loadAllDev(){const f=document.getElementById('allDevIframe');if(f){f.src=ALL_DEV_URL+'&t='+Date.now();allDevLoaded=true;}}
-function onAllDevLoad(){const el=document.getElementById('allDevLastTime');if(el)el.textContent=new Date().toLocaleTimeString();allDevCdVal=30;}
-function startAllDevRefresh(){
-  stopAllDevRefresh();allDevCdVal=30;
-  allDevCdTimer=setInterval(()=>{allDevCdVal--;const el=document.getElementById('allDevCountdown');if(el)el.textContent=allDevCdVal<=0?'0':allDevCdVal;if(allDevCdVal<=0)allDevCdVal=30;},1000);
-  allDevTimer=setInterval(()=>{const p=document.getElementById('panelDevices');if(p&&p.classList.contains('active')&&devTab==='all')loadAllDev();},30000);
-}
-function stopAllDevRefresh(){if(allDevTimer){clearInterval(allDevTimer);allDevTimer=null;}if(allDevCdTimer){clearInterval(allDevCdTimer);allDevCdTimer=null;}}
-function switchCmpTab(tab){
-  cmpTab=tab;
-  document.getElementById('cmpTabAll').classList.toggle('active',tab==='all');
-  document.getElementById('cmpTabMe').classList.toggle('active',tab==='me');
-  document.getElementById('cmpAllSection').style.display=tab==='all'?'block':'none';
-  document.getElementById('cmpMeSection').style.display=tab==='me'?'block':'none';
-  if(tab==='all'){startAllEngRefresh();if(!allEngLoaded)loadAllEng();}else{stopAllEngRefresh();renderCompleted();}
-}
+function onAllDevLoad(){const el=document.getElementById('allDevLastTime');if(el)el.textContent=new Date().toLocaleTimeString();}
+function startAllDevRefresh(){stopAllDevRefresh();allDevTimer=setInterval(()=>{const p=document.getElementById('panelDevices');if(p&&p.classList.contains('active')&&devTab==='all')loadAllDev();},30000);}
+function stopAllDevRefresh(){if(allDevTimer){clearInterval(allDevTimer);allDevTimer=null;}}
+function switchCmpTab(tab){cmpTab=tab;document.getElementById('cmpTabAll').classList.toggle('active',tab==='all');document.getElementById('cmpTabMe').classList.toggle('active',tab==='me');document.getElementById('cmpAllSection').style.display=tab==='all'?'block':'none';document.getElementById('cmpMeSection').style.display=tab==='me'?'block':'none';if(tab==='all'){startAllEngRefresh();if(!allEngLoaded)loadAllEng();}else{stopAllEngRefresh();renderCompleted();}}
 function loadAllEng(){const f=document.getElementById('allEngIframe');if(f){f.src=ALL_ENG_URL+'&t='+Date.now();allEngLoaded=true;}}
-function onAllEngLoad(){const el=document.getElementById('allEngLastTime');if(el)el.textContent=new Date().toLocaleTimeString();allEngCdVal=20;}
-function startAllEngRefresh(){
-  stopAllEngRefresh();allEngCdVal=20;
-  allEngCdTimer=setInterval(()=>{allEngCdVal--;const el=document.getElementById('allEngCountdown');if(el)el.textContent=allEngCdVal<=0?'0':allEngCdVal;if(allEngCdVal<=0)allEngCdVal=20;},1000);
-  allEngTimer=setInterval(()=>{const p=document.getElementById('panelCompleted');if(p&&p.classList.contains('active')&&cmpTab==='all')loadAllEng();},20000);
-}
-function stopAllEngRefresh(){if(allEngTimer){clearInterval(allEngTimer);allEngTimer=null;}if(allEngCdTimer){clearInterval(allEngCdTimer);allEngCdTimer=null;}}
-function switchWifiTab(tab){
-  wifiTab=tab;
-  document.getElementById('wifiTabAll').classList.toggle('active',tab==='all');
-  document.getElementById('wifiTabMe').classList.toggle('active',tab==='me');
-  document.getElementById('wifiAllSection').style.display=tab==='all'?'block':'none';
-  document.getElementById('wifiMeSection').style.display=tab==='me'?'block':'none';
-  if(tab==='all'){startAllWifiRefresh();if(!allWifiLoaded)loadAllWifi();}else{stopAllWifiRefresh();renderWifi();}
-}
+function onAllEngLoad(){const el=document.getElementById('allEngLastTime');if(el)el.textContent=new Date().toLocaleTimeString();}
+function startAllEngRefresh(){stopAllEngRefresh();allEngTimer=setInterval(()=>{const p=document.getElementById('panelCompleted');if(p&&p.classList.contains('active')&&cmpTab==='all')loadAllEng();},20000);}
+function stopAllEngRefresh(){if(allEngTimer){clearInterval(allEngTimer);allEngTimer=null;}}
+function switchWifiTab(tab){wifiTab=tab;document.getElementById('wifiTabAll').classList.toggle('active',tab==='all');document.getElementById('wifiTabMe').classList.toggle('active',tab==='me');document.getElementById('wifiAllSection').style.display=tab==='all'?'block':'none';document.getElementById('wifiMeSection').style.display=tab==='me'?'block':'none';if(tab==='all'){startAllWifiRefresh();if(!allWifiLoaded)loadAllWifi();}else{stopAllWifiRefresh();renderWifi();}}
 function loadAllWifi(){const f=document.getElementById('allWifiIframe');if(f){f.src=ALL_WIFI_URL+'&t='+Date.now();allWifiLoaded=true;}}
-function onAllWifiLoad(){const el=document.getElementById('allWifiLastTime');if(el)el.textContent=new Date().toLocaleTimeString();allWifiCdVal=30;}
-function startAllWifiRefresh(){
-  stopAllWifiRefresh();allWifiCdVal=30;
-  allWifiCdTimer=setInterval(()=>{allWifiCdVal--;if(allWifiCdVal<=0)allWifiCdVal=30;},1000);
-  allWifiTimer=setInterval(()=>{const p=document.getElementById('panelWifi');if(p&&p.classList.contains('active')&&wifiTab==='all')loadAllWifi();},30000);
-}
-function stopAllWifiRefresh(){if(allWifiTimer){clearInterval(allWifiTimer);allWifiTimer=null;}if(allWifiCdTimer){clearInterval(allWifiCdTimer);allWifiCdTimer=null;}}
-function startRptRefresh(){
-  stopRptRefresh();rptCdVal=20;
-  rptCdTimer=setInterval(()=>{rptCdVal--;const el=document.getElementById('rptCountdown');if(el)el.textContent=rptCdVal<=0?'0':rptCdVal;if(rptCdVal<=0)rptCdVal=20;},1000);
-  rptTimer=setInterval(()=>{const f=document.getElementById('reportIframe');if(f&&document.getElementById('panelReport').classList.contains('active'))f.src=RPT_URL+'&t='+Date.now();},20000);
-}
-function stopRptRefresh(){if(rptTimer){clearInterval(rptTimer);rptTimer=null;}if(rptCdTimer){clearInterval(rptCdTimer);rptCdTimer=null;}}
-function onRptIframeLoad(){const el=document.getElementById('rptLastLoad');if(el)el.textContent=new Date().toLocaleTimeString();rptCdVal=20;}
+function onAllWifiLoad(){const el=document.getElementById('allWifiLastTime');if(el)el.textContent=new Date().toLocaleTimeString();}
+function startAllWifiRefresh(){stopAllWifiRefresh();allWifiTimer=setInterval(()=>{const p=document.getElementById('panelWifi');if(p&&p.classList.contains('active')&&wifiTab==='all')loadAllWifi();},30000);}
+function stopAllWifiRefresh(){if(allWifiTimer){clearInterval(allWifiTimer);allWifiTimer=null;}}
+function startRptRefresh(){stopRptRefresh();rptTimer=setInterval(()=>{const f=document.getElementById('reportIframe');if(f&&document.getElementById('panelReport').classList.contains('active'))f.src=RPT_URL+'&t='+Date.now();},20000);}
+function stopRptRefresh(){if(rptTimer){clearInterval(rptTimer);rptTimer=null;}}
+function onRptIframeLoad(){const el=document.getElementById('rptLastLoad');if(el)el.textContent=new Date().toLocaleTimeString();}
 class CDD{
-  constructor(id){
-    this.dd=document.getElementById(id);this.sel=this.dd.querySelector('.checkbox-dropdown-select');
-    this.val=this.dd.querySelector('.checkbox-dropdown-value');this.opts=this.dd.querySelectorAll('.checkbox-option');
-    this.cur=null;this.open=false;
-    this.sel.addEventListener('click',e=>{e.stopPropagation();this.open?this.close():this._open()});
-    this.opts.forEach(o=>o.addEventListener('click',e=>{e.stopPropagation();this.pick(o)}));
-    document.addEventListener('click',()=>{if(this.open)this.close()});
-  }
+  constructor(id){this.dd=document.getElementById(id);this.sel=this.dd.querySelector('.checkbox-dropdown-select');this.val=this.dd.querySelector('.checkbox-dropdown-value');this.opts=this.dd.querySelectorAll('.checkbox-option');this.cur=null;this.open=false;this.sel.addEventListener('click',e=>{e.stopPropagation();this.open?this.close():this._open()});this.opts.forEach(o=>o.addEventListener('click',e=>{e.stopPropagation();this.pick(o)}));document.addEventListener('click',()=>{if(this.open)this.close();});}
   _open(){this.dd.classList.add('active');this.open=true}
   close(){this.dd.classList.remove('active');this.open=false}
   pick(o){this.opts.forEach(x=>x.classList.remove('selected'));o.classList.add('selected');this.cur=o;this.val.textContent=o.getAttribute('data-value');this.val.classList.remove('checkbox-placeholder');this.close();}
@@ -747,69 +987,34 @@ async function submitMultipleTasks(){
 }
 function setTodayTab(tab){todayActiveTab=tab;const tabs={all:'tabAll',Installation:'tabInstall',Troubleshoot:'tabTrouble',CR:'tabCR',Survey:'tabSurvey'};Object.entries(tabs).forEach(([k,id])=>{const el=document.getElementById(id);if(el)el.classList.toggle('active-tab',k===tab);});}
 function filterTodayByCategory(cat){setTodayTab(cat);const fd=document.getElementById('todayFilterDate').value,d=fd||new Date().toISOString().split('T')[0];let tasks=getTasks().filter(t=>t.date===d);if(cat!=='all')tasks=tasks.filter(t=>t.category===cat);renderTodayList(tasks);}
-function renderToday(){
-  const fd=document.getElementById('todayFilterDate').value,d=fd||new Date().toISOString().split('T')[0],all=getTasks().filter(t=>t.date===d);
-  document.getElementById('sTotalToday').textContent=all.length;document.getElementById('sInstall').textContent=all.filter(t=>t.category==='Installation').length;document.getElementById('sTrouble').textContent=all.filter(t=>t.category==='Troubleshoot').length;document.getElementById('sCR').textContent=all.filter(t=>t.category==='CR').length;document.getElementById('sSurvey').textContent=all.filter(t=>t.category==='Survey').length;
-  let tasks=all;if(todayActiveTab!=='all')tasks=all.filter(t=>t.category===todayActiveTab);renderTodayList(tasks);
-}
+function renderToday(){const fd=document.getElementById('todayFilterDate').value,d=fd||new Date().toISOString().split('T')[0],all=getTasks().filter(t=>t.date===d);document.getElementById('sTotalToday').textContent=all.length;document.getElementById('sInstall').textContent=all.filter(t=>t.category==='Installation').length;document.getElementById('sTrouble').textContent=all.filter(t=>t.category==='Troubleshoot').length;document.getElementById('sCR').textContent=all.filter(t=>t.category==='CR').length;document.getElementById('sSurvey').textContent=all.filter(t=>t.category==='Survey').length;let tasks=all;if(todayActiveTab!=='all')tasks=all.filter(t=>t.category===todayActiveTab);renderTodayList(tasks);}
 function renderTodayList(tasks){
   const list=document.getElementById('todayTasksList');if(!tasks.length){list.innerHTML='<div class="empty-state"><i class="fas fa-inbox"></i><p>No tasks for selected date.</p></div>';return;}
   const fd=document.getElementById('todayFilterDate').value,d=fd||new Date().toISOString().split('T')[0],allDay=getTasks().filter(t=>t.date===d);
   list.innerHTML='';tasks.slice().reverse().forEach(t=>{
-    const div=document.createElement('div');div.className='task-item'+(todaySelectMode?' sel-mode':'');
-    div._taskTicket=t.ticket;div._taskDate=t.date;
-    if(todaySelectMode){
-      const cb=document.createElement('div');cb.className='task-sel-cb';
-      if(todaySelected.has(t.ticket+t.date))cb.classList.add('checked');
-      cb.onclick=e=>{e.stopPropagation();toggleTodayItem(t.ticket,t.date,cb,div);};
-      div.appendChild(cb);
-    }
+    const div=document.createElement('div');div.className='task-item'+(todaySelectMode?' sel-mode':'');div._taskTicket=t.ticket;div._taskDate=t.date;
+    if(todaySelectMode){const cb=document.createElement('div');cb.className='task-sel-cb';if(todaySelected.has(t.ticket+t.date))cb.classList.add('checked');cb.onclick=e=>{e.stopPropagation();toggleTodayItem(t.ticket,t.date,cb,div);};div.appendChild(cb);}
     const inner=document.createElement('div');inner.style.cssText='display:flex;align-items:center;gap:12px;flex:1';
     inner.innerHTML=`<div class="task-num">${allDay.indexOf(t)+1}</div><div class="task-info-left"><span class="task-ticket">${t.ticket}</span><span class="task-date"><i class="fas fa-calendar-day"></i>${fmtDate(t.date)}</span></div><span class="task-cat-badge ${catClass(t.category)}">${t.category}</span>`;
-    div.appendChild(inner);
-    list.appendChild(div);
+    div.appendChild(inner);list.appendChild(div);
   });
 }
 function resetTodayFilter(){document.getElementById('todayFilterDate').value=new Date().toISOString().split('T')[0];todayActiveTab='all';setTodayTab('all');renderToday();}
-function buildCatCounts(){
-  const box=document.getElementById('completedCatCounts');if(!box)return;
-  const cats=[{key:'Installation',cls:'ccb-install',icon:'⚙️'},{key:'Troubleshoot',cls:'ccb-trouble',icon:'🔧'},{key:'CR',cls:'ccb-cr',icon:'🔄'},{key:'Survey',cls:'ccb-survey',icon:'📐'}];
-  const all=getTasks();box.innerHTML='';
-  cats.forEach(c=>{const cnt=all.filter(t=>t.category===c.key).length,active=completedCatFilter===c.key?'active-filter':'',div=document.createElement('div');div.className=`cat-count-box ${c.cls} ${active}`;div.innerHTML=`<span>${c.icon}</span><span>${c.key}</span><span class="cnt-num">${cnt}</span>`;div.onclick=()=>togCatFilter(c.key);box.appendChild(div);});
-}
+function buildCatCounts(){const box=document.getElementById('completedCatCounts');if(!box)return;const cats=[{key:'Installation',cls:'ccb-install',icon:'⚙️'},{key:'Troubleshoot',cls:'ccb-trouble',icon:'🔧'},{key:'CR',cls:'ccb-cr',icon:'🔄'},{key:'Survey',cls:'ccb-survey',icon:'📐'}];const all=getTasks();box.innerHTML='';cats.forEach(c=>{const cnt=all.filter(t=>t.category===c.key).length,active=completedCatFilter===c.key?'active-filter':'',div=document.createElement('div');div.className=`cat-count-box ${c.cls} ${active}`;div.innerHTML=`<span>${c.icon}</span><span>${c.key}</span><span class="cnt-num">${cnt}</span>`;div.onclick=()=>togCatFilter(c.key);box.appendChild(div);});}
 function togCatFilter(cat){completedCatFilter=(completedCatFilter===cat)?null:cat;document.getElementById('cFilterDate').value='';renderCompleted();}
 function renderCompleted(fd){
   let tasks=getTasks();if(fd)tasks=tasks.filter(t=>t.date===fd);if(completedCatFilter)tasks=tasks.filter(t=>t.category===completedCatFilter);
-  buildCatCounts();
-  const list=document.getElementById('completedBody');list.innerHTML='';
+  buildCatCounts();const list=document.getElementById('completedBody');list.innerHTML='';
   if(!tasks.length){list.innerHTML='<div class="empty-state"><i class="fas fa-inbox"></i><p>No tasks found.</p></div>';return;}
   tasks.slice().reverse().forEach((t,i)=>{
-    const key=t.ticket+t.date;
-    const div=document.createElement('div');
-    div.className='task-item'+(cmpSelectMode?' sel-mode':'');
+    const key=t.ticket+t.date;const div=document.createElement('div');div.className='task-item'+(cmpSelectMode?' sel-mode':'');
     if(cmpSelectMode&&cmpSelected.has(key))div.classList.add('selected-row');
-    if(cmpSelectMode){
-      const cb=document.createElement('div');cb.className='task-sel-cb';
-      if(cmpSelected.has(key))cb.classList.add('checked');
-      cb.onclick=e=>{e.stopPropagation();if(cmpSelected.has(key)){cmpSelected.delete(key);cb.classList.remove('checked');div.classList.remove('selected-row');}else{cmpSelected.add(key);cb.classList.add('checked');div.classList.add('selected-row');}document.getElementById('cmpSelCount').textContent=cmpSelected.size;};
-      div.appendChild(cb);
-    }
+    if(cmpSelectMode){const cb=document.createElement('div');cb.className='task-sel-cb';if(cmpSelected.has(key))cb.classList.add('checked');cb.onclick=e=>{e.stopPropagation();if(cmpSelected.has(key)){cmpSelected.delete(key);cb.classList.remove('checked');div.classList.remove('selected-row');}else{cmpSelected.add(key);cb.classList.add('checked');div.classList.add('selected-row');}document.getElementById('cmpSelCount').textContent=cmpSelected.size;};div.appendChild(cb);}
     const num=document.createElement('div');num.className='task-num';num.textContent=tasks.length-i;div.appendChild(num);
     const info=document.createElement('div');info.className='task-info-left';info.style.cssText='flex:1;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0';
     const remarksBadge=t.remarks&&t.remarks.trim()?`<span title="${t.remarks.replace(/"/g,'&quot;')}" style="color:#1d4ed8;font-size:.58rem;background:#dbeafe;padding:1px 7px;border-radius:20px;border:1px solid #93c5fd;cursor:default;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap">💬 ${t.remarks.substring(0,18)+(t.remarks.length>18?'…':'')}</span>`:'';
-    info.innerHTML=`
-      <span class="task-ticket">${t.ticket}</span>
-      ${remarksBadge}
-      <span class="task-date"><i class="fas fa-calendar-day"></i>${fmtDate(t.date)}</span>
-      <span class="task-date" style="color:#0f766e"><i class="fas fa-user-cog"></i>${t.engineer}</span>
-      ${t.taskType?`<span class="task-date" style="color:#7c3aed"><i class="fas fa-toolbox"></i>${t.taskType}</span>`:''}
-      ${t.backend&&t.backend.trim()?`<span class="task-date" style="color:#b45309"><i class="fas fa-headset"></i>BNOC</span>`:''}
-      ${t.wifiScoring==='Yes'?`<span class="task-date" style="color:#0891b2"><i class="fas fa-wifi"></i>WiFi ✓</span>`:''}
-      ${t.onuMac&&t.onuMac.trim()?`<span class="task-date" style="color:#6b7280;font-family:'JetBrains Mono',monospace;font-size:.62rem"><i class="fas fa-network-wired"></i>${t.onuMac.length>16?t.onuMac.substring(0,16)+'…':t.onuMac}</span>`:''}
-    `;
-    div.appendChild(info);
-    const cat=document.createElement('span');cat.className='task-cat-badge '+catClass(t.category);cat.textContent=t.category;div.appendChild(cat);
-    list.appendChild(div);
+    info.innerHTML=`<span class="task-ticket">${t.ticket}</span>${remarksBadge}<span class="task-date"><i class="fas fa-calendar-day"></i>${fmtDate(t.date)}</span><span class="task-date" style="color:#0f766e"><i class="fas fa-user-cog"></i>${t.engineer}</span>${t.taskType?`<span class="task-date" style="color:#7c3aed"><i class="fas fa-toolbox"></i>${t.taskType}</span>`:''}${t.backend&&t.backend.trim()?`<span class="task-date" style="color:#b45309"><i class="fas fa-headset"></i>BNOC</span>`:''}${t.wifiScoring==='Yes'?`<span class="task-date" style="color:#0891b2"><i class="fas fa-wifi"></i>WiFi ✓</span>`:''}${t.onuMac&&t.onuMac.trim()?`<span class="task-date" style="color:#6b7280;font-family:'JetBrains Mono',monospace;font-size:.62rem"><i class="fas fa-network-wired"></i>${t.onuMac.length>16?t.onuMac.substring(0,16)+'…':t.onuMac}</span>`:''}`;
+    div.appendChild(info);const cat=document.createElement('span');cat.className='task-cat-badge '+catClass(t.category);cat.textContent=t.category;div.appendChild(cat);list.appendChild(div);
   });
 }
 function filterCompleted(){const fd=document.getElementById('cFilterDate').value;completedCatFilter=null;renderCompleted(fd);if(fd){const c=getTasks().filter(t=>t.date===fd).length;showToast(`${c} task(s) on ${fmtDate(fd)}`,c?'success':'warning')}else showToast('Showing all tasks','info');}
@@ -820,173 +1025,100 @@ function renderDevices(){
   if(sq)withMac=withMac.filter(t=>t.onuMac.toLowerCase().includes(sq));
   document.getElementById('devShowCount').textContent=withMac.length;
   const mb=document.getElementById('devMeBadgeTab');if(mb)mb.textContent=getTasks().filter(t=>t.onuMac&&t.onuMac.trim()).length;
-  const grid=document.getElementById('devicesGrid');
-  if(!withMac.length){grid.innerHTML='<div class="empty-state"><i class="fas fa-server"></i><p>No ONU MAC devices found.</p></div>';return}
-  grid.innerHTML='';withMac.slice().reverse().forEach(t=>{
-    const div=document.createElement('div');div.className='d-card'+(devSelectMode?' sel-mode':'');
-    const key=t.ticket+t.date;if(devSelectMode&&devSelected.has(key))div.classList.add('selected-row');
-    if(devSelectMode){
-      const cb=document.createElement('div');cb.className='task-sel-cb';cb.style.cssText='margin-right:4px;flex-shrink:0';
-      if(devSelected.has(key))cb.classList.add('checked');
-      cb.onclick=e=>{e.stopPropagation();const k=t.ticket+t.date;if(devSelected.has(k)){devSelected.delete(k);cb.classList.remove('checked');div.classList.remove('selected-row');}else{devSelected.add(k);cb.classList.add('checked');div.classList.add('selected-row');}document.getElementById('devSelCount').textContent=devSelected.size;};
-      div.appendChild(cb);
-    }
-    const inner=document.createElement('div');inner.className='d-card-inner';inner.style.cssText='flex:1';
-    inner.innerHTML=`<div class="d-icon"><i class="fas fa-router"></i></div><div class="d-left"><div class="d-mac-label">Device MAC / Serial</div><div class="d-mac">${t.onuMac}</div></div><div class="d-mid"><div class="d-mid-row"><i class="fas fa-calendar-day"></i><b>${fmtDate(t.date)}</b></div><div class="d-mid-row"><i class="fas fa-ticket-alt"></i><b>${t.ticket}</b></div></div><div class="d-right"><span class="mtag ${purpClass(t.category)}"><i class="fas fa-tag"></i> ${t.category}</span></div>`;
-    div.appendChild(inner);grid.appendChild(div);
-  });
+  const grid=document.getElementById('devicesGrid');if(!withMac.length){grid.innerHTML='<div class="empty-state"><i class="fas fa-server"></i><p>No ONU MAC devices found.</p></div>';return}
+  grid.innerHTML='';withMac.slice().reverse().forEach(t=>{const div=document.createElement('div');div.className='d-card'+(devSelectMode?' sel-mode':'');const key=t.ticket+t.date;if(devSelectMode&&devSelected.has(key))div.classList.add('selected-row');if(devSelectMode){const cb=document.createElement('div');cb.className='task-sel-cb';cb.style.cssText='margin-right:4px;flex-shrink:0';if(devSelected.has(key))cb.classList.add('checked');cb.onclick=e=>{e.stopPropagation();const k=t.ticket+t.date;if(devSelected.has(k)){devSelected.delete(k);cb.classList.remove('checked');div.classList.remove('selected-row');}else{devSelected.add(k);cb.classList.add('checked');div.classList.add('selected-row');}document.getElementById('devSelCount').textContent=devSelected.size;};div.appendChild(cb);}const inner=document.createElement('div');inner.className='d-card-inner';inner.style.cssText='flex:1';inner.innerHTML=`<div class="d-icon"><i class="fas fa-router"></i></div><div class="d-left"><div class="d-mac-label">Device MAC / Serial</div><div class="d-mac">${t.onuMac}</div></div><div class="d-mid"><div class="d-mid-row"><i class="fas fa-calendar-day"></i><b>${fmtDate(t.date)}</b></div><div class="d-mid-row"><i class="fas fa-ticket-alt"></i><b>${t.ticket}</b></div></div><div class="d-right"><span class="mtag ${purpClass(t.category)}"><i class="fas fa-tag"></i> ${t.category}</span></div>`;div.appendChild(inner);grid.appendChild(div);});
 }
 function clearDevFilter(){document.getElementById('devFilterDate').value='';document.getElementById('devSearchInput').value='';renderDevices();}
 function setWifiTab(tab){wifiActiveTab=tab;['all','today','month'].forEach(k=>{const el=document.getElementById('wTab'+k[0].toUpperCase()+k.slice(1));if(el)el.classList.toggle('active-tab',k===tab);});}
 function filterWifiByTab(tab){setWifiTab(tab);const td=new Date().toISOString().split('T')[0],cm=td.substring(0,7),all=getTasks().filter(t=>t.wifiScoring==='Yes');let f=all;if(tab==='today')f=all.filter(t=>t.date===td);else if(tab==='month')f=all.filter(t=>t.date&&t.date.startsWith(cm));document.getElementById('wifiShowCount').textContent=f.length;renderWifiList(f);}
-function renderWifi(){
-  const fd=document.getElementById('wifiFilterDate').value,td=new Date().toISOString().split('T')[0],cm=td.substring(0,7),all=getTasks().filter(t=>t.wifiScoring==='Yes');
-  document.getElementById('wifiAllCount').textContent=all.length;document.getElementById('wifiTodayCount').textContent=all.filter(t=>t.date===td).length;document.getElementById('wifiMonthCount').textContent=all.filter(t=>t.date&&t.date.startsWith(cm)).length;
-  let f;if(fd){f=all.filter(t=>t.date===fd);wifiActiveTab='all';setWifiTab('all');}else{if(wifiActiveTab==='today')f=all.filter(t=>t.date===td);else if(wifiActiveTab==='month')f=all.filter(t=>t.date&&t.date.startsWith(cm));else f=all;}
-  document.getElementById('wifiShowCount').textContent=f.length;renderWifiList(f);
-}
-function renderWifiList(f){
-  const grid=document.getElementById('wifiGrid');if(!f.length){grid.innerHTML='<div class="empty-state"><i class="fas fa-wifi"></i><p>No WiFi scoring records found.</p></div>';return}
-  grid.innerHTML='';f.slice().reverse().forEach(t=>{
-    const div=document.createElement('div');div.className='d-card wifi-c'+(wifiSelectMode?' sel-mode':'');
-    const key=t.ticket+t.date;if(wifiSelectMode&&wifiSelected.has(key))div.classList.add('selected-row');
-    div.style.cssText='display:flex;align-items:center';
-    if(wifiSelectMode){
-      const cb=document.createElement('div');cb.className='task-sel-cb';cb.style.cssText='margin-right:8px;flex-shrink:0';
-      if(wifiSelected.has(key))cb.classList.add('checked');
-      cb.onclick=e=>{e.stopPropagation();const k=t.ticket+t.date;if(wifiSelected.has(k)){wifiSelected.delete(k);cb.classList.remove('checked');div.classList.remove('selected-row');}else{wifiSelected.add(k);cb.classList.add('checked');div.classList.add('selected-row');}document.getElementById('wifiSelCount').textContent=wifiSelected.size;};
-      div.appendChild(cb);
-    }
-    const inner=document.createElement('div');inner.className='d-card-inner';inner.style.cssText='flex:1';
-    inner.innerHTML=`<div class="d-icon wi"><i class="fas fa-wifi"></i></div><div class="d-left"><div class="d-mac-label">Ticket ID</div><div class="d-mac" style="font-family:'Montserrat',sans-serif;color:#4338ca;font-size:.82rem">${t.ticket}</div></div><div class="d-mid"><div class="d-mid-row"><i class="fas fa-calendar-day"></i><b>${fmtDate(t.date)}</b></div></div><div class="d-right"><span class="mtag ${purpClass(t.category)}"><i class="fas fa-tag"></i> ${t.category}</span></div>`;
-    div.appendChild(inner);grid.appendChild(div);
-  });
-}
+function renderWifi(){const fd=document.getElementById('wifiFilterDate').value,td=new Date().toISOString().split('T')[0],cm=td.substring(0,7),all=getTasks().filter(t=>t.wifiScoring==='Yes');document.getElementById('wifiAllCount').textContent=all.length;document.getElementById('wifiTodayCount').textContent=all.filter(t=>t.date===td).length;document.getElementById('wifiMonthCount').textContent=all.filter(t=>t.date&&t.date.startsWith(cm)).length;let f;if(fd){f=all.filter(t=>t.date===fd);wifiActiveTab='all';setWifiTab('all');}else{if(wifiActiveTab==='today')f=all.filter(t=>t.date===td);else if(wifiActiveTab==='month')f=all.filter(t=>t.date&&t.date.startsWith(cm));else f=all;}document.getElementById('wifiShowCount').textContent=f.length;renderWifiList(f);}
+function renderWifiList(f){const grid=document.getElementById('wifiGrid');if(!f.length){grid.innerHTML='<div class="empty-state"><i class="fas fa-wifi"></i><p>No WiFi scoring records found.</p></div>';return}grid.innerHTML='';f.slice().reverse().forEach(t=>{const div=document.createElement('div');div.className='d-card wifi-c'+(wifiSelectMode?' sel-mode':'');const key=t.ticket+t.date;if(wifiSelectMode&&wifiSelected.has(key))div.classList.add('selected-row');div.style.cssText='display:flex;align-items:center';if(wifiSelectMode){const cb=document.createElement('div');cb.className='task-sel-cb';cb.style.cssText='margin-right:8px;flex-shrink:0';if(wifiSelected.has(key))cb.classList.add('checked');cb.onclick=e=>{e.stopPropagation();const k=t.ticket+t.date;if(wifiSelected.has(k)){wifiSelected.delete(k);cb.classList.remove('checked');div.classList.remove('selected-row');}else{wifiSelected.add(k);cb.classList.add('checked');div.classList.add('selected-row');}document.getElementById('wifiSelCount').textContent=wifiSelected.size;};div.appendChild(cb);}const inner=document.createElement('div');inner.className='d-card-inner';inner.style.cssText='flex:1';inner.innerHTML=`<div class="d-icon wi"><i class="fas fa-wifi"></i></div><div class="d-left"><div class="d-mac-label">Ticket ID</div><div class="d-mac" style="font-family:'Montserrat',sans-serif;color:#4338ca;font-size:.82rem">${t.ticket}</div></div><div class="d-mid"><div class="d-mid-row"><i class="fas fa-calendar-day"></i><b>${fmtDate(t.date)}</b></div></div><div class="d-right"><span class="mtag ${purpClass(t.category)}"><i class="fas fa-tag"></i> ${t.category}</span></div>`;div.appendChild(inner);grid.appendChild(div);});}
 function clearWifiFilter(){document.getElementById('wifiFilterDate').value='';wifiActiveTab='all';setWifiTab('all');renderWifi();}
 function updateRemarksCount(){document.getElementById('remarksCount').textContent=document.getElementById('remarks').value.length+'/500';}
-/* ── Used Devices (Me) Select & Delete ── */
+/* Delete modes */
 let devSelectMode=false,devSelected=new Set();
-function toggleDevSelectMode(){
-  devSelectMode=!devSelectMode;devSelected.clear();
-  const tb=document.getElementById('devDelToolbar');tb.classList.toggle('show',devSelectMode);
-  document.getElementById('devSelCount').textContent='0';
-  renderDevices();
-}
-function deleteSelectedDev(){
-  if(!devSelected.size){showToast('কোনো device select করা হয়নি!','warning');return;}
-  if(!confirm(`নির্বাচিত ${devSelected.size} টি device entry delete করবেন?`))return;
-  let all=getTasks();all=all.filter(t=>!devSelected.has(t.ticket+t.date));
-  localStorage.setItem('completedTasks',JSON.stringify(all));devSelected.clear();
-  refreshBadges();showToast('Selected devices deleted!','success');
-  document.getElementById('devSelCount').textContent='0';renderDevices();
-}
-function deleteAllDev(){
-  const fd=document.getElementById('devFilterDate').value,sq=(document.getElementById('devSearchInput').value||'').trim().toLowerCase();
-  let visible=(fd?getTasks().filter(t=>t.date===fd):getTasks()).filter(t=>t.onuMac&&t.onuMac.trim());
-  if(sq)visible=visible.filter(t=>t.onuMac.toLowerCase().includes(sq));
-  if(!visible.length){showToast('Delete করার মতো device নেই!','warning');return;}
-  if(!confirm(`এই view-তে দৃশ্যমান সব ${visible.length} টি device entry delete করবেন?`))return;
-  const delKeys=new Set(visible.map(t=>t.ticket+t.date));
-  const remaining=getTasks().filter(t=>!delKeys.has(t.ticket+t.date));
-  localStorage.setItem('completedTasks',JSON.stringify(remaining));
-  devSelectMode=false;devSelected.clear();document.getElementById('devDelToolbar').classList.remove('show');
-  refreshBadges();showToast(`${visible.length} device entry deleted!`,'success');renderDevices();
-}
-/* ── WiFi Scoring Select & Delete ── */
+function toggleDevSelectMode(){devSelectMode=!devSelectMode;devSelected.clear();const tb=document.getElementById('devDelToolbar');tb.classList.toggle('show',devSelectMode);document.getElementById('devSelCount').textContent='0';renderDevices();}
+function deleteSelectedDev(){if(!devSelected.size){showToast('কোনো device select করা হয়নি!','warning');return;}if(!confirm(`নির্বাচিত ${devSelected.size} টি device entry delete করবেন?`))return;let all=getTasks();all=all.filter(t=>!devSelected.has(t.ticket+t.date));localStorage.setItem('completedTasks',JSON.stringify(all));devSelected.clear();refreshBadges();showToast('Selected devices deleted!','success');document.getElementById('devSelCount').textContent='0';renderDevices();}
+function deleteAllDev(){const fd=document.getElementById('devFilterDate').value,sq=(document.getElementById('devSearchInput').value||'').trim().toLowerCase();let visible=(fd?getTasks().filter(t=>t.date===fd):getTasks()).filter(t=>t.onuMac&&t.onuMac.trim());if(sq)visible=visible.filter(t=>t.onuMac.toLowerCase().includes(sq));if(!visible.length){showToast('Delete করার মতো device নেই!','warning');return;}if(!confirm(`এই view-তে দৃশ্যমান সব ${visible.length} টি device entry delete করবেন?`))return;const delKeys=new Set(visible.map(t=>t.ticket+t.date));const remaining=getTasks().filter(t=>!delKeys.has(t.ticket+t.date));localStorage.setItem('completedTasks',JSON.stringify(remaining));devSelectMode=false;devSelected.clear();document.getElementById('devDelToolbar').classList.remove('show');refreshBadges();showToast(`${visible.length} device entry deleted!`,'success');renderDevices();}
 let wifiSelectMode=false,wifiSelected=new Set();
-function toggleWifiSelectMode(){
-  wifiSelectMode=!wifiSelectMode;wifiSelected.clear();
-  const tb=document.getElementById('wifiDelToolbar');tb.classList.toggle('show',wifiSelectMode);
-  document.getElementById('wifiSelCount').textContent='0';
-  renderWifi();
-}
-function deleteSelectedWifi(){
-  if(!wifiSelected.size){showToast('কোনো WiFi record select করা হয়নি!','warning');return;}
-  if(!confirm(`নির্বাচিত ${wifiSelected.size} টি WiFi record delete করবেন?`))return;
-  let all=getTasks();all=all.filter(t=>!wifiSelected.has(t.ticket+t.date));
-  localStorage.setItem('completedTasks',JSON.stringify(all));wifiSelected.clear();
-  refreshBadges();showToast('Selected WiFi records deleted!','success');
-  document.getElementById('wifiSelCount').textContent='0';renderWifi();
-}
-function deleteAllWifi(){
-  const fd=document.getElementById('wifiFilterDate').value,td=new Date().toISOString().split('T')[0],cm=td.substring(0,7),all=getTasks().filter(t=>t.wifiScoring==='Yes');
-  let visible=all;if(fd){visible=all.filter(t=>t.date===fd);}else if(wifiActiveTab==='today'){visible=all.filter(t=>t.date===td);}else if(wifiActiveTab==='month'){visible=all.filter(t=>t.date&&t.date.startsWith(cm));}
-  if(!visible.length){showToast('Delete করার মতো record নেই!','warning');return;}
-  if(!confirm(`এই view-তে দৃশ্যমান সব ${visible.length} টি WiFi record delete করবেন?`))return;
-  const delKeys=new Set(visible.map(t=>t.ticket+t.date));
-  const remaining=getTasks().filter(t=>!delKeys.has(t.ticket+t.date));
-  localStorage.setItem('completedTasks',JSON.stringify(remaining));
-  wifiSelectMode=false;wifiSelected.clear();document.getElementById('wifiDelToolbar').classList.remove('show');
-  refreshBadges();showToast(`${visible.length} WiFi record deleted!`,'success');renderWifi();
-}
-/* ── Today / My Task Select & Delete ── */
+function toggleWifiSelectMode(){wifiSelectMode=!wifiSelectMode;wifiSelected.clear();const tb=document.getElementById('wifiDelToolbar');tb.classList.toggle('show',wifiSelectMode);document.getElementById('wifiSelCount').textContent='0';renderWifi();}
+function deleteSelectedWifi(){if(!wifiSelected.size){showToast('কোনো WiFi record select করা হয়নি!','warning');return;}if(!confirm(`নির্বাচিত ${wifiSelected.size} টি WiFi record delete করবেন?`))return;let all=getTasks();all=all.filter(t=>!wifiSelected.has(t.ticket+t.date));localStorage.setItem('completedTasks',JSON.stringify(all));wifiSelected.clear();refreshBadges();showToast('Selected WiFi records deleted!','success');document.getElementById('wifiSelCount').textContent='0';renderWifi();}
+function deleteAllWifi(){const fd=document.getElementById('wifiFilterDate').value,td=new Date().toISOString().split('T')[0],cm=td.substring(0,7),all=getTasks().filter(t=>t.wifiScoring==='Yes');let visible=all;if(fd){visible=all.filter(t=>t.date===fd);}else if(wifiActiveTab==='today'){visible=all.filter(t=>t.date===td);}else if(wifiActiveTab==='month'){visible=all.filter(t=>t.date&&t.date.startsWith(cm));}if(!visible.length){showToast('Delete করার মতো record নেই!','warning');return;}if(!confirm(`এই view-তে দৃশ্যমান সব ${visible.length} টি WiFi record delete করবেন?`))return;const delKeys=new Set(visible.map(t=>t.ticket+t.date));const remaining=getTasks().filter(t=>!delKeys.has(t.ticket+t.date));localStorage.setItem('completedTasks',JSON.stringify(remaining));wifiSelectMode=false;wifiSelected.clear();document.getElementById('wifiDelToolbar').classList.remove('show');refreshBadges();showToast(`${visible.length} WiFi record deleted!`,'success');renderWifi();}
 let todaySelectMode=false,todaySelected=new Set();
-function toggleTodaySelectMode(){
-  todaySelectMode=!todaySelectMode;todaySelected.clear();
-  const tb=document.getElementById('todayDelToolbar');tb.classList.toggle('show',todaySelectMode);
-  document.getElementById('todaySelCount').textContent='0';
-  const fd=document.getElementById('todayFilterDate').value,d=fd||new Date().toISOString().split('T')[0],all=getTasks().filter(t=>t.date===d);
-  let tasks=all;if(todayActiveTab!=='all')tasks=all.filter(t=>t.category===todayActiveTab);renderTodayList(tasks);
-}
-function toggleTodayItem(ticket,date,cb,row){
-  const key=ticket+date;
-  if(todaySelected.has(key)){todaySelected.delete(key);cb.classList.remove('checked');row.classList.remove('selected-row');}
-  else{todaySelected.add(key);cb.classList.add('checked');row.classList.add('selected-row');}
-  document.getElementById('todaySelCount').textContent=todaySelected.size;
-}
-function deleteSelectedToday(){
-  if(!todaySelected.size){showToast('কোনো task select করা হয়নি!','warning');return;}
-  if(!confirm(`নির্বাচিত ${todaySelected.size} টি task delete করবেন?`))return;
-  let all=getTasks();
-  all=all.filter(t=>!todaySelected.has(t.ticket+t.date));
-  localStorage.setItem('completedTasks',JSON.stringify(all));
-  todaySelected.clear();refreshBadges();
-  showToast('Selected tasks deleted!','success');
-  const fd=document.getElementById('todayFilterDate').value,d=fd||new Date().toISOString().split('T')[0],remaining=all.filter(t=>t.date===d);
-  document.getElementById('sTotalToday').textContent=remaining.length;document.getElementById('sInstall').textContent=remaining.filter(t=>t.category==='Installation').length;document.getElementById('sTrouble').textContent=remaining.filter(t=>t.category==='Troubleshoot').length;document.getElementById('sCR').textContent=remaining.filter(t=>t.category==='CR').length;document.getElementById('sSurvey').textContent=remaining.filter(t=>t.category==='Survey').length;
-  let tasks=remaining;if(todayActiveTab!=='all')tasks=remaining.filter(t=>t.category===todayActiveTab);renderTodayList(tasks);
-  document.getElementById('todaySelCount').textContent='0';
-}
-function deleteAllToday(){
-  const fd=document.getElementById('todayFilterDate').value,d=fd||new Date().toISOString().split('T')[0];
-  let visible=getTasks().filter(t=>t.date===d);if(todayActiveTab!=='all')visible=visible.filter(t=>t.category===todayActiveTab);
-  if(!visible.length){showToast('Delete করার মতো task নেই!','warning');return;}
-  if(!confirm(`এই view-তে দৃশ্যমান সব ${visible.length} টি task delete করবেন?`))return;
-  const delKeys=new Set(visible.map(t=>t.ticket+t.date));
-  const remaining=getTasks().filter(t=>!delKeys.has(t.ticket+t.date));
-  localStorage.setItem('completedTasks',JSON.stringify(remaining));
-  todaySelectMode=false;todaySelected.clear();document.getElementById('todayDelToolbar').classList.remove('show');
-  refreshBadges();showToast(`${visible.length} task deleted!`,'success');renderToday();
-}
-/* ── Completed Table Select & Delete ── */
+function toggleTodaySelectMode(){todaySelectMode=!todaySelectMode;todaySelected.clear();const tb=document.getElementById('todayDelToolbar');tb.classList.toggle('show',todaySelectMode);document.getElementById('todaySelCount').textContent='0';const fd=document.getElementById('todayFilterDate').value,d=fd||new Date().toISOString().split('T')[0],all=getTasks().filter(t=>t.date===d);let tasks=all;if(todayActiveTab!=='all')tasks=all.filter(t=>t.category===todayActiveTab);renderTodayList(tasks);}
+function toggleTodayItem(ticket,date,cb,row){const key=ticket+date;if(todaySelected.has(key)){todaySelected.delete(key);cb.classList.remove('checked');row.classList.remove('selected-row');}else{todaySelected.add(key);cb.classList.add('checked');row.classList.add('selected-row');}document.getElementById('todaySelCount').textContent=todaySelected.size;}
+function deleteSelectedToday(){if(!todaySelected.size){showToast('কোনো task select করা হয়নি!','warning');return;}if(!confirm(`নির্বাচিত ${todaySelected.size} টি task delete করবেন?`))return;let all=getTasks();all=all.filter(t=>!todaySelected.has(t.ticket+t.date));localStorage.setItem('completedTasks',JSON.stringify(all));todaySelected.clear();refreshBadges();showToast('Selected tasks deleted!','success');const fd=document.getElementById('todayFilterDate').value,d=fd||new Date().toISOString().split('T')[0],remaining=all.filter(t=>t.date===d);document.getElementById('sTotalToday').textContent=remaining.length;document.getElementById('sInstall').textContent=remaining.filter(t=>t.category==='Installation').length;document.getElementById('sTrouble').textContent=remaining.filter(t=>t.category==='Troubleshoot').length;document.getElementById('sCR').textContent=remaining.filter(t=>t.category==='CR').length;document.getElementById('sSurvey').textContent=remaining.filter(t=>t.category==='Survey').length;let tasks=remaining;if(todayActiveTab!=='all')tasks=remaining.filter(t=>t.category===todayActiveTab);renderTodayList(tasks);document.getElementById('todaySelCount').textContent='0';}
+function deleteAllToday(){const fd=document.getElementById('todayFilterDate').value,d=fd||new Date().toISOString().split('T')[0];let visible=getTasks().filter(t=>t.date===d);if(todayActiveTab!=='all')visible=visible.filter(t=>t.category===todayActiveTab);if(!visible.length){showToast('Delete করার মতো task নেই!','warning');return;}if(!confirm(`এই view-তে দৃশ্যমান সব ${visible.length} টি task delete করবেন?`))return;const delKeys=new Set(visible.map(t=>t.ticket+t.date));const remaining=getTasks().filter(t=>!delKeys.has(t.ticket+t.date));localStorage.setItem('completedTasks',JSON.stringify(remaining));todaySelectMode=false;todaySelected.clear();document.getElementById('todayDelToolbar').classList.remove('show');refreshBadges();showToast(`${visible.length} task deleted!`,'success');renderToday();}
 let cmpSelectMode=false,cmpSelected=new Set();
-function toggleCmpSelectMode(){
-  cmpSelectMode=!cmpSelectMode;cmpSelected.clear();
-  const tb=document.getElementById('cmpDelToolbar');tb.classList.toggle('show',cmpSelectMode);
-  document.getElementById('cmpSelCount').textContent='0';
-  renderCompleted(document.getElementById('cFilterDate').value||undefined);
+function toggleCmpSelectMode(){cmpSelectMode=!cmpSelectMode;cmpSelected.clear();const tb=document.getElementById('cmpDelToolbar');tb.classList.toggle('show',cmpSelectMode);document.getElementById('cmpSelCount').textContent='0';renderCompleted(document.getElementById('cFilterDate').value||undefined);}
+function deleteSelectedCmp(){if(!cmpSelected.size){showToast('কোনো task select করা হয়নি!','warning');return;}if(!confirm(`নির্বাচিত ${cmpSelected.size} টি task delete করবেন?`))return;let all=getTasks();all=all.filter(t=>!cmpSelected.has(t.ticket+t.date));localStorage.setItem('completedTasks',JSON.stringify(all));cmpSelected.clear();refreshBadges();showToast('Selected tasks deleted!','success');document.getElementById('cmpSelCount').textContent='0';renderCompleted(document.getElementById('cFilterDate').value||undefined);}
+function deleteAllCmp(){let visible=getTasks();const fd=document.getElementById('cFilterDate').value;if(fd)visible=visible.filter(t=>t.date===fd);if(completedCatFilter)visible=visible.filter(t=>t.category===completedCatFilter);if(!visible.length){showToast('Delete করার মতো task নেই!','warning');return;}if(!confirm(`এই view-তে দৃশ্যমান সব ${visible.length} টি task delete করবেন?`))return;const delKeys=new Set(visible.map(t=>t.ticket+t.date));const remaining=getTasks().filter(t=>!delKeys.has(t.ticket+t.date));localStorage.setItem('completedTasks',JSON.stringify(remaining));cmpSelectMode=false;cmpSelected.clear();document.getElementById('cmpDelToolbar').classList.remove('show');refreshBadges();showToast(`${visible.length} task deleted!`,'success');renderCompleted();}
+
+/* ═══════════════════════════════════
+   ACTIVE USERS SYSTEM
+═══════════════════════════════════ */
+function getActiveSessions() {
+  try { return JSON.parse(localStorage.getItem('l3_active_sessions')) || {}; } catch(e) { return {}; }
 }
-function deleteSelectedCmp(){
-  if(!cmpSelected.size){showToast('কোনো task select করা হয়নি!','warning');return;}
-  if(!confirm(`নির্বাচিত ${cmpSelected.size} টি task delete করবেন?`))return;
-  let all=getTasks();all=all.filter(t=>!cmpSelected.has(t.ticket+t.date));
-  localStorage.setItem('completedTasks',JSON.stringify(all));cmpSelected.clear();
-  refreshBadges();showToast('Selected tasks deleted!','success');
-  document.getElementById('cmpSelCount').textContent='0';
-  renderCompleted(document.getElementById('cFilterDate').value||undefined);
+function saveActiveSessions(s) {
+  localStorage.setItem('l3_active_sessions', JSON.stringify(s));
 }
-function deleteAllCmp(){
-  let visible=getTasks();const fd=document.getElementById('cFilterDate').value;if(fd)visible=visible.filter(t=>t.date===fd);if(completedCatFilter)visible=visible.filter(t=>t.category===completedCatFilter);
-  if(!visible.length){showToast('Delete করার মতো task নেই!','warning');return;}
-  if(!confirm(`এই view-তে দৃশ্যমান সব ${visible.length} টি task delete করবেন?`))return;
-  const delKeys=new Set(visible.map(t=>t.ticket+t.date));
-  const remaining=getTasks().filter(t=>!delKeys.has(t.ticket+t.date));
-  localStorage.setItem('completedTasks',JSON.stringify(remaining));
-  cmpSelectMode=false;cmpSelected.clear();document.getElementById('cmpDelToolbar').classList.remove('show');
-  refreshBadges();showToast(`${visible.length} task deleted!`,'success');renderCompleted();
+function markUserOnline(userKey) {
+  const sessions = getActiveSessions();
+  sessions[userKey] = { loginTime: new Date().toISOString(), display: USER_DISPLAY[userKey] || userKey };
+  saveActiveSessions(sessions);
 }
-window.onload=function(){
-  updateClock();setInterval(updateClock,1000);
+function markUserOffline(userKey) {
+  if (!userKey) return;
+  const sessions = getActiveSessions();
+  delete sessions[userKey];
+  saveActiveSessions(sessions);
+}
+function updateActiveUsersBadge() {
+  const sessions = getActiveSessions();
+  const count = Object.keys(sessions).length;
+  const badge = document.getElementById('activeUsersBadge');
+  if (badge) badge.textContent = count;
+}
+function openActiveUsers() {
+  updateActiveUsersBadge();
+  const sessions = getActiveSessions();
+  const keys = Object.keys(sessions);
+  document.getElementById('aumCount').textContent = keys.length;
+  document.getElementById('aumTime').textContent = 'Updated: ' + new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  const list = document.getElementById('aumList');
+  if (!keys.length) {
+    list.innerHTML = '<div class="aum-empty"><i class="fas fa-user-slash"></i><p>No users currently online.</p></div>';
+  } else {
+    list.innerHTML = keys.map(k => {
+      const u = sessions[k];
+      const initials = (u.display||k).substring(0,2).toUpperCase();
+      const isAdmin = k === 'Admin';
+      const loginTime = u.loginTime ? new Date(u.loginTime).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}) : '—';
+      return `<div class="aum-user-row">
+        <div class="aum-avatar ${isAdmin?'admin-av':''}">${initials}</div>
+        <div class="aum-user-info">
+          <div class="aum-user-name">${u.display||k}</div>
+          <div class="aum-user-role">${isAdmin?'Administrator':'Engineer'} · Login: ${loginTime}</div>
+        </div>
+        <div class="aum-online-tag"><span class="aum-online-tag-dot"></span>Online</div>
+      </div>`;
+    }).join('');
+  }
+  document.getElementById('activeUsersModal').classList.add('show');
+}
+function closeActiveUsers() {
+  document.getElementById('activeUsersModal').classList.remove('show');
+}
+// Close modal on backdrop click
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('activeUsersModal').addEventListener('click', function(e) {
+    if (e.target === this) closeActiveUsers();
+  });
+});
+
+function initApp(){
+  updateClock();
   const today=new Date().toISOString().split('T')[0];
   ['taskDate','cFilterDate','devFilterDate','wifiFilterDate','todayFilterDate'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=today;});
   window.catDD=new CDD('taskCategoryDropdown');window.typeDD=new CDD('taskTypeDropdown');window.teamDD=new CDD('teamTypeDropdown');
@@ -994,6 +1126,36 @@ window.onload=function(){
   refreshBadges();buildCatCounts();
   startAllDevRefresh();loadAllDev();
   startAllWifiRefresh();loadAllWifi();
+}
+
+window.onload=function(){
+  setInterval(updateClock,1000);
+  updateClock();
+  // ── Restore session on page refresh ──
+  const savedUser = localStorage.getItem('l3_current_session');
+  if (savedUser) {
+    const passwords = getPasswords();
+    if (passwords[savedUser]) {
+      currentUser = savedUser;
+      const appEl = document.getElementById('appScreen');
+      appEl.classList.add('show');
+      const displayName = USER_DISPLAY[savedUser] || savedUser;
+      document.getElementById('navUserName').textContent = displayName;
+      document.getElementById('navUserRole').textContent = savedUser === 'Admin' ? 'Administrator' : 'Engineer';
+      document.getElementById('navUserAvatar').textContent = displayName.substring(0,2).toUpperCase();
+      markUserOnline(savedUser);
+      if (savedUser === 'Admin') {
+        document.getElementById('activeUsersNavBtn').style.display = 'flex';
+        updateActiveUsersBadge();
+      }
+      initApp();
+      return;
+    } else {
+      localStorage.removeItem('l3_current_session');
+    }
+  }
+  // No valid session — show login
+  document.getElementById('loginScreen').style.display = 'flex';
 };
 </script>
 </body>
