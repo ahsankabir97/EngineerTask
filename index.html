@@ -1000,12 +1000,7 @@ function resetToggle(id){const b=document.getElementById(id);b._val=false;b.clas
 async function submitMultipleTasks(){
   const btn=document.getElementById('submitBtn'),ti=document.getElementById('ticketID').value;
   const bv=document.getElementById('bnocToggle')._val?'Ahsanul Kabir':'',wv=document.getElementById('wifiScoringToggle')._val?'Yes':'No';
-  const cd={date: (d => {
-  const [y,m,dy] = d.split('-');
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const time = new Date().toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit', hour12:true});
-  return `${+dy}-${months[+m-1]}-${y.slice(2)}  ${time}`;
-})(document.getElementById('taskDate').value),category:window.catDD.getValue(),taskType:window.typeDD.getValue(),teamType:window.teamDD.getValue(),engineer:document.getElementById('engineerName').value,backend:bv,wifiScoring:wv,onuMac:document.getElementById('onuMac').value.trim(),remarks:document.getElementById('remarks').value.trim()};
+  const cd={date: document.getElementById('taskDate').value,category:window.catDD.getValue(),taskType:window.typeDD.getValue(),teamType:window.teamDD.getValue(),engineer:document.getElementById('engineerName').value,backend:bv,wifiScoring:wv,onuMac:document.getElementById('onuMac').value.trim(),remarks:document.getElementById('remarks').value.trim()};
   const err=[];if(!ti.trim())err.push('Ticket ID');if(!cd.category)err.push('Task Category');if(!cd.taskType)err.push('Task Type');if(!cd.teamType)err.push('Team Type');if(!cd.engineer)err.push('Engineer Name');
   if(err.length){showToast('Please fill: '+err.join(', '),'warning');return}
   const ids=ti.split(',').map(s=>s.trim()).filter(Boolean);if(!ids.length){showToast('Please enter at least one Ticket ID!','warning');return}
