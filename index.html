@@ -452,7 +452,16 @@ input:focus,select:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(33,150,2
   <div class="nav-sep"></div>
   <div class="nav-action-item" onclick="openChangePw()" title="Change Password"><i class="fas fa-key"></i><span>Change Password</span></div>
   <div class="nav-action-item logout" onclick="doLogout()" title="Logout"><i class="fas fa-sign-out-alt"></i><span>Logout</span></div>
-  <div class="sidebar-footer">© Ahsanul Kabir</div>
+  <div class="sidebar-footer" style="font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;padding:14px 18px;border-top:1px solid rgba(255,255,255,.1);margin-top:auto;text-align:center;background:transparent;position:relative;overflow:hidden;">
+  <span style="display:block;color:rgba(255,255,255,.45);font-size:.52rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:4px;">Prepared By</span>
+  <span id="shimmerFooter" style="background:linear-gradient(90deg,rgba(255,255,255,.5) 0%,#ffffff 30%,rgba(255,255,255,.5) 60%,rgba(255,255,255,.3) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmerText 2.8s linear infinite;font-size:.65rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;">AHSANUL KABIR</span>
+</div>
+<style>
+@keyframes shimmerText{
+  0%{background-position:200% center}
+  100%{background-position:-200% center}
+}
+</style>
 </nav>
 
 <div class="main-wrap">
